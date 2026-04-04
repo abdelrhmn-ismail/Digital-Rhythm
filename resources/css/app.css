@@ -1,0 +1,17 @@
+@import 'tailwindcss';
+@import './colors.css';
+@import './components.css';
+@import './utilities.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+}
+
+@layer base {
+    body {
+        @apply bg-[#050506] text-slate-50 antialiased;
+        font-family: 'Outfit', sans-serif;
+    }
+}

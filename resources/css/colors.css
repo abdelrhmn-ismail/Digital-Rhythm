@@ -1,0 +1,7 @@
+@theme {
+    --color-primary: #f59e0b; /* Amber 500 */
+    --color-primary-dark: #b45309; /* Amber 700 */
+    --color-primary-foreground: #ffffff;
+    --color-background: #050506;
+    --color-foreground: #f8fafc; /* slate-50 */
+}
