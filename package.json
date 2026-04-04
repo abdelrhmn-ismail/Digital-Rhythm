@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css",
+        "build": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css && copy resources\\css\\admin.css public\\css\\admin.css /Y && copy resources\\js\\admin.js public\\js\\admin.js /Y",
         "watch": "npx tailwindcss -i ./resources/css/app.css -o ./public/css/app.css --watch"
     },
     "devDependencies": {

@@ -1,0 +1,38 @@
+/* Admin Styles Dashboard */
+.admin-sidebar {
+    background: linear-gradient(135deg, #f58d0a 0%, #ea580c 100%);
+}
+.admin-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.admin-nav-item {
+    transition: all 0.3s ease;
+}
+.admin-nav-item:hover {
+    background: rgba(245, 158, 11, 0.2);
+    transform: translateX(4px);
+}
+.admin-nav-item.active {
+    background: rgba(245, 158, 11, 0.3);
+    border-left: 4px solid #f58d0a;
+}
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom transitions and states */
+.transition-all-300 {
+    transition: all 0.3s ease;
+}
+.hover-scale-101:hover {
+    transform: scale(1.01);
+}

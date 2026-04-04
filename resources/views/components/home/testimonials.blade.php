@@ -16,24 +16,33 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <x-cards.testimonial 
-                quote="A world-class creative team that engineered our brand transformation with surgical precision and global impact."
-                name="CEO, Tech Startup"
-                location="Silicon Valley"
-                delay="100"
-            />
-            <x-cards.testimonial 
-                quote="Stunning execution and unwavering commitment. Their digital strategies delivered results that far exceeded our KPI targets."
-                name="Marketing Director"
-                location="Fortune 500 Company"
-                delay="200"
-            />
-            <x-cards.testimonial 
-                quote="A powerhouse of strategic intuition. They masterfully bridge the gap between local nuances and global excellence."
-                name="Founder"
-                location="Global E-commerce Brand"
-                delay="300"
-            />
+            @foreach($testimonials as $index => $testimonial)
+            <div class="group relative flex flex-col h-full p-10 rounded-[48px] bg-zinc-950/50 border border-white/[0.03] hover:bg-white/5 transition-all duration-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
+                <div class="mb-10 text-primary">
+                    @for($i = 0; $i < floor($testimonial->rating); $i++)
+                        <span class="material-icons text-sm">star</span>
+                    @endfor
+                    @if($testimonial->rating - floor($testimonial->rating) > 0)
+                        <span class="material-icons text-sm">star_half</span>
+                    @endif
+                </div>
+
+                <div class="flex-grow">
+                    <p class="text-xl text-zinc-300 font-light italic leading-relaxed mb-12">"{{ $testimonial->content }}"</p>
+                </div>
+
+                <div class="flex items-center gap-4 mt-auto">
+                    <div class="w-12 h-12 rounded-full border-2 border-primary/20 bg-primary/10 overflow-hidden">
+                        <img src="{{ $testimonial->image ? asset('storage/' . $testimonial->image) : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=f58d0a&color=fff' }}" alt="{{ $testimonial->name }}" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-black text-white uppercase text-sm tracking-widest">{{ $testimonial->name }}</h4>
+                        <p class="text-primary text-[10px] font-black uppercase tracking-widest">{{ $testimonial->position }} <span class="text-zinc-500">•</span> {{ $testimonial->company }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
 </section>
