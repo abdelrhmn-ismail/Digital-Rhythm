@@ -5,9 +5,10 @@
 @section('content')
 <main class="flex-grow">
     <x-home.hero />
-    <x-home.solutions />
+    <x-home.solutions :services="$services" />
     <x-home.showcase />
     <x-home.why-choose-us />
     <x-home.partners />
 </main>
 @endsection
+
