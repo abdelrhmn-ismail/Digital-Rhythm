@@ -6,7 +6,8 @@
 <main class="flex-grow">
     <x-home.hero />
     <x-home.solutions :services="$services" />
-    <x-home.showcase />
+    <x-home.showcase :portfolios="$portfolios" />
+    <x-home.testimonials :testimonials="$testimonials" />
     <x-home.why-choose-us />
     <x-home.partners />
 </main>

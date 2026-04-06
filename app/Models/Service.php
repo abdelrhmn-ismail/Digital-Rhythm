@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Spatie\Translatable\HasTranslations;
+
 class Service extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasTranslations;
+
+    public $translatable = ['title', 'description', 'content', 'features'];
 
     protected $fillable = [
         'title',
@@ -26,8 +30,6 @@ class Service extends Model
     ];
 
     protected $casts = [
-        'features' => 'array',
-        'technologies' => 'array',
         'price' => 'decimal:2',
         'featured' => 'boolean',
         'active' => 'boolean',

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Create Service')
+@section('title', 'Edit Service: ' . $service->getTranslation('title', 'en'))
 
 @section('content')
 <div class="p-6">
@@ -9,16 +9,17 @@
         <div class="flex items-center gap-3 text-sm text-gray-600 mb-2">
             <a href="{{ route('admin.services.index') }}" class="hover:text-gray-900">Services</a>
             <span>/</span>
-            <span>Create</span>
+            <span>Edit</span>
         </div>
-        <h1 class="text-2xl font-bold text-gray-900">Create Service</h1>
-        <p class="text-gray-600 mt-1">Add a new service offering</p>
+        <h1 class="text-2xl font-bold text-gray-900">Edit Service</h1>
+        <p class="text-gray-600 mt-1">Modify service details and translations</p>
     </div>
 
     <!-- Form -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <form method="POST" action="{{ route('admin.services.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.services.update', $service) }}" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             
             <div class="grid grid-cols-1 gap-6">
                 <!-- Title (EN/AR) -->
@@ -26,7 +27,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title (English) *</label>
                         <input type="text" name="title[en]" required
-                               value="{{ old('title.en') }}"
+                               value="{{ old('title.en', $service->getTranslation('title', 'en')) }}"
                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         @error('title.en')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -35,7 +36,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title (Arabic) *</label>
                         <input type="text" name="title[ar]" required dir="rtl"
-                               value="{{ old('title.ar') }}"
+                               value="{{ old('title.ar', $service->getTranslation('title', 'ar')) }}"
                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
                         @error('title.ar')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -48,7 +49,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Slug (URL)</label>
                         <input type="text" name="slug"
-                               value="{{ old('slug') }}"
+                               value="{{ old('slug', $service->slug) }}"
                                placeholder="auto-generated from English title"
                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         @error('slug')
@@ -58,7 +59,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Icon</label>
                         <input type="text" name="icon"
-                               value="{{ old('icon') }}"
+                               value="{{ old('icon', $service->icon) }}"
                                placeholder="e.g., trending_up, code, palette"
                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         @error('icon')
@@ -73,7 +74,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description (English) *</label>
                         <textarea name="description[en]" rows="3" required
                                   placeholder="Brief description in English..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('description.en') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('description.en', $service->getTranslation('description', 'en')) }}</textarea>
                         @error('description.en')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -82,7 +83,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description (Arabic) *</label>
                         <textarea name="description[ar]" rows="3" required dir="rtl"
                                   placeholder="وصف مختصر باللغة العربية..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('description.ar') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('description.ar', $service->getTranslation('description', 'ar')) }}</textarea>
                         @error('description.ar')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -95,59 +96,77 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Content (English)</label>
                         <textarea name="content[en]" rows="6"
                                   placeholder="Full description in English..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('content.en') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('content.en', $service->getTranslation('content', 'en')) }}</textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Content (Arabic)</label>
                         <textarea name="content[ar]" rows="6" dir="rtl"
                                   placeholder="الوصف الكامل باللغة العربية..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('content.ar') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('content.ar', $service->getTranslation('content', 'ar')) }}</textarea>
                     </div>
                 </div>
 
                 <!-- Image -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Service Image</label>
-                    <input type="file" name="image" accept="image/*"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <p class="mt-1 text-sm text-gray-500">Optional: Service image (max 2MB)</p>
-                    @error('image')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <!-- Icon -->
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Icon</label>
-                    <input type="text" name="icon"
-                           value="{{ old('icon') }}"
-                           placeholder="e.g., trending_up, code, palette"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <p class="mt-1 text-sm text-gray-500">Material Icons name</p>
-                    @error('icon')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Service Image</label>
+                        @if($service->image)
+                            <div class="mb-2">
+                                <img src="{{ $service->image_url }}" alt="Current" class="w-24 h-24 object-cover rounded-lg border">
+                            </div>
+                        @endif
+                        <input type="file" name="image" accept="image/*"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <p class="mt-1 text-sm text-gray-500">Max 2MB. Leave empty to keep current.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 items-end">
+                        <label class="flex items-center mb-4">
+                            <input type="checkbox" name="featured" value="1" {{ old('featured', $service->featured) ? 'checked' : '' }}
+                                   class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm font-medium text-gray-700">Featured</span>
+                        </label>
+                        
+                        <label class="flex items-center mb-4">
+                            <input type="checkbox" name="active" value="1" {{ old('active', $service->active) ? 'checked' : '' }}
+                                   class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                            <span class="text-sm font-medium text-gray-700">Active</span>
+                        </label>
+                    </div>
                 </div>
 
                 <!-- Features -->
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700 mb-1">Service Features (EN / AR)</label>
                     <div id="features-container" class="space-y-4">
-                        <div class="flex flex-col md:flex-row gap-4 items-start bg-gray-50 p-4 rounded-lg border border-gray-100">
-                            <div class="flex-1 w-full">
-                                <input type="text" name="features[en][]" placeholder="Feature in English"
-                                       value="{{ old('features.en.0') }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        @php
+                            $enFeatures = old('features.en', $service->getTranslation('features', 'en') ?? []);
+                            $arFeatures = old('features.ar', $service->getTranslation('features', 'ar') ?? []);
+                            $count = max(count($enFeatures), count($arFeatures), 1);
+                        @endphp
+                        
+                        @for($i = 0; $i < $count; $i++)
+                            <div class="flex flex-col md:flex-row gap-4 items-start bg-gray-50 p-4 rounded-lg border border-gray-100">
+                                <div class="flex-1 w-full">
+                                    <input type="text" name="features[en][]" placeholder="Feature in English"
+                                           value="{{ $enFeatures[$i] ?? '' }}"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="flex-1 w-full">
+                                    <input type="text" name="features[ar][]" placeholder="الميزة باللغة العربية" dir="rtl"
+                                           value="{{ $arFeatures[$i] ?? '' }}"
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                                </div>
+                                @if($i === 0)
+                                    <button type="button" onclick="addFeature()" class="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                                        <span class="material-icons">add</span>
+                                    </button>
+                                @else
+                                    <button type="button" onclick="removeFeature(this)" class="px-3 py-2 bg-red-200 text-red-700 rounded-lg hover:bg-red-300">
+                                        <span class="material-icons">remove</span>
+                                    </button>
+                                @endif
                             </div>
-                            <div class="flex-1 w-full">
-                                <input type="text" name="features[ar][]" placeholder="الميزة باللغة العربية" dir="rtl"
-                                       value="{{ old('features.ar.0') }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
-                            </div>
-                            <button type="button" onclick="addFeature()" class="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                                <span class="material-icons">add</span>
-                            </button>
-                        </div>
+                        @endfor
                     </div>
                 </div>
 
@@ -156,7 +175,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Price</label>
                         <input type="number" name="price" step="0.01" min="0"
-                               value="{{ old('price') }}"
+                               value="{{ old('price', $service->price) }}"
                                placeholder="0.00"
                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
@@ -164,31 +183,16 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Price Type *</label>
                         <select name="price_type" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                            <option value="fixed" {{ old('price_type', 'fixed') == 'fixed' ? 'selected' : '' }}>Fixed Price</option>
-                            <option value="hourly" {{ old('price_type') == 'hourly' ? 'selected' : '' }}>Hourly Rate</option>
-                            <option value="project" {{ old('price_type') == 'project' ? 'selected' : '' }}>Starting at (Project)</option>
+                            <option value="fixed" {{ old('price_type', $service->price_type) == 'fixed' ? 'selected' : '' }}>Fixed Price</option>
+                            <option value="hourly" {{ old('price_type', $service->price_type) == 'hourly' ? 'selected' : '' }}>Hourly Rate</option>
+                            <option value="project" {{ old('price_type', $service->price_type) == 'project' ? 'selected' : '' }}>Starting at (Project)</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Display Order</label>
-                        <input type="number" name="order" min="0" value="{{ old('order', 0) }}"
+                        <input type="number" name="order" min="0" value="{{ old('order', $service->order) }}"
                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     </div>
-                </div>
-
-                <!-- Status Options -->
-                <div class="flex items-end gap-6">
-                    <label class="flex items-center">
-                        <input type="checkbox" name="featured" value="1" {{ old('featured') ? 'checked' : '' }}
-                               class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                        <span class="text-sm font-medium text-gray-700">Featured</span>
-                    </label>
-                    
-                    <label class="flex items-center">
-                        <input type="checkbox" name="active" value="1" {{ old('active', '1') ? 'checked' : '' }}
-                               class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                        <span class="text-sm font-medium text-gray-700">Active</span>
-                    </label>
                 </div>
             </div>
 
@@ -200,7 +204,7 @@
                 </a>
                 <button type="submit" 
                         class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                    Create Service
+                    Update Service
                 </button>
             </div>
         </form>
@@ -210,7 +214,6 @@
 <script>
 function addFeature() {
     const container = document.getElementById('features-container');
-    const featureCount = container.children.length;
     const newFeature = document.createElement('div');
     newFeature.className = 'flex flex-col md:flex-row gap-4 items-start bg-gray-50 p-4 rounded-lg border border-gray-100';
     newFeature.innerHTML = `

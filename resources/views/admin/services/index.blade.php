@@ -1,18 +1,18 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Services')
+@section('title', __('Services'))
 
 @section('content')
 <div class="p-6">
     <!-- Page Header -->
     <div class="mb-6 flex justify-between items-center">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Services</h1>
-            <p class="text-gray-600 mt-1">Manage your service offerings</p>
+            <h1 class="text-2xl font-bold text-gray-900">{{ __('Services') }}</h1>
+            <p class="text-gray-600 mt-1">{{ __('Manage your service offerings') }}</p>
         </div>
         <a href="{{ route('admin.services.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
-            Add Service
+            {{ __('Add Service') }}
         </a>
     </div>
 
@@ -20,41 +20,41 @@
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
         <form method="GET" class="flex flex-wrap gap-4 items-end">
             <div class="flex-1 min-w-[200px]">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search services..." 
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search services...') }}" 
                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
             
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Featured</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Featured') }}</label>
                 <select name="featured" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">All</option>
-                    <option value="true" {{ request('featured') === 'true' ? 'selected' : '' }}>Featured</option>
-                    <option value="false" {{ request('featured') === 'false' ? 'selected' : '' }}>Not Featured</option>
+                    <option value="">{{ __('All') }}</option>
+                    <option value="true" {{ request('featured') === 'true' ? 'selected' : '' }}>{{ __('Featured') }}</option>
+                    <option value="false" {{ request('featured') === 'false' ? 'selected' : '' }}>{{ __('Not Featured') }}</option>
                 </select>
             </div>
             
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Status') }}</label>
                 <select name="active" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">All</option>
-                    <option value="true" {{ request('active') === 'true' ? 'selected' : '' }}>Active</option>
-                    <option value="false" {{ request('active') === 'false' ? 'selected' : '' }}>Inactive</option>
+                    <option value="">{{ __('All') }}</option>
+                    <option value="true" {{ request('active') === 'true' ? 'selected' : '' }}>{{ __('Active') }}</option>
+                    <option value="false" {{ request('active') === 'false' ? 'selected' : '' }}>{{ __('Inactive') }}</option>
                 </select>
             </div>
             
             <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                Filter
+                {{ __('Filter') }}
             </button>
             
             <a href="{{ route('admin.services.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2">
-                Clear
+                {{ __('Clear') }}
             </a>
         </form>
     </div>
 
     <!-- Services Table -->
-    <x-admin.table :headers="['Service', 'Price Info', 'Status', 'Order']" :items="$services">
+    <x-admin.table :headers="[__('Service'), __('Price Info'), __('Status'), __('Order')]" :items="$services">
         @foreach($services as $service)
             <tr class="hover:bg-gray-50 transition-all duration-200">
                 <td class="px-6 py-4">
@@ -76,10 +76,10 @@
                 </td>
                 <td class="px-6 py-4">
                     @if($service->price)
-                        <div class="text-sm font-bold text-gray-900">{{ number_format($service->price, 0) }} SAR</div>
+                        <div class="text-sm font-bold text-gray-900">{{ number_format($service->price, 0) }} {{ __('SAR') }}</div>
                         <div class="text-[10px] uppercase tracking-wider font-bold text-gray-400">{{ $service->price_type }}</div>
                     @else
-                        <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Custom Quote</span>
+                        <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">{{ __('Custom Quote') }}</span>
                     @endif
                 </td>
                 <td class="px-6 py-4">
@@ -96,27 +96,27 @@
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.services.edit', $service) }}" 
-                           class="group p-2 rounded-lg hover:bg-indigo-50 text-indigo-600 transition-all border border-transparent hover:border-indigo-100" title="Edit">
+                           class="group p-2 rounded-lg hover:bg-indigo-50 text-indigo-600 transition-all border border-transparent hover:border-indigo-100" title="{{ __('Edit') }}">
                             <span class="material-icons text-lg">edit_note</span>
                         </a>
                         
                         <button onclick="toggleFeatured('services', {{ $service->id }})" 
                                 class="group p-2 rounded-lg hover:bg-yellow-50 text-yellow-600 transition-all border border-transparent hover:border-yellow-100" 
-                                title="{{ $service->featured ? 'Unfeature' : 'Feature' }}">
+                                title="{{ $service->featured ? __('Unfeature') : __('Feature') }}">
                             <span class="material-icons text-lg">{{ $service->featured ? 'auto_awesome' : 'auto_awesome_motion' }}</span>
                         </button>
                         
                         <button onclick="toggleActive('services', {{ $service->id }})" 
                                 class="group p-2 rounded-lg hover:bg-emerald-50 text-emerald-600 transition-all border border-transparent hover:border-emerald-100" 
-                                title="{{ $service->active ? 'Deactivate' : 'Activate' }}">
+                                title="{{ $service->active ? __('Deactivate') : __('Activate') }}">
                             <span class="material-icons text-lg">{{ $service->active ? 'visibility' : 'visibility_off' }}</span>
                         </button>
                         
                         <form method="POST" action="{{ route('admin.services.destroy', $service) }}" 
-                              onsubmit="return confirm('Are you sure you want to delete this service?')" class="inline">
+                               onsubmit="return confirm('{{ __('Are you sure you want to delete this service?') }}')" class="inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="group p-2 rounded-lg hover:bg-rose-50 text-rose-600 transition-all border border-transparent hover:border-rose-100" title="Delete">
+                            <button type="submit" class="group p-2 rounded-lg hover:bg-rose-50 text-rose-600 transition-all border border-transparent hover:border-rose-100" title="{{ __('Delete') }}">
                                 <span class="material-icons text-lg">delete_sweep</span>
                             </button>
                         </form>

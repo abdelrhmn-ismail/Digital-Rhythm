@@ -15,7 +15,7 @@
     
     <div class="mt-auto pt-6 border-t border-white/10">
         <a href="{{ $link }}" class="inline-flex items-center text-amber-500 font-bold tracking-widest uppercase text-sm hover:text-amber-400 transition-colors group-hover:translate-x-2 duration-300 transform">
-            DISCOVER MORE <i class="fas fa-arrow-right ml-3 text-lg opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-300"></i>
+            {{ __('DISCOVER MORE') }} <i class="fas fa-arrow-right ml-3 text-lg opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-300"></i>
         </a>
     </div>
 </div>

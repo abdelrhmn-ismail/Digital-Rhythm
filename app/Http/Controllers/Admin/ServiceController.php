@@ -52,14 +52,21 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|array',
+            'title.en' => 'required|string|max:255',
+            'title.ar' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:services,slug',
-            'description' => 'required|string',
-            'content' => 'nullable|string',
+            'description' => 'required|array',
+            'description.en' => 'required|string',
+            'description.ar' => 'required|string',
+            'content' => 'nullable|array',
+            'content.en' => 'nullable|string',
+            'content.ar' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'icon' => 'nullable|string|max:50',
             'features' => 'nullable|array',
-            'features.*' => 'nullable|string|max:255',
+            'features.en' => 'nullable|array',
+            'features.ar' => 'nullable|array',
             'price' => 'nullable|numeric|min:0',
             'price_type' => 'required|in:fixed,hourly,project',
             'featured' => 'boolean',
@@ -69,12 +76,17 @@ class ServiceController extends Controller
 
         // Generate slug if not provided
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title']['en']);
         }
 
         // Handle features array
         if (isset($validated['features'])) {
-            $validated['features'] = array_filter($validated['features']);
+            if (isset($validated['features']['en'])) {
+                $validated['features']['en'] = array_filter($validated['features']['en']);
+            }
+            if (isset($validated['features']['ar'])) {
+                $validated['features']['ar'] = array_filter($validated['features']['ar']);
+            }
         }
 
         if ($request->hasFile('image')) {
@@ -109,14 +121,21 @@ class ServiceController extends Controller
     public function update(Request $request, Service $service)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|array',
+            'title.en' => 'required|string|max:255',
+            'title.ar' => 'required|string|max:255',
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('services', 'slug')->ignore($service->id)],
-            'description' => 'required|string',
-            'content' => 'nullable|string',
+            'description' => 'required|array',
+            'description.en' => 'required|string',
+            'description.ar' => 'required|string',
+            'content' => 'nullable|array',
+            'content.en' => 'nullable|string',
+            'content.ar' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'icon' => 'nullable|string|max:50',
             'features' => 'nullable|array',
-            'features.*' => 'nullable|string|max:255',
+            'features.en' => 'nullable|array',
+            'features.ar' => 'nullable|array',
             'price' => 'nullable|numeric|min:0',
             'price_type' => 'required|in:fixed,hourly,project',
             'featured' => 'boolean',
@@ -126,12 +145,17 @@ class ServiceController extends Controller
 
         // Generate slug if not provided
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title']['en']);
         }
 
         // Handle features array
         if (isset($validated['features'])) {
-            $validated['features'] = array_filter($validated['features']);
+            if (isset($validated['features']['en'])) {
+                $validated['features']['en'] = array_filter($validated['features']['en']);
+            }
+            if (isset($validated['features']['ar'])) {
+                $validated['features']['ar'] = array_filter($validated['features']['ar']);
+            }
         }
 
         if ($request->hasFile('image')) {

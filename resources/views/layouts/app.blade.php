@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Golden Bee Marketing | Global Creative Agency in Riyadh')</title>
-    <meta name="description" content="@yield('description', 'Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.')">
+    <title>@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))</title>
+    <meta name="description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
     
     <!-- Goldenbee Exact Core CSS -->
     <link rel="stylesheet" href="{{ asset('css/goldenbee-core.css') }}">

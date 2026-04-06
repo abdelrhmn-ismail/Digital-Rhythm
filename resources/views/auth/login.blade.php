@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Login - Golden Bee</title>
+    <title>{{ __('Admin Login - Golden Bee') }}</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,8 +30,8 @@
         <div class="login-card rounded-xl shadow-2xl p-8">
             <!-- Logo -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-white">Golden Bee</h1>
-                <p class="text-orange-100 text-sm mt-2">Admin Login</p>
+                <h1 class="text-3xl font-bold text-white">{{ __('Golden Bee') }}</h1>
+                <p class="text-orange-100 text-sm mt-2">{{ __('Admin Login') }}</p>
             </div>
 
             <!-- Login Form -->
@@ -40,7 +40,7 @@
                 
                 <!-- Email -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-white mb-2">Email Address</label>
+                    <label for="email" class="block text-sm font-medium text-white mb-2">{{ __('Email Address') }}</label>
                     <input id="email" name="email" type="email" required
                            value="{{ old('email') }}"
                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
@@ -52,7 +52,7 @@
 
                 <!-- Password -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-white mb-2">Password</label>
+                    <label for="password" class="block text-sm font-medium text-white mb-2">{{ __('Password') }}</label>
                     <input id="password" name="password" type="password" required
                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                            placeholder="••••••••••">
@@ -66,7 +66,7 @@
                     <label class="flex items-center">
                         <input name="remember" type="checkbox" 
                                class="rounded border-white/20 bg-white/10 text-orange-600 focus:ring-white/50 focus:ring-offset-0">
-                        <span class="ml-2 text-sm text-white">Remember me</span>
+                        <span class="ml-2 text-sm text-white">{{ __('Remember me') }}</span>
                     </label>
                 </div>
 
@@ -74,7 +74,7 @@
                 <div>
                     <button type="submit" 
                             class="w-full flex justify-center py-3 px-4 bg-white text-orange-600 font-semibold rounded-lg hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-orange-600 transition-all">
-                        Sign in to Admin
+                        {{ __('Sign in to Admin') }}
                     </button>
                 </div>
 
@@ -95,7 +95,7 @@
             <div class="mt-8 text-center">
                 <a href="{{ route('home') }}" class="text-orange-100 hover:text-white text-sm">
                     <span class="material-icons align-middle text-sm mr-1">arrow_back</span>
-                    Back to Website
+                    {{ __('Back to Website') }}
                 </a>
             </div>
         </div>

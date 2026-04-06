@@ -1,18 +1,18 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Portfolio')
+@section('title', __('Portfolio'))
 
 @section('content')
 <div class="p-6">
     <!-- Page Header -->
     <div class="mb-6 flex justify-between items-center">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Portfolio</h1>
-            <p class="text-gray-600 mt-1">Manage your showcase projects</p>
+            <h1 class="text-2xl font-bold text-gray-900">{{ __('Portfolio') }}</h1>
+            <p class="text-gray-600 mt-1">{{ __('Manage your showcase projects') }}</p>
         </div>
         <a href="{{ route('admin.portfolios.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
-            Add Project
+            {{ __('Add Project') }}
         </a>
     </div>
 
@@ -20,15 +20,15 @@
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
         <form method="GET" class="flex flex-wrap gap-4 items-end">
             <div class="flex-1 min-w-[200px]">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search projects..." 
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search projects...') }}" 
                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
             
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Category') }}</label>
                 <select name="category" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">All Categories</option>
+                    <option value="">{{ __('All Categories') }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category }}" {{ request('category') === $category ? 'selected' : '' }}>{{ $category }}</option>
                     @endforeach
@@ -37,17 +37,17 @@
             
             <div class="flex gap-4">
                 <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                    Filter
+                    {{ __('Filter') }}
                 </button>
                 <a href="{{ route('admin.portfolios.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 flex items-center">
-                    Clear
+                    {{ __('Clear') }}
                 </a>
             </div>
         </form>
     </div>
 
     <!-- Portfolio Table -->
-    <x-admin.table :headers="['Project', 'Client/Date', 'Status', 'Order']" :items="$portfolios">
+    <x-admin.table :headers="[__('Project'), __('Client/Date'), __('Status'), __('Order')]" :items="$portfolios">
         @foreach($portfolios as $portfolio)
             <tr class="hover:bg-gray-50 transition-all duration-200">
                 <td class="px-6 py-4">
@@ -68,7 +68,7 @@
                     </div>
                 </td>
                 <td class="px-6 py-4">
-                    <div class="text-sm font-medium text-gray-900">{{ $portfolio->client ?? 'Internal Project' }}</div>
+                    <div class="text-sm font-medium text-gray-900">{{ $portfolio->client ?? __('Internal Project') }}</div>
                     <div class="text-xs text-gray-500 mt-1">
                         @if($portfolio->completed_date)
                             <span class="flex items-center gap-1">
@@ -92,27 +92,27 @@
                 <td class="px-6 py-4 text-right">
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.portfolios.edit', $portfolio) }}" 
-                           class="group p-2 rounded-lg hover:bg-amber-50 text-amber-600 transition-all border border-transparent hover:border-amber-100" title="Edit">
+                           class="group p-2 rounded-lg hover:bg-amber-50 text-amber-600 transition-all border border-transparent hover:border-amber-100" title="{{ __('Edit') }}">
                             <span class="material-icons text-lg">drive_file_rename_outline</span>
                         </a>
                         
                         <button onclick="toggleFeatured('portfolios', {{ $portfolio->id }})" 
                                 class="group p-2 rounded-lg hover:bg-yellow-50 text-yellow-600 transition-all border border-transparent hover:border-yellow-100" 
-                                title="{{ $portfolio->featured ? 'Unfeature' : 'Feature' }}">
+                                title="{{ $portfolio->featured ? __('Unfeature') : __('Feature') }}">
                             <span class="material-icons text-lg">{{ $portfolio->featured ? 'auto_awesome' : 'auto_awesome_motion' }}</span>
                         </button>
                         
                         <button onclick="toggleActive('portfolios', {{ $portfolio->id }})" 
                                 class="group p-2 rounded-lg hover:bg-emerald-50 text-emerald-600 transition-all border border-transparent hover:border-emerald-100" 
-                                title="{{ $portfolio->active ? 'Deactivate' : 'Activate' }}">
+                                title="{{ $portfolio->active ? __('Deactivate') : __('Activate') }}">
                             <span class="material-icons text-lg">{{ $portfolio->active ? 'visibility' : 'visibility_off' }}</span>
                         </button>
                         
                         <form method="POST" action="{{ route('admin.portfolios.destroy', $portfolio) }}" 
-                              onsubmit="return confirm('Are you sure you want to delete this project?')" class="inline">
+                              onsubmit="return confirm('{{ __('Are you sure you want to delete this project?') }}')" class="inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="group p-2 rounded-lg hover:bg-rose-50 text-rose-600 transition-all border border-transparent hover:border-rose-100" title="Delete">
+                            <button type="submit" class="group p-2 rounded-lg hover:bg-rose-50 text-rose-600 transition-all border border-transparent hover:border-rose-100" title="{{ __('Delete') }}">
                                 <span class="material-icons text-lg">delete_sweep</span>
                             </button>
                         </form>

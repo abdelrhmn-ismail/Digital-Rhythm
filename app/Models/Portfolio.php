@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Spatie\Translatable\HasTranslations;
+
 class Portfolio extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasTranslations;
+
+    public $translatable = ['title', 'description', 'content', 'technologies', 'client'];
 
     protected $fillable = [
         'title',
@@ -28,9 +32,8 @@ class Portfolio extends Model
     ];
 
     protected $casts = [
-        'technologies' => 'array',
         'images' => 'array',
-        'completed_date' => 'date',
+        'completed_date' => 'datetime',
         'featured' => 'boolean',
         'active' => 'boolean',
         'order' => 'integer',

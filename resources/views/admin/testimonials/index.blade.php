@@ -1,18 +1,18 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Testimonials')
+@section('title', __('Testimonials'))
 
 @section('content')
 <div class="p-6">
     <!-- Page Header -->
     <div class="mb-6 flex justify-between items-center">
         <div>
-            <h1 class="text-2xl font-bold text-gray-900">Testimonials</h1>
-            <p class="text-gray-600 mt-1">Manage customer testimonials and reviews</p>
+            <h1 class="text-2xl font-bold text-gray-900">{{ __('Testimonials') }}</h1>
+            <p class="text-gray-600 mt-1">{{ __('Manage customer testimonials and reviews') }}</p>
         </div>
         <a href="{{ route('admin.testimonials.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
-            Add Testimonial
+            {{ __('Add Testimonial') }}
         </a>
     </div>
 
@@ -20,41 +20,41 @@
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
         <form method="GET" class="flex flex-wrap gap-4 items-end">
             <div class="flex-1 min-w-[200px]">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Search</label>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search testimonials..." 
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search testimonials...') }}" 
                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
             </div>
             
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Featured</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Featured') }}</label>
                 <select name="featured" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">All</option>
-                    <option value="true" {{ request('featured') === 'true' ? 'selected' : '' }}>Featured</option>
-                    <option value="false" {{ request('featured') === 'false' ? 'selected' : '' }}>Not Featured</option>
+                    <option value="">{{ __('All') }}</option>
+                    <option value="true" {{ request('featured') === 'true' ? 'selected' : '' }}>{{ __('Featured') }}</option>
+                    <option value="false" {{ request('featured') === 'false' ? 'selected' : '' }}>{{ __('Not Featured') }}</option>
                 </select>
             </div>
             
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Status') }}</label>
                 <select name="active" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="">All</option>
-                    <option value="true" {{ request('active') === 'true' ? 'selected' : '' }}>Active</option>
-                    <option value="false" {{ request('active') === 'false' ? 'selected' : '' }}>Inactive</option>
+                    <option value="">{{ __('All') }}</option>
+                    <option value="true" {{ request('active') === 'true' ? 'selected' : '' }}>{{ __('Active') }}</option>
+                    <option value="false" {{ request('active') === 'false' ? 'selected' : '' }}>{{ __('Inactive') }}</option>
                 </select>
             </div>
             
             <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                Filter
+                {{ __('Filter') }}
             </button>
             
             <a href="{{ route('admin.testimonials.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2">
-                Clear
+                {{ __('Clear') }}
             </a>
         </form>
     </div>
 
     <!-- Testimonials Table -->
-    <x-admin.table :headers="['Testimonial', 'Client Info', 'Rating', 'Status', 'Order']" :items="$testimonials">
+    <x-admin.table :headers="[__('Testimonial'), __('Client Info'), __('Rating'), __('Status'), __('Order')]" :items="$testimonials">
         @foreach($testimonials as $testimonial)
             <tr class="hover:bg-gray-50 transition-all duration-200">
                 <td class="px-6 py-4">
@@ -103,27 +103,27 @@
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.testimonials.edit', $testimonial) }}" 
-                           class="group p-2 rounded-lg hover:bg-blue-50 text-blue-600 transition-all border border-transparent hover:border-blue-100" title="Edit">
+                           class="group p-2 rounded-lg hover:bg-blue-50 text-blue-600 transition-all border border-transparent hover:border-blue-100" title="{{ __('Edit') }}">
                             <span class="material-icons text-lg">edit</span>
                         </a>
                         
                         <button onclick="toggleFeatured('testimonials', {{ $testimonial->id }})" 
                                 class="group p-2 rounded-lg hover:bg-yellow-50 text-yellow-600 transition-all border border-transparent hover:border-yellow-100" 
-                                title="{{ $testimonial->featured ? 'Unfeature' : 'Feature' }}">
+                                title="{{ $testimonial->featured ? __('Unfeature') : __('Feature') }}">
                             <span class="material-icons text-lg">{{ $testimonial->featured ? 'stars' : 'star_outline' }}</span>
                         </button>
                         
                         <button onclick="toggleActive('testimonials', {{ $testimonial->id }})" 
                                 class="group p-2 rounded-lg hover:bg-green-50 text-green-600 transition-all border border-transparent hover:border-green-100" 
-                                title="{{ $testimonial->active ? 'Deactivate' : 'Activate' }}">
+                                title="{{ $testimonial->active ? __('Deactivate') : __('Activate') }}">
                             <span class="material-icons text-lg">{{ $testimonial->active ? 'visibility' : 'visibility_off' }}</span>
                         </button>
                         
                         <form method="POST" action="{{ route('admin.testimonials.destroy', $testimonial) }}" 
-                              onsubmit="return confirm('Are you sure you want to delete this testimonial?')" class="inline">
+                              onsubmit="return confirm('{{ __('Are you sure you want to delete this testimonial?') }}')" class="inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="group p-2 rounded-lg hover:bg-red-50 text-red-600 transition-all border border-transparent hover:border-red-100" title="Delete">
+                            <button type="submit" class="group p-2 rounded-lg hover:bg-red-50 text-red-600 transition-all border border-transparent hover:border-red-100" title="{{ __('Delete') }}">
                                 <span class="material-icons text-lg">delete_outline</span>
                             </button>
                         </form>

@@ -42,16 +42,19 @@ class TestimonialController extends Controller
         return view('admin.testimonials.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'position' => 'nullable|string|max:255',
-            'company' => 'nullable|string|max:255',
-            'content' => 'required|string',
+            'position' => 'nullable|array',
+            'position.en' => 'nullable|string|max:255',
+            'position.ar' => 'nullable|string|max:255',
+            'company' => 'nullable|array',
+            'company.en' => 'nullable|string|max:255',
+            'company.ar' => 'nullable|string|max:255',
+            'content' => 'required|array',
+            'content.en' => 'required|string',
+            'content.ar' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'rating' => 'required|numeric|min:1|max:5',
             'featured' => 'boolean',
@@ -92,9 +95,15 @@ class TestimonialController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'position' => 'nullable|string|max:255',
-            'company' => 'nullable|string|max:255',
-            'content' => 'required|string',
+            'position' => 'nullable|array',
+            'position.en' => 'nullable|string|max:255',
+            'position.ar' => 'nullable|string|max:255',
+            'company' => 'nullable|array',
+            'company.en' => 'nullable|string|max:255',
+            'company.ar' => 'nullable|string|max:255',
+            'content' => 'required|array',
+            'content.en' => 'required|string',
+            'content.ar' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'rating' => 'required|numeric|min:1|max:5',
             'featured' => 'boolean',

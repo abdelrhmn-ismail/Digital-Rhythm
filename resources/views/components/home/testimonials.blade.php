@@ -4,14 +4,14 @@
     <div class="container mx-auto px-6 relative z-10">
         <div class="mb-20 flex flex-col items-center text-center" data-aos="fade-up">
             <div class="inline-block py-1 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
-                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-white/80">STRATEGIC PARTNERS</span>
+                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-white/80">{{ __('STRATEGIC PARTNERS') }}</span>
             </div>
             <h2 class="text-[56px] md:text-[72px] font-black leading-[1] uppercase mb-8">
-                <span class="text-white block">THE VOICE OF</span>
-                <span class="text-gradient block">GLOBAL TRUST</span>
+                <span class="text-white block">{{ __('THE VOICE OF') }}</span>
+                <span class="text-gradient block">{{ __('GLOBAL TRUST') }}</span>
             </h2>
             <p class="text-xl text-zinc-400 max-w-3xl font-light" data-aos="fade-up" data-aos-delay="200">
-                We engineer growth for those who dare to define the future. Their success is our only metric.
+                {{ __('We engineer growth for those who dare to define the future. Their success is our only metric.') }}
             </p>
         </div>
         

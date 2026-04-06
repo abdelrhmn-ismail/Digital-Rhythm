@@ -55,15 +55,24 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|array',
+            'title.en' => 'required|string|max:255',
+            'title.ar' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:portfolios,slug',
-            'description' => 'required|string',
-            'content' => 'nullable|string',
-            'client' => 'nullable|string|max:255',
+            'description' => 'required|array',
+            'description.en' => 'required|string',
+            'description.ar' => 'required|string',
+            'content' => 'nullable|array',
+            'content.en' => 'nullable|string',
+            'content.ar' => 'nullable|string',
+            'client' => 'nullable|array',
+            'client.en' => 'nullable|string|max:255',
+            'client.ar' => 'nullable|string|max:255',
             'completed_date' => 'nullable|date',
             'project_url' => 'nullable|url|max:255',
             'technologies' => 'nullable|array',
-            'technologies.*' => 'nullable|string|max:100',
+            'technologies.en' => 'nullable|array',
+            'technologies.ar' => 'nullable|array',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -75,12 +84,17 @@ class PortfolioController extends Controller
 
         // Generate slug if not provided
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title']['en']);
         }
 
         // Handle technologies array
         if (isset($validated['technologies'])) {
-            $validated['technologies'] = array_filter($validated['technologies']);
+            if (isset($validated['technologies']['en'])) {
+                $validated['technologies']['en'] = array_filter($validated['technologies']['en']);
+            }
+            if (isset($validated['technologies']['ar'])) {
+                $validated['technologies']['ar'] = array_filter($validated['technologies']['ar']);
+            }
         }
 
         // Handle images upload
@@ -128,15 +142,24 @@ class PortfolioController extends Controller
     public function update(Request $request, Portfolio $portfolio)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|array',
+            'title.en' => 'required|string|max:255',
+            'title.ar' => 'required|string|max:255',
             'slug' => ['nullable', 'string', 'max:255', Rule::unique('portfolios', 'slug')->ignore($portfolio->id)],
-            'description' => 'required|string',
-            'content' => 'nullable|string',
-            'client' => 'nullable|string|max:255',
+            'description' => 'required|array',
+            'description.en' => 'required|string',
+            'description.ar' => 'required|string',
+            'content' => 'nullable|array',
+            'content.en' => 'nullable|string',
+            'content.ar' => 'nullable|string',
+            'client' => 'nullable|array',
+            'client.en' => 'nullable|string|max:255',
+            'client.ar' => 'nullable|string|max:255',
             'completed_date' => 'nullable|date',
             'project_url' => 'nullable|url|max:255',
             'technologies' => 'nullable|array',
-            'technologies.*' => 'nullable|string|max:100',
+            'technologies.en' => 'nullable|array',
+            'technologies.ar' => 'nullable|array',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -148,12 +171,17 @@ class PortfolioController extends Controller
 
         // Generate slug if not provided
         if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+            $validated['slug'] = Str::slug($validated['title']['en']);
         }
 
         // Handle technologies array
         if (isset($validated['technologies'])) {
-            $validated['technologies'] = array_filter($validated['technologies']);
+            if (isset($validated['technologies']['en'])) {
+                $validated['technologies']['en'] = array_filter($validated['technologies']['en']);
+            }
+            if (isset($validated['technologies']['ar'])) {
+                $validated['technologies']['ar'] = array_filter($validated['technologies']['ar']);
+            }
         }
 
         // Handle images upload

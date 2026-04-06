@@ -6,13 +6,13 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto mb-20 text-center flex flex-col items-center">
             <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-8" data-aos="zoom-in">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>OUR SOLUTIONS
+                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>{{ __('OUR SOLUTIONS') }}
             </div>
             <h2 class="text-5xl md:text-8xl font-black text-white mb-8 leading-tight tracking-tighter uppercase" data-aos="fade-up">
-                WE ENGINEER <br/> <span class="text-gradient">GLOBAL IMPACT</span>
+                {{ __('WE ENGINEER') }} <br/> <span class="text-gradient">{{ __('GLOBAL IMPACT') }}</span>
             </h2>
             <p class="text-lg md:text-2xl text-zinc-400 font-light leading-relaxed max-w-3xl" data-aos="fade-up">
-                Bespoke strategic frameworks designed to propel your brand from local presence to global dominance with surgical precision.
+                {{ __('Bespoke strategic frameworks designed to propel your brand from local presence to global dominance with surgical precision.') }}
             </p>
         </div>
 
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="flex items-center text-[10px] font-black uppercase tracking-[0.3em] text-primary mt-auto relative z-10">
-                        <span class="border-b-2 border-primary/10 pb-1 group-hover:border-primary transition-all duration-500">DISCOVER MORE</span>
+                        <span class="border-b-2 border-primary/10 pb-1 group-hover:border-primary transition-all duration-500">{{ __('DISCOVER MORE') }}</span>
                         <span class="material-icons text-sm ml-2 transition-transform group-hover:translate-x-2">arrow_forward</span>
                     </div>
                 </a>
@@ -44,8 +44,8 @@
         </div>
 
         <div class="mt-24 flex justify-center" data-aos="fade-up">
-            <a class="inline-flex items-center justify-center gap-6 bg-zinc-950 text-white hover:bg-zinc-900 border border-white/10 px-16 h-20 rounded-full font-black text-sm uppercase tracking-[0.3em] transition-all hover:scale-105 active:scale-95 group shadow-2xl backdrop-blur-3xl relative z-10" href="/services">
-                EXPLORE ALL ARCHITECTURES
+            <a class="inline-flex items-center justify-center gap-6 bg-zinc-950 text-white hover:bg-zinc-900 border border-white/10 px-16 h-20 rounded-full font-black text-sm uppercase tracking-[0.3em] transition-all hover:scale-105 active:scale-95 group shadow-2xl backdrop-blur-3xl relative z-10" href="{{ route('services') }}">
+                {{ __('EXPLORE ALL ARCHITECTURES') }}
                 <span class="material-icons size-5 group-hover:translate-x-2 transition-transform duration-500">arrow_forward</span>
             </a>
         </div>

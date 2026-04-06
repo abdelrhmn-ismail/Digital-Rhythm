@@ -8,12 +8,22 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\TranslationController;
+
+// Language Switcher
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ar'])) {
+        session()->put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('lang.switch');
 
 // Home Page
 Route::get('/', function () {
     $services = \App\Models\Service::where('active', true)->orderBy('order')->take(4)->get();
     $testimonials = \App\Models\Testimonial::where('active', true)->orderBy('order')->get();
-    return view('home', compact('services', 'testimonials'));
+    $portfolios = \App\Models\Portfolio::where('active', true)->where('featured', true)->orderBy('order')->get();
+    return view('home', compact('services', 'testimonials', 'portfolios'));
 })->name('home');
 
 // About Page
@@ -23,12 +33,14 @@ Route::get('/about', function () {
 
 // Services Page
 Route::get('/services', function () {
-    return view('services');
+    $services = \App\Models\Service::where('active', true)->orderBy('order')->get();
+    return view('services', compact('services'));
 })->name('services');
 
 // Portfolio Page
 Route::get('/portfolio', function () {
-    return view('portfolio');
+    $portfolios = \App\Models\Portfolio::where('active', true)->orderBy('order')->get();
+    return view('portfolio', compact('portfolios'));
 })->name('portfolio');
 
 // Contact Page
@@ -121,6 +133,12 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     // Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
+
+    // Translations Management
+    Route::get('/translations', [TranslationController::class, 'index'])->name('translations.index');
+    Route::post('/translations', [TranslationController::class, 'store'])->name('translations.store');
+    Route::put('/translations', [TranslationController::class, 'update'])->name('translations.update');
+    Route::delete('/translations/{key}', [TranslationController::class, 'destroy'])->name('translations.destroy');
 });
 
 // Authentication Routes
