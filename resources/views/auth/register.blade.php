@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin Register - Golden Bee</title>
+    <title>{{ __('Admin Register - Golden Bee') }}</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,7 @@
             <!-- Logo -->
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-white">Golden Bee</h1>
-                <p class="text-orange-100 text-sm mt-2">Admin Registration</p>
+                <p class="text-orange-100 text-sm mt-2">{{ __('Admin Registration') }}</p>
             </div>
 
             <!-- Register Form -->
@@ -40,7 +40,7 @@
                 
                 <!-- Name -->
                 <div>
-                    <label for="name" class="block text-sm font-medium text-white mb-2">Full Name</label>
+                    <label for="name" class="block text-sm font-medium text-white mb-2">{{ __('Full Name') }}</label>
                     <input id="name" name="name" type="text" required
                            value="{{ old('name') }}"
                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
@@ -52,7 +52,7 @@
 
                 <!-- Email -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-white mb-2">Email Address</label>
+                    <label for="email" class="block text-sm font-medium text-white mb-2">{{ __('Email Address') }}</label>
                     <input id="email" name="email" type="email" required
                            value="{{ old('email') }}"
                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
@@ -64,7 +64,7 @@
 
                 <!-- Password -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-white mb-2">Password</label>
+                    <label for="password" class="block text-sm font-medium text-white mb-2">{{ __('Password') }}</label>
                     <input id="password" name="password" type="password" required
                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                            placeholder="••••••••••">
@@ -75,7 +75,7 @@
 
                 <!-- Confirm Password -->
                 <div>
-                    <label for="password_confirmation" class="block text-sm font-medium text-white mb-2">Confirm Password</label>
+                    <label for="password_confirmation" class="block text-sm font-medium text-white mb-2">{{ __('Confirm Password') }}</label>
                     <input id="password_confirmation" name="password_confirmation" type="password" required
                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                            placeholder="••••••••••">
@@ -88,7 +88,7 @@
                 <div>
                     <button type="submit" 
                             class="w-full flex justify-center py-3 px-4 bg-white text-orange-600 font-semibold rounded-lg hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-orange-600 transition-all">
-                        Create Admin Account
+                        {{ __('Create Admin Account') }}
                     </button>
                 </div>
 
@@ -110,11 +110,11 @@
             <!-- Footer -->
             <div class="mt-8 text-center">
                 <p class="text-orange-100 text-sm mb-2">
-                    Already have an account?
+                    {{ __('Already have an account?') }}
                 </p>
                 <a href="{{ route('login') }}" class="text-white hover:text-orange-100 text-sm font-medium">
                     <span class="material-icons align-middle text-sm mr-1">login</span>
-                    Sign In
+                    {{ __('Sign In') }}
                 </a>
             </div>
         </div>

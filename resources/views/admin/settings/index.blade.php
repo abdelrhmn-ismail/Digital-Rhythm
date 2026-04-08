@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Global Settings | Admin Dashboard')
+@section('title', __('Global Settings | Admin Dashboard'))
 
 @section('content')
 <div class="px-6 py-6 font-sans">
@@ -10,12 +10,12 @@
 
         <div class="mb-8 flex justify-between items-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
             <div>
-                <h1 class="text-3xl font-black text-gray-900 tracking-tight">System Settings</h1>
-                <p class="text-gray-400 text-sm">Control your website's identity, SEO, and visual branding</p>
+                <h1 class="text-3xl font-black text-gray-900 tracking-tight">{{ __('System Settings') }}</h1>
+                <p class="text-gray-400 text-sm">{{ __("Control your website's identity, SEO, and visual branding") }}</p>
             </div>
             <button type="submit" class="bg-primary text-white px-8 py-3 rounded-xl font-black shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
                 <span class="material-icons">save</span>
-                Save All Changes
+                {{ __('Save All Changes') }}
             </button>
         </div>
 

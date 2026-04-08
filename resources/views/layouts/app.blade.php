@@ -6,6 +6,11 @@
     <title>@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))</title>
     <meta name="description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <!-- Goldenbee Exact Core CSS -->
     <link rel="stylesheet" href="{{ asset('css/goldenbee-core.css') }}">
     
@@ -23,8 +28,15 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     @stack('styles')
+    @if(app()->getLocale() == 'ar')
+    <style>
+        *, *::before, *::after, body, html {
+            font-family: 'Alexandria', sans-serif !important;
+        }
+    </style>
+    @endif
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
     <!-- Navigation -->
     @include('partials.navigation')
     

@@ -9,15 +9,22 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Alexandria:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     @stack('styles')
+    @if(app()->getLocale() == 'ar')
+    <style>
+        *, *::before, *::after, body, html {
+            font-family: 'Alexandria', sans-serif !important;
+        }
+    </style>
+    @endif
 </head>
-<body class="bg-gray-100 text-gray-900 antialiased">
+<body class="bg-gray-100 text-gray-900 antialiased" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
         <aside class="admin-sidebar w-64 min-h-screen text-white shadow-xl">

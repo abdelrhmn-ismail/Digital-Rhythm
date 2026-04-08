@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Golden Bee | Global Creative Agency')
+@section('title', __('Golden Bee | Global Creative Agency'))
 
 @section('content')
 <main class="flex-grow">
