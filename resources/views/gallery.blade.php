@@ -150,12 +150,12 @@
 
 @push('scripts')
 <script>
-const galleryImages = @json($galleryImages->map(fn($img) => [
+const galleryImagesData = @json($galleryImages->map(fn($img) => [
     'url' => $img->image_url,
     'title' => $img->title ?? '',
     'caption' => $img->caption ?? '',
     'category' => $img->category ?? ''
-]));
+]).values());
 
 let currentIndex = 0;
 
@@ -172,7 +172,7 @@ function closeLightbox() {
 }
 
 function updateLightbox() {
-    const image = galleryImages[currentIndex];
+    const image = galleryImagesData[currentIndex];
     document.getElementById('lightbox-image').src = image.url;
     document.getElementById('lightbox-image').alt = image.title;
     document.getElementById('lightbox-title').textContent = image.title;
@@ -182,12 +182,12 @@ function updateLightbox() {
 }
 
 function nextImage() {
-    currentIndex = (currentIndex + 1) % galleryImages.length;
+    currentIndex = (currentIndex + 1) % galleryImagesData.length;
     updateLightbox();
 }
 
 function prevImage() {
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    currentIndex = (currentIndex - 1 + galleryImagesData.length) % galleryImagesData.length;
     updateLightbox();
 }
 
