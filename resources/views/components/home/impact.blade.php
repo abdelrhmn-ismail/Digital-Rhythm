@@ -1,54 +1,112 @@
-<section class="py-32 bg-[#050506] relative">
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="mb-20 flex flex-col items-center text-center" data-aos="fade-up">
-            <div class="inline-block py-1 px-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
-                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-white/80">{{ __('WHAT WE DO') }}</span>
+<section class="py-24 md:py-32 bg-[#050506] relative overflow-hidden">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[160px] rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" data-aos="fade-up">
+            <!-- Stat 1: Years -->
+            <div class="text-center group">
+                <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
+                    <span class="material-icons text-3xl text-primary">calendar_today</span>
+                </div>
+                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="7">
+                    0+
+                </div>
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                    {{ __('YEARS OF MASTERY') }}
+                </div>
             </div>
-            <h2 class="text-[56px] md:text-[72px] font-black leading-[1] uppercase mb-8">
-                <span class="text-white block">{{ __('WE ENGINEER') }}</span>
-                <span class="text-gradient block">{{ __('GLOBAL IMPACT') }}</span>
-            </h2>
-            <p class="text-xl text-zinc-400 max-w-3xl font-light" data-aos="fade-up" data-aos-delay="200">
-                {{ __('Bespoke strategic frameworks designed to propel your brand from local presence to global dominance with surgical precision.') }}
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Digital Marketing -->
-            <x-cards.service 
-                number="01" 
-                icon="fas fa-bullhorn" 
-                :title="__('Digital Marketing')" 
-                :description="__('Accelerating your growth through data-driven strategic campaigns and tangible results.')"
-                link="{{ route('services') ?? '#' }}" 
-                delay="100" />
-            
-            <!-- Web Solutions -->
-            <x-cards.service 
-                number="02" 
-                icon="fas fa-code" 
-                :title="__('Web Solutions')" 
-                :description="__('Designing and developing ultra-fast websites that blend aesthetics with seamless functionality.')"
-                link="{{ route('services') ?? '#' }}" 
-                delay="200" />
-            
-            <!-- Creative Production -->
-            <x-cards.service 
-                number="03" 
-                icon="fas fa-video" 
-                :title="__('Creative Production')" 
-                :description="__('Creating eye-catching visual content that professionally tells your success story.')"
-                link="{{ route('services') ?? '#' }}" 
-                delay="300" />
-            
-            <!-- Brand Identity -->
-            <x-cards.service 
-                number="04" 
-                icon="fas fa-palette" 
-                :title="__('Brand Identity')" 
-                :description="__('Crafting unique visual identities that resonate with your audience and define your market presence.')"
-                link="{{ route('services') ?? '#' }}" 
-                delay="400" />
+
+            <!-- Stat 2: Projects -->
+            <div class="text-center group">
+                <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
+                    <span class="material-icons text-3xl text-primary">work_outline</span>
+                </div>
+                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="50">
+                    0+
+                </div>
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                    {{ __('GLOBAL PROJECTS') }}
+                </div>
+            </div>
+
+            <!-- Stat 3: Strategies -->
+            <div class="text-center group">
+                <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
+                    <span class="material-icons text-3xl text-primary">trending_up</span>
+                </div>
+                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="150">
+                    0+
+                </div>
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                    {{ __('ELITE STRATEGIES') }}
+                </div>
+            </div>
+
+            <!-- Stat 4: Success Rate -->
+            <div class="text-center group">
+                <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
+                    <span class="material-icons text-3xl text-primary">emoji-events</span>
+                </div>
+                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="100" data-suffix="%">
+                    0%
+                </div>
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                    {{ __('SUCCESS RATE') }}
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+@push('scripts')
+<script>
+// Counter Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px'
+    };
+    
+    const animateCounter = (element) => {
+        const target = parseInt(element.getAttribute('data-target'));
+        const suffix = element.getAttribute('data-suffix') || '+';
+        const duration = 2000; // 2 seconds
+        const start = 0;
+        const startTime = performance.now();
+        
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function (ease-out)
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(start + (target - start) * easeOut);
+            
+            element.textContent = current + suffix;
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        };
+        
+        requestAnimationFrame(updateCounter);
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => observer.observe(counter));
+});
+</script>
+@endpush

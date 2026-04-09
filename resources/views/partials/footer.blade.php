@@ -82,11 +82,13 @@
         <div class="border-t border-white/10 mt-16 pt-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-zinc-500 text-sm font-light mb-4 md:mb-0">
-                    &copy; {{ date('Y') }} {{ __('Golden Bee Marketing. All rights reserved.') }}
+                    &copy; {{ date('Y') }} GOLDEN BEE AGENCY. {{ __('ALL RIGHTS RESERVED.') }}
                 </p>
-                <div class="flex space-x-8">
+                <div class="flex space-x-8 items-center">
                     <a href="#" class="text-zinc-500 hover:text-amber-500 transition-colors text-sm font-light">{{ __('Privacy Policy') }}</a>
                     <a href="#" class="text-zinc-500 hover:text-amber-500 transition-colors text-sm font-light">{{ __('Terms of Service') }}</a>
+                    <span class="text-zinc-600 text-xs font-light hidden md:inline">|</span>
+                    <span class="text-zinc-600 text-xs font-light">Live Systems</span>
                 </div>
             </div>
         </div>

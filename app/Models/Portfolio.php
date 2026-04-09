@@ -26,6 +26,7 @@ class Portfolio extends Model
         'images',
         'thumbnail',
         'category',
+        'icon',
         'featured',
         'active',
         'order',

@@ -7,9 +7,11 @@
     <x-home.hero />
     <x-home.solutions :services="$services" />
     <x-home.showcase :portfolios="$portfolios" />
-    <x-home.testimonials :testimonials="$testimonials" />
     <x-home.why-choose-us />
+    <x-home.impact />
     <x-home.partners />
+    <x-home.testimonials :testimonials="$testimonials" />
+    <x-home.cta />
 </main>
 @endsection
 

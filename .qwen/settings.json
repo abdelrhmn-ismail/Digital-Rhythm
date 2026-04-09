@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ren *)"
+      "Bash(ren *)",
+      "Bash(php *)"
     ]
   },
   "$version": 3
