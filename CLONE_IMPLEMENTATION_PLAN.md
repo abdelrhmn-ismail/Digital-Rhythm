@@ -1,9 +1,10 @@
-# Golden Bee Website Clone - 10-Phase Implementation Plan
+**# Golden Bee Website Clone - 10-Phase Implementation Plan
 
 ## Project Overview
 **Target:** Clone https://goldenbee.sa/en to match exact design, content, and functionality  
 **Current State:** Laravel project with basic structure, admin panel, and partial content  
-**Goal:** Pixel-perfect replica with full bilingual (EN/AR) content management via admin panel
+**Goal:** Pixel-perfect replica with full bilingual (EN/AR) content management via admin panel  
+> **Project Rules:** Review and follow `DEVELOPMENT_RULES.md` before any task. Codex must reopen it at the start of each session.
 
 ---
 
@@ -49,6 +50,7 @@
 - ✅ Updated Tailwind configuration
 - ✅ Updated CSS variables
 - ✅ Asset library ready for use
+- ✅ Compliance recorded against `DEVELOPMENT_RULES.md` (component-first structure, per-feature assets, no Vite)
 
 ---
 
@@ -113,6 +115,7 @@
 - ✅ All sections match goldenbee.sa
 - ✅ Responsive across all breakpoints
 - ✅ Animations and effects working
+- ✅ Homepage build verified against `DEVELOPMENT_RULES.md` (Blade components only, dedicated CSS/JS files, no Vite)
 
 ---
 
@@ -160,6 +163,7 @@
 - ✅ About page matches goldenbee.sa
 - ✅ Content manageable via admin
 - ✅ Bilingual content (EN/AR)
+- ✅ About experience audited for `DEVELOPMENT_RULES.md` alignment (Blade components, split assets, Tailwind CLI build)
 
 ---
 
@@ -209,6 +213,7 @@
 - ✅ Individual service detail pages
 - ✅ Enhanced admin management
 - ✅ All content bilingual
+- ✅ Service experience reviewed for `DEVELOPMENT_RULES.md` adherence (componentized UI, per-feature assets, Tailwind CLI workflow)
 
 ---
 
@@ -255,6 +260,7 @@
 - ✅ Individual project detail pages
 - ✅ Category filtering working
 - ✅ Enhanced admin features
+- ✅ Portfolio UI/assets confirmed against `DEVELOPMENT_RULES.md` (Blade components, separated CSS/JS, zero Vite usage)
 
 ---
 
@@ -317,6 +323,7 @@
 - ✅ Messages stored in database
 - ✅ Admin can manage inquiries
 - ✅ Email notifications working
+- ✅ Contact platform reviewed for `DEVELOPMENT_RULES.md` compliance (Blade components, split assets without Vite, controllers delegating to services/repositories)
 
 ---
 
@@ -690,3 +697,4 @@
 **Last Updated:** April 8, 2026  
 **Version:** 1.0  
 **Status:** Ready for Implementation
+**

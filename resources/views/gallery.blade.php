@@ -18,46 +18,81 @@
             </p>
         </div>
 
-        <!-- Filter Categories (Static for now) -->
+        <!-- Filter Categories -->
+        @if($categories->count() > 0)
         <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="100">
-            <button class="px-6 py-2 rounded-full border border-primary bg-primary text-black font-bold text-sm transition-all hover:scale-105">{{ __('All Works') }}</button>
-            <button class="px-6 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 font-bold text-sm transition-all hover:border-primary/40 hover:text-white hover:scale-105">{{ __('Digital Marketing') }}</button>
-            <button class="px-6 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 font-bold text-sm transition-all hover:border-primary/40 hover:text-white hover:scale-105">{{ __('Web Solutions') }}</button>
-            <button class="px-6 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 font-bold text-sm transition-all hover:border-primary/40 hover:text-white hover:scale-105">{{ __('Creative Production') }}</button>
-            <button class="px-6 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 font-bold text-sm transition-all hover:border-primary/40 hover:text-white hover:scale-105">{{ __('Brand Identity') }}</button>
+            <button data-category="all" 
+                    class="gallery-filter px-6 py-2 rounded-full border border-primary bg-primary text-black font-bold text-sm transition-all hover:scale-105 active">
+                {{ __('All Works') }}
+            </button>
+            @foreach($categories as $category)
+            <button data-category="{{ $category }}" 
+                    class="gallery-filter px-6 py-2 rounded-full border border-white/10 bg-white/5 text-white/60 font-bold text-sm transition-all hover:border-primary/40 hover:text-white hover:scale-105">
+                {{ $category }}
+            </button>
+            @endforeach
         </div>
+        @endif
 
         <!-- Gallery Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @php
-                $galleryItems = [
-                    ['title' => __('Digital Brand Evolution'), 'category' => __('Branding'), 'image' => 'https://goldenbee.sa/uploads/d8e49609-dd6c-4a7d-b18a-6f8f923c3144.webp'],
-                    ['title' => __('Interactive UI/UX'), 'category' => __('Web Solutions'), 'image' => 'https://goldenbee.sa/uploads/643bbeae-21e8-48dc-87e2-caeae6d82a93.gif'],
-                    ['title' => __('Cinematic Commercial'), 'category' => __('Production'), 'image' => 'https://goldenbee.sa/uploads/b4d5bb60-eddc-45e2-b328-ae6ceea0a22a.gif'],
-                    ['title' => __('Strategic Growth Campaign'), 'category' => __('Marketing'), 'image' => 'https://goldenbee.sa/uploads/4f1019cb-4c96-4265-a14e-7a82bd543af4.webp'],
-                    ['title' => __('Minimalist Identity'), 'category' => __('Branding'), 'image' => 'https://goldenbee.sa/uploads/0d7c4434-caea-49e5-bd38-4799e0cd9321.webp'],
-                    ['title' => __('E-Commerce Platform'), 'category' => __('Web Solutions'), 'image' => 'https://goldenbee.sa/uploads/0ec7031e-1978-4fd1-bb91-514aef5ddf5f.webp'],
-                ];
-            @endphp
+        @if($galleryImages->count() > 0)
+        <div class="gallery-grid columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            @foreach($galleryImages as $index => $image)
+            <div class="gallery-item group relative overflow-hidden rounded-3xl bg-zinc-900 border border-white/5 shadow-2xl break-inside-avoid cursor-pointer"
+                 data-category="{{ $image->category }}"
+                 data-aos="zoom-in" 
+                 data-aos-delay="{{ $index % 10 * 50 }}"
+                 onclick="openLightbox({{ $index }})">
+                
+                <!-- Image -->
+                <img src="{{ $image->image_url }}" 
+                     alt="{{ $image->title ?? __('Gallery Image') }}"
+                     class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
 
-            @foreach($galleryItems as $index => $item)
-            <div class="group relative overflow-hidden rounded-3xl aspect-[4/5] bg-zinc-900 border border-white/5 shadow-2xl" 
-                 data-aos="zoom-in" data-aos-delay="{{ $index * 50 }}">
-                <img src="{{ $item['image'] }}" alt="{{ $item['title'] }}" 
-                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100">
-                
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                
-                <div class="absolute inset-x-8 bottom-8 transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
-                    <span class="text-primary text-xs font-black uppercase tracking-widest mb-2 block">{{ $item['category'] }}</span>
-                    <h3 class="text-2xl font-bold text-white mb-4 leading-tight">{{ $item['title'] }}</h3>
-                    <a href="#" class="inline-flex items-center gap-2 text-white text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {{ __('View Project') }} <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
+                <!-- Overlay Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+
+                <!-- Content Overlay -->
+                <div class="absolute inset-x-6 bottom-6 transition-transform duration-500 transform translate-y-4 group-hover:translate-y-0">
+                    @if($image->category)
+                    <span class="text-primary text-xs font-black uppercase tracking-widest mb-2 block">{{ $image->category }}</span>
+                    @endif
+                    
+                    @if($image->title)
+                    <h3 class="text-xl font-bold text-white mb-2 leading-tight">{{ $image->title }}</h3>
+                    @endif
+                    
+                    @if($image->caption)
+                    <p class="text-zinc-300 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">{{ $image->caption }}</p>
+                    @endif
+
+                    <!-- View Icon -->
+                    <div class="mt-4 flex items-center gap-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="material-icons text-2xl">zoom_in</span>
+                        <span class="text-sm font-bold">{{ __('View') }}</span>
+                    </div>
                 </div>
+
+                <!-- Featured Badge -->
+                @if($image->is_featured)
+                <div class="absolute top-4 right-4">
+                    <span class="flex items-center gap-1 bg-primary/90 text-black text-xs font-bold px-3 py-1 rounded-full">
+                        <span class="material-icons text-sm">auto_awesome</span>
+                        {{ __('Featured') }}
+                    </span>
+                </div>
+                @endif
             </div>
             @endforeach
         </div>
+        @else
+        <!-- Empty State -->
+        <div class="text-center py-20" data-aos="fade-up">
+            <span class="material-icons text-8xl text-zinc-700 mb-4">photo_library</span>
+            <h3 class="text-2xl font-bold text-white mb-2">{{ __('Gallery Coming Soon') }}</h3>
+            <p class="text-zinc-400">{{ __('We are curating our creative masterpieces. Check back soon!') }}</p>
+        </div>
+        @endif
 
         <!-- CTA Section -->
         <div class="mt-32 p-12 rounded-[40px] bg-gradient-to-br from-primary/20 to-transparent border border-white/10 text-center relative overflow-hidden" data-aos="fade-up">
@@ -70,4 +105,160 @@
         </div>
     </div>
 </div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-[9999] hidden">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-black/95 backdrop-blur-sm" onclick="closeLightbox()"></div>
+    
+    <!-- Close Button -->
+    <button onclick="closeLightbox()" 
+            class="absolute top-6 right-6 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+        <span class="material-icons text-white text-3xl">close</span>
+    </button>
+
+    <!-- Navigation Buttons -->
+    @if($galleryImages->count() > 1)
+    <button onclick="prevImage()" 
+            class="absolute left-6 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+        <span class="material-icons text-white text-3xl">chevron_left</span>
+    </button>
+    
+    <button onclick="nextImage()" 
+            class="absolute right-6 top-1/2 -translate-y-1/2 z-10 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+        <span class="material-icons text-white text-3xl">chevron_right</span>
+    </button>
+    @endif
+
+    <!-- Image Container -->
+    <div class="absolute inset-0 flex items-center justify-center p-8 md:p-16">
+        <div class="max-w-6xl max-h-full">
+            <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl">
+            
+            <!-- Image Info -->
+            <div id="lightbox-info" class="mt-6 text-center">
+                <h3 id="lightbox-title" class="text-2xl font-bold text-white mb-2"></h3>
+                <p id="lightbox-caption" class="text-zinc-400 font-light"></p>
+                <div id="lightbox-category" class="text-primary text-sm font-bold uppercase tracking-widest mt-2"></div>
+                <div class="text-zinc-500 text-sm mt-2">
+                    <span id="lightbox-counter">1</span> / <span id="lightbox-total">{{ $galleryImages->count() }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+const galleryImages = @json($galleryImages->map(fn($img) => [
+    'url' => $img->image_url,
+    'title' => $img->title ?? '',
+    'caption' => $img->caption ?? '',
+    'category' => $img->category ?? ''
+]));
+
+let currentIndex = 0;
+
+function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+function updateLightbox() {
+    const image = galleryImages[currentIndex];
+    document.getElementById('lightbox-image').src = image.url;
+    document.getElementById('lightbox-image').alt = image.title;
+    document.getElementById('lightbox-title').textContent = image.title;
+    document.getElementById('lightbox-caption').textContent = image.caption;
+    document.getElementById('lightbox-category').textContent = image.category;
+    document.getElementById('lightbox-counter').textContent = currentIndex + 1;
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    updateLightbox();
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateLightbox();
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (document.getElementById('lightbox').classList.contains('hidden')) return;
+    
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+});
+
+// Category filtering
+document.querySelectorAll('.gallery-filter').forEach(button => {
+    button.addEventListener('click', function() {
+        const category = this.dataset.category;
+        
+        // Update active button
+        document.querySelectorAll('.gallery-filter').forEach(btn => {
+            btn.classList.remove('active', 'bg-primary', 'text-black', 'border-primary');
+            btn.classList.add('bg-white/5', 'text-white/60', 'border-white/10');
+        });
+        this.classList.add('active', 'bg-primary', 'text-black', 'border-primary');
+        this.classList.remove('bg-white/5', 'text-white/60', 'border-white/10');
+        
+        // Filter images
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            if (category === 'all' || item.dataset.category === category) {
+                item.style.display = 'block';
+                setTimeout(() => item.style.opacity = '1', 10);
+            } else {
+                item.style.opacity = '0';
+                setTimeout(() => item.style.display = 'none', 300);
+            }
+        });
+    });
+});
+</script>
+@endpush
+
+@push('styles')
+<style>
+.text-gradient {
+    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gallery-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-filter.active {
+    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+    color: #000;
+    border-color: #F59E0B;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>
+@endpush
+
 @endsection

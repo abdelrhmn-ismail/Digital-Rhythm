@@ -45,7 +45,14 @@
                 <div class="absolute inset-0 bg-amber-500/10 border border-amber-500/20 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.1)]"></div>
                 @endif
             </a>
-            
+
+            <a class="relative px-5 py-2 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 {{ $currentRoute == 'gallery' ? 'text-white' : 'text-zinc-500 hover:text-white' }}" href="{{ route('gallery') ?? '#' }}">
+                <span class="relative z-10">{{ __('Gallery') }}</span>
+                @if($currentRoute == 'gallery')
+                <div class="absolute inset-0 bg-amber-500/10 border border-amber-500/20 rounded-full shadow-[0_0_15px_rgba(245,158,11,0.1)]"></div>
+                @endif
+            </a>
+
             <a class="relative px-5 py-2 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 {{ $currentRoute == 'contact' ? 'text-white' : 'text-zinc-500 hover:text-white' }}" href="{{ route('contact') ?? '#' }}">
                 <span class="relative z-10">{{ __('Contact') }}</span>
                 @if($currentRoute == 'contact')
@@ -100,6 +107,7 @@
             <a href="{{ route('about') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'about' ? 'text-amber-500' : 'text-zinc-500' }}">{{ __('About') }}</a>
             <a href="{{ route('services') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'services' ? 'text-amber-500' : 'text-zinc-500' }}">{{ __('Services') }}</a>
             <a href="{{ route('portfolio') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'portfolio' ? 'text-amber-500' : 'text-zinc-500' }}">{{ __('Portfolio') }}</a>
+            <a href="{{ route('gallery') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'gallery' ? 'text-amber-500' : 'text-zinc-500' }}">{{ __('Gallery') }}</a>
             <a href="{{ route('contact') ?? '#' }}" class="w-full text-center py-4 bg-amber-500 text-white font-black rounded-full mt-4">{{ __('GET A QUOTE') }}</a>
         </div>
     </div>

@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(ren *)",
-      "Bash(php *)"
+      "Bash(php *)",
+      "Bash(vendor\\bin\\pint *)",
+      "Bash(composer *)",
+      "Bash(dir *)",
+      "Bash(start *)",
+      "Bash(timeout *)"
     ]
   },
   "$version": 3

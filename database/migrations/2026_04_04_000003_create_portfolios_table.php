@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->longText('content')->nullable();
-            $table->string('client')->nullable();
+            $table->string('client')->nullable()->default(null);
             $table->date('completed_date')->nullable();
             $table->string('project_url')->nullable();
             $table->json('technologies')->nullable();

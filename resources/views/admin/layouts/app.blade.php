@@ -57,12 +57,10 @@
                             <span class="material-icons">work</span>
                             {{ __('Portfolio') }}
                         </a>
-                        @if(Route::has('gallery'))
-                        <a href="{{ route('gallery') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm">
-                            <span class="material-icons">image</span>
-                            {{ __('Image Gallery') }}
+                        <a href="{{ route('admin.gallery.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
+                            <span class="material-icons">photo_library</span>
+                            {{ __('Gallery') }}
                         </a>
-                        @endif
                     </div>
                 </div>
                 

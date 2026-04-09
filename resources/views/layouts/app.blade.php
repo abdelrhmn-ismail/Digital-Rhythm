@@ -5,7 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))</title>
     <meta name="description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
-    
+    <meta name="keywords" content="@yield('keywords', 'marketing, creative, branding, agency, saudi, riyadh, digital, web development')">
+    <meta name="author" content="Golden Bee Marketing">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))">
+    <meta property="og:description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
+    <meta property="og:image" content="@yield('og_image', asset('images/og-default.jpg'))">
+    <meta property="og:locale" content="{{ app()->getLocale() }}">
+    <meta property="og:site_name" content="Golden Bee Marketing">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))">
+    <meta property="twitter:description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
+    <meta property="twitter:image" content="@yield('og_image', asset('images/og-default.jpg'))">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,15 +68,25 @@
     
     <!-- Main Content -->
     <main>
+        @include('partials.flash')
         @yield('content')
     </main>
-    
+
     <!-- Footer -->
     @include('partials.footer')
-    
+
     <!-- Scripts -->
     <!-- AOS Animation Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50,
+        });
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 </body>

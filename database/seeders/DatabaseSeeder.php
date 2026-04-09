@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             TestimonialSeeder::class,
             ServiceSeeder::class,
             PortfolioSeeder::class,
+            GalleryImageSeeder::class,
         ]);
     }
 }
