@@ -18,8 +18,12 @@
     @stack('styles')
     @if(app()->getLocale() == 'ar')
     <style>
-        *, *::before, *::after, body, html {
+        body, h1, h2, h3, h4, h5, h6, p, span, a, div, section, article, header, footer, nav, ul, li, button, input, textarea, select, label {
             font-family: 'Alexandria', sans-serif !important;
+        }
+        /* Preserve Material Icons font */
+        .material-icons, .material-symbols-outlined, [class*="material-icons"], [class*="material-symbols"] {
+            font-family: 'Material Icons', 'Material Symbols Outlined' !important;
         }
     </style>
     @endif

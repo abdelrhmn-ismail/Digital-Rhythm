@@ -1,29 +1,41 @@
+@php
+    $siteTitle = \App\Helpers\SettingsHelper::siteTitle();
+    $siteDescription = \App\Helpers\SettingsHelper::siteDescription();
+    $siteKeywords = \App\Helpers\SettingsHelper::siteKeywords();
+    $siteLogo = \App\Helpers\SettingsHelper::siteLogo();
+    $favicon = \App\Helpers\SettingsHelper::favicon();
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))</title>
-    <meta name="description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
-    <meta name="keywords" content="@yield('keywords', 'marketing, creative, branding, agency, saudi, riyadh, digital, web development')">
-    <meta name="author" content="Golden Bee Marketing">
+    <title>@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')</title>
+    <meta name="description" content="@yield('description', $siteDescription)">
+    <meta name="keywords" content="@yield('keywords', $siteKeywords)">
+    <meta name="author" content="{{ $siteTitle }}">
     <meta name="robots" content="index, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ $favicon }}">
+    <link rel="shortcut icon" type="image/png" href="{{ $favicon }}">
+    <link rel="apple-touch-icon" href="{{ $favicon }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))">
-    <meta property="og:description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
-    <meta property="og:image" content="@yield('og_image', asset('images/og-default.jpg'))">
+    <meta property="og:title" content="@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')">
+    <meta property="og:description" content="@yield('description', $siteDescription)">
+    <meta property="og:image" content="@yield('og_image', $siteLogo)">
     <meta property="og:locale" content="{{ app()->getLocale() }}">
-    <meta property="og:site_name" content="Golden Bee Marketing">
+    <meta property="og:site_name" content="{{ $siteTitle }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
-    <meta property="twitter:title" content="@yield('title', __('Golden Bee Marketing | Global Creative Agency in Riyadh'))">
-    <meta property="twitter:description" content="@yield('description', __('Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.'))">
-    <meta property="twitter:image" content="@yield('og_image', asset('images/og-default.jpg'))">
+    <meta property="twitter:title" content="@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')">
+    <meta property="twitter:description" content="@yield('description', $siteDescription)">
+    <meta property="twitter:image" content="@yield('og_image', $siteLogo)">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ url()->current() }}">
@@ -56,8 +68,12 @@
     @stack('styles')
     @if(app()->getLocale() == 'ar')
     <style>
-        *, *::before, *::after, body, html {
+        body, h1, h2, h3, h4, h5, h6, p, span, a, div, section, article, header, footer, nav, ul, li, button, input, textarea, select, label {
             font-family: 'Alexandria', sans-serif !important;
+        }
+        /* Preserve Material Icons font */
+        .material-icons, .material-symbols-outlined, [class*="material-icons"], [class*="material-symbols"] {
+            font-family: 'Material Icons', 'Material Symbols Outlined' !important;
         }
     </style>
     @endif

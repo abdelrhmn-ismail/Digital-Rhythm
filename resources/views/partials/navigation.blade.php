@@ -1,18 +1,19 @@
 @php
     $currentRoute = Route::currentRouteName() ?? 'home';
+    $siteLogo = \App\Helpers\SettingsHelper::siteLogo();
 @endphp
 
-<header class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 pointer-events-none flex justify-center" 
+<header class="fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-4 pointer-events-none flex justify-center"
         x-data="{ scrolled: false, mobileMenu: false }"
         @scroll.window="scrolled = (window.pageYOffset > 20)"
         :class="scrolled ? 'pt-2 lg:pt-4' : 'pt-4 lg:pt-6'">
     <div class="relative w-full flex items-center justify-between transition-all duration-700 pointer-events-auto px-4 lg:px-8"
          :class="scrolled ? 'max-w-5xl h-16 lg:h-20 bg-[#050506]/85 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_10px_40px_rgba(0,0,0,0.5)]' : 'max-w-7xl h-20 lg:h-24 bg-transparent border-transparent rounded-none'">
-        
+
         <!-- Logo -->
         <a class="group flex items-center" href="{{ route('home') ?? '#' }}">
             <div class="relative flex items-center transition-all duration-500" tabindex="0">
-                <img alt="Golden Bee" width="200" height="66" class="w-auto object-contain transition-all duration-500 h-[40px] lg:h-[60px]" src="https://goldenbee.sa/images/Golden-Bee--white-logo.png" />
+                <img src="{{ $siteLogo }}" alt="{{ \App\Helpers\SettingsHelper::siteTitle() }}" width="200" height="66" class="w-auto object-contain transition-all duration-500 h-[40px] lg:h-[60px]" />
             </div>
         </a>
         
