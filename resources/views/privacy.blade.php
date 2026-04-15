@@ -7,12 +7,12 @@
 <section class="pt-32 pb-20 bg-gradient-to-b from-dark to-darker">
     <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-gradient">{{ __('Privacy Policy') }}</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-primary">{{ __('Privacy Policy') }}</h1>
             <p class="text-gray-300 mb-8">{{ __('Last updated:') }} {{ date('F j, Y') }}</p>
             
             <div class="prose prose-invert max-w-none">
                 <div class="bg-gradient-to-br from-dark to-darker border border-gray-800 rounded-xl p-8 mb-8">
-                    <h2 class="text-2xl font-bold mb-4 text-gradient">{{ __('Information We Collect') }}</h2>
+                    <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-primary">{{ __('Information We Collect') }}</h2>
                     <p class="text-gray-300 mb-4">
                         {{ __('We collect information you provide directly to us, such as when you fill out a contact form, subscribe to our newsletter, or engage with our services. This may include:') }}
                     </p>
@@ -25,7 +25,7 @@
                 </div>
                 
                 <div class="bg-gradient-to-br from-dark to-darker border border-gray-800 rounded-xl p-8 mb-8">
-                    <h2 class="text-2xl font-bold mb-4 text-gradient">{{ __('How We Use Your Information') }}</h2>
+                    <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-primary">{{ __('How We Use Your Information') }}</h2>
                     <p class="text-gray-300 mb-4">
                         {{ __('We use the information we collect to provide, maintain, and improve our services, including:') }}
                     </p>
@@ -38,27 +38,27 @@
                 </div>
                 
                 <div class="bg-gradient-to-br from-dark to-darker border border-gray-800 rounded-xl p-8 mb-8">
-                    <h2 class="text-2xl font-bold mb-4 text-gradient">{{ __('Information Sharing') }}</h2>
+                    <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-primary">{{ __('Information Sharing') }}</h2>
                     <p class="text-gray-300 mb-4">
                         {{ __('We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this privacy policy.') }}
                     </p>
                 </div>
                 
                 <div class="bg-gradient-to-br from-dark to-darker border border-gray-800 rounded-xl p-8 mb-8">
-                    <h2 class="text-2xl font-bold mb-4 text-gradient">{{ __('Data Security') }}</h2>
+                    <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-primary">{{ __('Data Security') }}</h2>
                     <p class="text-gray-300 mb-4">
                         {{ __('We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.') }}
                     </p>
                 </div>
                 
                 <div class="bg-gradient-to-br from-dark to-darker border border-gray-800 rounded-xl p-8">
-                    <h2 class="text-2xl font-bold mb-4 text-gradient">{{ __('Contact Us') }}</h2>
+                    <h2 class="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-primary">{{ __('Contact Us') }}</h2>
                     <p class="text-gray-300 mb-4">
                         {{ __('If you have any questions about this Privacy Policy, please contact us at:') }}
                     </p>
                     <p class="text-gray-300">
-                        {{ __('Email:') }} <a href="mailto:info@goldenbee.sa" class="text-yellow-400 hover:text-yellow-300">info@goldenbee.sa</a><br>
-                        {{ __('Phone:') }} <a href="tel:+966558781218" class="text-yellow-400 hover:text-yellow-300">+966 55 878 1218</a>
+                        {{ __('Email:') }} <a href="mailto:info@goldenbee.sa" class="text-primary hover:text-primary/80">info@goldenbee.sa</a><br>
+                        {{ __('Phone:') }} <a href="tel:+966558781218" class="text-primary hover:text-primary/80">+966 55 878 1218</a>
                     </p>
                 </div>
             </div>

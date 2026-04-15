@@ -11,7 +11,7 @@
                     <p class="text-sm text-gray-500">{{ __('From') }}</p>
                     <h2 class="text-2xl font-bold text-gray-900">{{ $contact->name }}</h2>
                     <p class="text-sm text-gray-500">{{ $contact->email }}</p>
-                    <p class="text-sm text-gray-400">{{ $contact->company ?? __('No company provided') }}</p>
+                    <p class="text-sm text-muted">{{ $contact->company ?? __('No company provided') }}</p>
                 </div>
                 <div class="text-right text-sm text-gray-500">
                     <p>{{ __('Received') }}</p>
@@ -60,7 +60,7 @@
         @if($contact->reply_body)
             <div class="rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
                 <h3 class="text-lg font-semibold text-gray-900">{{ __('Last reply sent') }}</h3>
-                <p class="text-sm text-gray-400">{{ $contact->replied_at?->format('M d, Y H:i') }}</p>
+                <p class="text-sm text-muted">{{ $contact->replied_at?->format('M d, Y H:i') }}</p>
                 <div class="mt-4 rounded-2xl bg-gray-50 p-4 text-gray-700 leading-relaxed">
                     {{ $contact->reply_body }}
                 </div>
@@ -74,19 +74,19 @@
             @csrf
             <div>
                 <label class="text-xs font-semibold text-gray-500 uppercase">{{ __('Subject') }}</label>
-                <input type="text" name="subject" value="{{ old('subject', $contact->reply_subject ?? __('Re: Contact form submission')) }}" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" required>
+                <input type="text" name="subject" value="{{ old('subject', $contact->reply_subject ?? __('Re: Contact form submission')) }}" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none" required>
                 @error('subject')
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
             </div>
             <div>
                 <label class="text-xs font-semibold text-gray-500 uppercase">{{ __('Message') }}</label>
-                <textarea name="body" rows="6" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-amber-500 focus:outline-none" required>{{ old('body', $contact->reply_body) }}</textarea>
+                <textarea name="body" rows="6" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none" required>{{ old('body', $contact->reply_body) }}</textarea>
                 @error('body')
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
             </div>
-            <button type="submit" class="w-full rounded-full bg-amber-500 py-3 text-sm font-semibold text-white">{{ __('Send reply') }}</button>
+            <button type="submit" class="w-full rounded-full bg-primary py-3 text-sm font-semibold text-foreground">{{ __('Send reply') }}</button>
         </form>
     </div>
 </div>

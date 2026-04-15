@@ -8,41 +8,41 @@
    ======================================== */
 :root {
   /* Background Colors */
-  --gb-background: 240 10% 2%;           /* #050506 - Ultra dark background */
-  --bg-light: 240 10% 4%;                /* #0A0A0C - Slightly lighter */
-  --bg-lighter: 240 8% 6%;               /* #0F0F12 - Even lighter */
+  --gb-background: var(--color-background);
+  --bg-light: var(--color-surface);
+  --bg-lighter: var(--color-surface);
   
   /* Foreground/Text Colors */
-  --gb-foreground: 210 40% 98%;          /* #F9FAFB - Near white text */
-  --fg-muted: 215 20% 65%;               /* #A1A1AA - Muted text */
-  --fg-subtle: 215 15% 50%;              /* #71717A - Subtle text */
+  --gb-foreground: var(--color-text);
+  --fg-muted: #6B7280;
+  --fg-subtle: #9CA3AF;
   
   /* Primary/Brand Colors */
-  --gb-primary: 38 92% 50%;              /* #F59E0B - Brand gold */
-  --gb-primary-light: 38 92% 60%;        /* #FBBF24 - Lighter gold */
-  --gb-primary-dark: 38 92% 40%;         /* #D97706 - Darker gold */
+  --gb-primary: var(--color-primary);
+  --gb-primary-light: var(--color-secondary);
+  --gb-primary-dark: var(--color-primary);
   
   /* Card/Surface Colors */
-  --gb-card: 240 10% 4%;                 /* #0A0A0C - Card background */
-  --gb-surface: 240 8% 6%;               /* #0F0F12 - Elevated surface */
+  --gb-card: var(--color-surface);
+  --gb-surface: var(--color-surface);
   
   /* Secondary Colors */
-  --gb-secondary: 217 33% 17%;           /* #1E293B - Secondary bg */
-  --gb-secondary-fg: 210 40% 98%;        /* Text on secondary */
+  --gb-secondary: var(--color-secondary);
+  --gb-secondary-fg: var(--color-text);
   
   /* Accent Colors */
-  --gb-accent: 38 92% 50%;               /* Same as primary */
-  --gb-destructive: 0 84% 60%;           /* #DC2626 - Error/destructive */
+  --gb-accent: var(--color-accent);
+  --gb-destructive: #DC2626;
   
   /* Border & Input */
-  --gb-border: 217 33% 17%;              /* #1E293B - Borders */
-  --gb-border-light: 217 33% 22%;        /* #2D3748 - Light borders */
-  --gb-input: 217 33% 17%;               /* Input background */
-  --gb-ring: 38 92% 50%;                 /* Focus ring - gold */
+  --gb-border: rgba(0,0,0,0.1);
+  --gb-border-light: rgba(0,0,0,0.05);
+  --gb-input: var(--color-surface);
+  --gb-ring: var(--color-primary);
   
   /* Muted */
-  --gb-muted: 217 33% 15%;               /* Muted background */
-  --gb-muted-fg: 215 20% 65%;            /* Muted text */
+  --gb-muted: var(--color-surface);
+  --gb-muted-fg: #6B7280;
   
   /* Typography */
   --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
@@ -101,8 +101,8 @@ html {
 /* Body defaults */
 body {
   font-family: var(--font-primary);
-  background: hsl(var(--gb-background));
-  color: hsl(var(--gb-foreground));
+  background: var(--gb-background);
+  color: var(--gb-foreground);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -170,7 +170,7 @@ html[lang="ar"] body {
 
 /* Gold gradient text */
 .text-gradient {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
+  background: var(--color-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -187,11 +187,11 @@ html[lang="ar"] body {
 
 /* Dark gradient */
 .bg-gradient-dark {
-  background: linear-gradient(180deg, #050506 0%, #0A0A0C 100%);
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
 }
 
 .bg-gradient-card {
-  background: linear-gradient(180deg, #0A0A0C 0%, #0F0F12 100%);
+  background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%);
 }
 
 /* Radial gold glow */
@@ -231,23 +231,23 @@ html[lang="ar"] body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
-  background: hsl(var(--gb-primary));
-  color: #050506;
+  background: var(--gb-primary);
+  color: white;
   font-weight: 900;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border-radius: var(--radius-full);
   transition: all var(--transition-base);
-  box-shadow: 0 0 25px rgba(245, 158, 11, 0.2);
+  box-shadow: 0 0 25px rgba(0, 135, 206, 0.2);
   border: none;
   cursor: pointer;
 }
 
 .btn-primary:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(245, 158, 11, 0.3);
-  background: hsl(var(--gb-primary-light));
+  box-shadow: 0 0 35px rgba(0, 135, 206, 0.3);
+  background: var(--gb-primary-light);
 }
 
 .btn-primary:active {
@@ -410,23 +410,23 @@ html[lang="ar"] body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
-  border: 2px solid #050505;
+  background: var(--color-secondary);
+  border: 2px solid var(--color-background);
   border-radius: 10px;
   transition: all 0.3s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
+  background: var(--color-primary);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #1a1a1a #050505;
+  scrollbar-color: var(--color-secondary) var(--color-background);
 }
 
 /* ========================================

@@ -9,48 +9,48 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Primary Gold/Amber - Brand Color
+        // Primary Blue - Brand Color
         'primary': {
-          DEFAULT: '#F59E0B', // hsl(38 92% 50%)
-          foreground: '#050506',
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F59E0B', // Main brand gold
-          600: '#D97706',
-          700: '#B45309',
-          800: '#92400E',
-          900: '#78350F',
+          DEFAULT: 'var(--color-primary, #01194A)', // Map to CSS variable
+          foreground: '#FFFFFF',
+          50: '#E3F2FD',
+          100: '#CBE5FB',
+          200: '#9BCEF7',
+          300: '#6AB6F3',
+          400: '#3A9EEF',
+          500: '#0087CE', // Secondary Blue
+          600: '#006CA5',
+          700: '#00517C',
+          800: '#003652',
+          900: '#01194A', // Primary Blue
         },
         // Background Colors
         'background': {
-          DEFAULT: '#050506', // hsl(240 10% 2%) - Ultra dark
-          light: '#0A0A0C',
-          lighter: '#0F0F12',
+          DEFAULT: 'var(--color-background, #F8F9FA)', // Map to CSS variable
+          light: '#F3F4F6',
+          lighter: '#F9FAFB',
         },
         // Card/Surface Colors
         'surface': {
-          DEFAULT: '#0A0A0C', // hsl(240 10% 4%)
+          DEFAULT: 'var(--color-surface, #FFFFFF)', // Map to CSS variable
           elevated: '#0F0F12',
           overlay: 'rgba(10, 10, 12, 0.8)',
         },
         // Text Colors
         'foreground': {
-          DEFAULT: '#F9FAFB', // hsl(210 40% 98%)
-          muted: '#9CA3AF', // zinc-400
-          subtle: '#71717B', // zinc-500
+          DEFAULT: 'var(--color-text, #333333)', // Map to CSS variable
+          muted: '#6B7280', // gray-500
+          subtle: '#9CA3AF', // gray-400
         },
         // Secondary Colors
         'secondary': {
-          DEFAULT: '#1E293B', // hsl(217 33% 17%)
+          DEFAULT: 'var(--color-secondary, #1E293B)', // Map to CSS variable
           foreground: '#F9FAFB',
         },
-        // Accent (same as primary for this brand)
+        // Accent (Purple)
         'accent': {
-          DEFAULT: '#F59E0B',
-          foreground: '#050506',
+          DEFAULT: 'var(--color-accent, #7800A8)',
+          foreground: '#FFFFFF',
         },
         // Destructive/Error
         'destructive': {
@@ -64,28 +64,28 @@ module.exports = {
         },
         'input': {
           DEFAULT: '#1E293B',
-          focus: '#F59E0B',
+          focus: 'var(--color-primary)',
         },
         'ring': {
-          DEFAULT: '#F59E0B',
+          DEFAULT: 'var(--color-primary)',
         },
         // Muted/Subtle
         'muted': {
           DEFAULT: '#1A202C',
           foreground: '#A0AEC0',
         },
-        // Extended Gold Palette for Gradients
-        'gold': {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F59E0B',
-          600: '#D97706',
-          700: '#B45309',
-          800: '#92400E',
-          900: '#78350F',
+        // Extended Brand Palette for Gradients
+        'brand': {
+          50: '#E3F2FD',
+          100: '#CBE5FB',
+          200: '#9BCEF7',
+          300: '#6AB6F3',
+          400: '#3A9EEF',
+          500: '#0087CE',
+          600: '#006CA5',
+          700: '#00517C',
+          800: '#003652',
+          900: '#01194A',
         },
         // Zinc Palette (Tailwind defaults)
         'zinc': {
@@ -231,8 +231,8 @@ module.exports = {
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
         pulseGlow: {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(245, 158, 11, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(0, 135, 206, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(0, 135, 206, 0.6)' },
         },
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
@@ -257,16 +257,17 @@ module.exports = {
       },
       backgroundImage: {
         // Gradient for text
-        'gradient-gold': 'linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%)',
-        'gradient-gold-light': 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%)',
+        'gradient-primary': 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #E3F2FD 0%, #00BCD4 100%)', // Inner Cube Light Faces
+        'gradient-purple': 'linear-gradient(135deg, #7800A8 0%, #4B0082 100%)', // Purple Face Gradient
         // Background gradients
-        'gradient-dark': 'linear-gradient(180deg, #050506 0%, #0A0A0C 100%)',
-        'gradient-card': 'linear-gradient(180deg, #0A0A0C 0%, #0F0F12 100%)',
+        'gradient-dark': 'linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%)',
+        'gradient-card': 'linear-gradient(180deg, var(--color-surface) 0%, var(--color-background) 100%)',
         // Radial gradients for glows
-        'radial-gold': 'radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%)',
-        'radial-gold-strong': 'radial-gradient(circle, rgba(245, 158, 11, 0.3) 0%, transparent 60%)',
+        'radial-primary': 'radial-gradient(circle, var(--color-primary) 0%, transparent 70%)',
+        'radial-primary-strong': 'radial-gradient(circle, var(--color-primary) 0%, transparent 60%)',
         // Mesh gradient (subtle background)
-        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.03) 0px, transparent 50%)',
+        'gradient-mesh': 'radial-gradient(at 0% 0%, var(--color-primary) 0px, transparent 50%), radial-gradient(at 100% 100%, var(--color-secondary) 0px, transparent 50%)',
       },
       transitionDuration: {
         'default': '150ms',

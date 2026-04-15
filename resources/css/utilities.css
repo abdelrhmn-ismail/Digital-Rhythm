@@ -1,13 +1,13 @@
 @layer utilities {
     .text-gradient {
-        @apply bg-gradient-to-br from-white via-primary to-primary-dark bg-clip-text text-transparent;
+        @apply bg-gradient-to-br from-gray-900 via-primary to-accent bg-clip-text text-transparent;
     }
 
     .shimmer {
         position: relative;
         overflow: hidden;
     }
-    
+
     .shimmer::before {
         content: '';
         position: absolute;
@@ -15,7 +15,7 @@
         left: -100%;
         width: 50%;
         height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+        background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
         transform: skewX(-20deg);
         animation: shimmer 3s infinite;
     }
@@ -24,11 +24,11 @@
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
     }
-    
+
     .animate-marquee {
         animation: marquee 20s linear infinite;
     }
-    
+
     .animate-marquee:hover {
         animation-play-state: paused;
     }
@@ -39,11 +39,11 @@
     }
 
     @keyframes glow {
-        0% { text-shadow: 0 0 10px rgba(245,158,11,0.2); }
-        50% { text-shadow: 0 0 20px rgba(245,158,11,0.6); }
-        100% { text-shadow: 0 0 10px rgba(245,158,11,0.2); }
+        0% { text-shadow: 0 0 10px rgba(1,25,74,0.1); }
+        50% { text-shadow: 0 0 20px rgba(1,25,74,0.4); }
+        100% { text-shadow: 0 0 10px rgba(1,25,74,0.1); }
     }
-    
+
     .text-glow {
         animation: glow 3s infinite;
     }

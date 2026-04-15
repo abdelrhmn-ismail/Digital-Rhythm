@@ -4,9 +4,15 @@
     $siteKeywords = \App\Helpers\SettingsHelper::siteKeywords();
     $siteLogo = \App\Helpers\SettingsHelper::siteLogo();
     $favicon = \App\Helpers\SettingsHelper::favicon();
+    $colorPrimary = \App\Models\Setting::get('color_primary', '#01194A');
+    $colorSecondary = \App\Models\Setting::get('color_secondary', '#0087CE');
+    $colorAccent = \App\Models\Setting::get('color_accent', '#7800A8');
+    $colorBackground = \App\Models\Setting::get('color_background', '#F8F9FA');
+    $colorSurface = \App\Models\Setting::get('color_surface', '#FFFFFF');
+    $colorText = \App\Models\Setting::get('color_text', '#333333');
 @endphp
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,7 +64,6 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
@@ -66,19 +71,69 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     @stack('styles')
-    @if(app()->getLocale() == 'ar')
+
+    <!-- Dynamic Theme Colors & Overrides -->
     <style>
+        :root {
+            /* Branding Variables */
+            --color-primary: {{ $colorPrimary }};
+            --color-secondary: {{ $colorSecondary }};
+            --color-accent: {{ $colorAccent }};
+            --color-background: {{ $colorBackground }};
+            --color-surface: {{ $colorSurface }};
+            --color-text: {{ $colorText }};
+
+            /* Legacy Goldenbee Core Mappings (HSL) */
+            --background: {{ \App\Helpers\SettingsHelper::hexToHsl($colorBackground) }};
+            --foreground: {{ \App\Helpers\SettingsHelper::hexToHsl($colorText) }};
+            --primary: {{ \App\Helpers\SettingsHelper::hexToHsl($colorPrimary) }};
+            --secondary: {{ \App\Helpers\SettingsHelper::hexToHsl($colorSecondary) }};
+            --accent: {{ \App\Helpers\SettingsHelper::hexToHsl($colorAccent) }};
+            --card: {{ \App\Helpers\SettingsHelper::hexToHsl($colorSurface) }};
+            --card-foreground: {{ \App\Helpers\SettingsHelper::hexToHsl($colorText) }};
+            --popover: {{ \App\Helpers\SettingsHelper::hexToHsl($colorSurface) }};
+            --popover-foreground: {{ \App\Helpers\SettingsHelper::hexToHsl($colorText) }};
+            --muted: {{ \App\Helpers\SettingsHelper::hexToHsl($colorText) }}; 
+            --muted-foreground: {{ \App\Helpers\SettingsHelper::hexToHsl($colorText) }};
+            --border: 0 0% 90%;
+            --input: 0 0% 90%;
+            --ring: {{ \App\Helpers\SettingsHelper::hexToHsl($colorPrimary) }};
+        }
+
+        /* Global Theme Fixes */
+        body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        /* Scrollbar Styling for Light Theme */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-background);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 5px;
+            border: 2px solid var(--color-background);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+
+        /* Typography Override for Arabic */
+        @if(app()->getLocale() == 'ar')
         body, h1, h2, h3, h4, h5, h6, p, span, a, div, section, article, header, footer, nav, ul, li, button, input, textarea, select, label {
             font-family: 'Alexandria', sans-serif !important;
         }
-        /* Preserve Material Icons font */
         .material-icons, .material-symbols-outlined, [class*="material-icons"], [class*="material-symbols"] {
             font-family: 'Material Icons', 'Material Symbols Outlined' !important;
         }
+        @endif
     </style>
-    @endif
 </head>
-<body class="bg-gray-900 text-white" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
+<body class="bg-background text-foreground" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
     <!-- Navigation -->
     @include('partials.navigation')
     

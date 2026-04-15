@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Gallery') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage your image gallery') }}</p>
         </div>
-        <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Image') }}
         </a>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="flex gap-4">
-                <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                     {{ __('Filter') }}
                 </button>
                 <a href="{{ route('admin.gallery.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 flex items-center">
@@ -78,7 +78,7 @@
                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
                     
                     <!-- Overlay Actions -->
-                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
+                    <div class="absolute inset-0 bg-surface bg-opacity-0 group-hover:bg-opacity-40 transition-all flex items-center justify-center opacity-0 group-hover:opacity-100">
                         <div class="flex gap-2">
                             <a href="{{ route('admin.gallery.edit', $image) }}" 
                                class="p-2 bg-white rounded-lg hover:bg-gray-100" title="{{ __('Edit') }}">
@@ -98,13 +98,13 @@
                     <!-- Badges -->
                     <div class="absolute top-2 right-2 flex flex-col gap-1">
                         @if($image->is_featured)
-                            <span class="bg-yellow-400 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                            <span class="bg-yellow-400 text-foreground text-xs px-2 py-1 rounded-full flex items-center gap-1">
                                 <span class="material-icons text-sm">auto_awesome</span>
                                 {{ __('Featured') }}
                             </span>
                         @endif
                         @if(!$image->is_active)
-                            <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-full">
+                            <span class="bg-gray-600 text-foreground text-xs px-2 py-1 rounded-full">
                                 {{ __('Inactive') }}
                             </span>
                         @endif
@@ -138,7 +138,7 @@
             <div class="col-span-full text-center py-12 bg-white rounded-lg border border-gray-200">
                 <span class="material-icons text-6xl text-gray-300">photo_library</span>
                 <p class="text-gray-500 mt-4">{{ __('No gallery images found') }}</p>
-                <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 mt-4 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700">
                     <span class="material-icons">add</span>
                     {{ __('Add Your First Image') }}
                 </a>

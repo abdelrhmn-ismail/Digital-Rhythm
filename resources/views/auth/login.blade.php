@@ -30,7 +30,7 @@
         <div class="login-card rounded-xl shadow-2xl p-8">
             <!-- Logo -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-white">{{ __('Golden Bee') }}</h1>
+                <h1 class="text-3xl font-bold text-foreground">{{ __('Golden Bee') }}</h1>
                 <p class="text-orange-100 text-sm mt-2">{{ __('Admin Login') }}</p>
             </div>
 
@@ -40,10 +40,10 @@
                 
                 <!-- Email -->
                 <div>
-                    <label for="email" class="block text-sm font-medium text-white mb-2">{{ __('Email Address') }}</label>
+                    <label for="email" class="block text-sm font-medium text-foreground mb-2">{{ __('Email Address') }}</label>
                     <input id="email" name="email" type="email" required
                            value="{{ old('email') }}"
-                           class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                           class="w-full px-4 py-3 bg-background/10 border border-black/20 rounded-lg text-foreground placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                            placeholder="admin@goldenbee.com">
                     @error('email')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -52,9 +52,9 @@
 
                 <!-- Password -->
                 <div>
-                    <label for="password" class="block text-sm font-medium text-white mb-2">{{ __('Password') }}</label>
+                    <label for="password" class="block text-sm font-medium text-foreground mb-2">{{ __('Password') }}</label>
                     <input id="password" name="password" type="password" required
-                           class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                           class="w-full px-4 py-3 bg-background/10 border border-black/20 rounded-lg text-foreground placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
                            placeholder="••••••••••">
                     @error('password')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -65,8 +65,8 @@
                 <div class="flex items-center justify-between">
                     <label class="flex items-center">
                         <input name="remember" type="checkbox" 
-                               class="rounded border-white/20 bg-white/10 text-orange-600 focus:ring-white/50 focus:ring-offset-0">
-                        <span class="ml-2 text-sm text-white">{{ __('Remember me') }}</span>
+                               class="rounded border-black/20 bg-background/10 text-orange-600 focus:ring-white/50 focus:ring-offset-0">
+                        <span class="ml-2 text-sm text-foreground">{{ __('Remember me') }}</span>
                     </label>
                 </div>
 
@@ -93,7 +93,7 @@
 
             <!-- Footer -->
             <div class="mt-8 text-center">
-                <a href="{{ route('home') }}" class="text-orange-100 hover:text-white text-sm">
+                <a href="{{ route('home') }}" class="text-orange-100 hover:text-foreground text-sm">
                     <span class="material-icons align-middle text-sm mr-1">arrow_back</span>
                     {{ __('Back to Website') }}
                 </a>

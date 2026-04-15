@@ -1,6 +1,6 @@
 @props(['testimonial'])
 
-<div {{ $attributes->merge(['class' => 'bg-white/[0.02] border border-white/[0.05] rounded-3xl p-8 hover:border-primary/30 transition-all duration-500 hover:bg-white/[0.04]']) }}>
+<div {{ $attributes->merge(['class' => 'bg-white/[0.02] border border-black/[0.05] rounded-3xl p-8 hover:border-primary/30 transition-all duration-500 hover:bg-white/[0.04]']) }}>
     <!-- Stars -->
     <div class="flex gap-1 mb-6">
         @for($i = 1; $i <= 5; $i++)
@@ -15,12 +15,12 @@
     </div>
 
     <!-- Testimonial Content -->
-    <p class="text-zinc-300 font-light leading-relaxed mb-6 text-sm">
+    <p class="text-gray-600 font-light leading-relaxed mb-6 text-sm">
         "{{ $testimonial->content }}"
     </p>
 
     <!-- Author Info -->
-    <div class="flex items-center gap-4 pt-6 border-t border-white/[0.05]">
+    <div class="flex items-center gap-4 pt-6 border-t border-black/[0.05]">
         @if($testimonial->client_image)
         <img src="{{ asset('storage/testimonials/' . $testimonial->client_image) }}" 
              alt="{{ $testimonial->client }}"
@@ -32,9 +32,9 @@
         @endif
         
         <div class="flex-1">
-            <h4 class="text-white font-bold text-sm">{{ $testimonial->client }}</h4>
+            <h4 class="text-foreground font-bold text-sm">{{ $testimonial->client }}</h4>
             @if($testimonial->position || $testimonial->company)
-            <p class="text-zinc-500 text-xs font-light">
+            <p class="text-foreground/60 text-xs font-light">
                 {{ $testimonial->position }}@if($testimonial->position && $testimonial->company) · @endif{{ $testimonial->company }}
             </p>
             @endif

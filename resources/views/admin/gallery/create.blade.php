@@ -102,7 +102,7 @@
 
             <!-- Actions -->
             <div class="mt-6 flex gap-3">
-                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                <button type="submit" class="bg-blue-600 text-foreground px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
                     {{ __('Upload Image') }}
                 </button>
                 <a href="{{ route('admin.gallery.index') }}" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">

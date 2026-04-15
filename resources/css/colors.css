@@ -1,7 +1,48 @@
+/* Light Theme Color Palette */
 @theme {
-    --color-primary: #f59e0b; /* Amber 500 */
-    --color-primary-dark: #b45309; /* Amber 700 */
-    --color-primary-foreground: #ffffff;
-    --color-background: #050506;
-    --color-foreground: #f8fafc; /* slate-50 */
+    /* Primary Brand Colors - Blue */
+    --color-primary: #01194A;
+    --color-primary-50: #E3F2FD;
+    --color-primary-100: #CBE5FB;
+    --color-primary-200: #9BCEF7;
+    --color-primary-300: #6AB6F3;
+    --color-primary-400: #3A9EEF;
+    --color-primary-500: #0087CE;
+    --color-primary-600: #006CA5;
+    --color-primary-700: #00517C;
+    --color-primary-800: #003652;
+    --color-primary-900: #01194A;
+    --color-primary-foreground: #FFFFFF;
+
+    /* Secondary Color - Lighter Blue */
+    --color-secondary: #0087CE;
+    --color-secondary-foreground: #FFFFFF;
+
+    /* Accent Color - Purple */
+    --color-accent: #7800A8;
+    --color-accent-foreground: #FFFFFF;
+
+    /* Background Colors - White/Light */
+    --color-background: #FFFFFF;
+    --color-background-light: #F8F9FA;
+    --color-background-lighter: #FAFBFC;
+
+    /* Surface/Card Colors - White */
+    --color-surface: #FFFFFF;
+    --color-surface-elevated: #FFFFFF;
+    --color-surface-overlay: rgba(255, 255, 255, 0.95);
+
+    /* Text Colors - Dark */
+    --color-text: #1A1A1A;
+    --color-text-muted: #6B7280;
+    --color-text-subtle: #9CA3AF;
+    --color-text-foreground: #1A1A1A;
+
+    /* Border Colors - Light Gray */
+    --color-border: #E5E7EB;
+    --color-border-light: #F3F4F6;
+
+    /* Muted Colors */
+    --color-muted: #6B7280;
+    --color-muted-foreground: #9CA3AF;
 }

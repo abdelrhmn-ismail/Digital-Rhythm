@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Portfolio') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage your showcase projects') }}</p>
         </div>
-        <a href="{{ route('admin.portfolios.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.portfolios.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Project') }}
         </a>
@@ -36,7 +36,7 @@
             </div>
             
             <div class="flex gap-4">
-                <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                     {{ __('Filter') }}
                 </button>
                 <a href="{{ route('admin.portfolios.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 flex items-center">
@@ -63,7 +63,7 @@
                         <div class="flex-1">
                             <div class="font-bold text-gray-900 leading-tight">{{ $portfolio->title }}</div>
                             <div class="text-xs text-blue-600 font-semibold mt-1">{{ $portfolio->category }}</div>
-                            <div class="text-[10px] text-gray-400 mt-0.5 font-mono">{{ $portfolio->slug }}</div>
+                            <div class="text-[10px] text-muted mt-0.5 font-mono">{{ $portfolio->slug }}</div>
                         </div>
                     </div>
                 </td>

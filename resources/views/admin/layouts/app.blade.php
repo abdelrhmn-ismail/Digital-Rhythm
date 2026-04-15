@@ -31,7 +31,7 @@
 <body class="bg-gray-100 text-gray-900 antialiased" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <aside class="admin-sidebar w-64 min-h-screen text-white shadow-xl">
+        <aside class="admin-sidebar w-64 min-h-screen text-foreground shadow-xl">
             <div class="flex h-16 items-center justify-center border-b border-orange-700">
                 <a href="{{ route('admin.dashboard') }}" class="text-xl font-bold">Golden Bee Admin</a>
             </div>

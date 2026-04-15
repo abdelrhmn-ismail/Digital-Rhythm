@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Testimonials') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage customer testimonials and reviews') }}</p>
         </div>
-        <a href="{{ route('admin.testimonials.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.testimonials.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Testimonial') }}
         </a>
@@ -43,7 +43,7 @@
                 </select>
             </div>
             
-            <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+            <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                 {{ __('Filter') }}
             </button>
             

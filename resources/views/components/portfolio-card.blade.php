@@ -1,6 +1,6 @@
 @props(['portfolio'])
 
-<a href="{{ route('contact') }}" {{ $attributes->merge(['class' => 'group relative flex flex-col p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-primary/40 hover:bg-white/[0.04] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]']) }}>
+<a href="{{ route('contact') }}" {{ $attributes->merge(['class' => 'group relative flex flex-col p-8 rounded-3xl bg-white/[0.02] border border-black/[0.05] hover:border-primary/40 hover:bg-white/[0.04] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,135,206,0.1)]']) }}>
     <!-- Icon -->
     <div class="mb-6">
         <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
@@ -9,12 +9,12 @@
     </div>
 
     <!-- Title -->
-    <h3 class="text-base font-bold text-white uppercase tracking-wide mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
+    <h3 class="text-base font-bold text-foreground uppercase tracking-wide mb-4 group-hover:text-primary transition-colors duration-300 leading-tight">
         {{ $portfolio->title }}
     </h3>
 
     <!-- Description -->
-    <p class="text-zinc-400 font-light leading-relaxed text-sm mb-6 flex-grow">
+    <p class="text-muted font-light leading-relaxed text-sm mb-6 flex-grow">
         {{ $portfolio->description }}
     </p>
 

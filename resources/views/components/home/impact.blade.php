@@ -1,4 +1,4 @@
-<section class="py-24 md:py-32 bg-[#050506] relative overflow-hidden">
+<section class="py-24 md:py-32 bg-white relative overflow-hidden">
     <!-- Background Effects -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 blur-[160px] rounded-full"></div>
@@ -11,10 +11,10 @@
                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
                     <span class="material-icons text-3xl text-primary">calendar_today</span>
                 </div>
-                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="7">
+                <div class="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2 counter" data-target="7">
                     0+
                 </div>
-                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-500 group-hover:text-gray-600 transition-colors">
                     {{ __('YEARS OF MASTERY') }}
                 </div>
             </div>
@@ -24,10 +24,10 @@
                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
                     <span class="material-icons text-3xl text-primary">work_outline</span>
                 </div>
-                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="50">
+                <div class="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2 counter" data-target="50">
                     0+
                 </div>
-                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-500 group-hover:text-gray-600 transition-colors">
                     {{ __('GLOBAL PROJECTS') }}
                 </div>
             </div>
@@ -37,10 +37,10 @@
                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
                     <span class="material-icons text-3xl text-primary">trending_up</span>
                 </div>
-                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="150">
+                <div class="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2 counter" data-target="150">
                     0+
                 </div>
-                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-500 group-hover:text-gray-600 transition-colors">
                     {{ __('ELITE STRATEGIES') }}
                 </div>
             </div>
@@ -50,10 +50,10 @@
                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
                     <span class="material-icons text-3xl text-primary">emoji-events</span>
                 </div>
-                <div class="text-5xl md:text-7xl font-black text-gradient mb-2 counter" data-target="100" data-suffix="%">
+                <div class="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2 counter" data-target="100" data-suffix="%">
                     0%
                 </div>
-                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                <div class="text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-gray-500 group-hover:text-gray-600 transition-colors">
                     {{ __('SUCCESS RATE') }}
                 </div>
             </div>

@@ -11,7 +11,9 @@
 
 @layer base {
     body {
-        @apply bg-[#050506] text-slate-50 antialiased;
+        background-color: var(--color-background);
+        color: var(--color-text);
+        -webkit-font-smoothing: antialiased;
         font-family: 'Outfit', sans-serif;
     }
 }

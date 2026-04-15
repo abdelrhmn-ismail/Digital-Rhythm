@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Services') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage your service offerings') }}</p>
         </div>
-        <a href="{{ route('admin.services.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.services.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Service') }}
         </a>
@@ -43,7 +43,7 @@
                 </select>
             </div>
             
-            <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+            <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                 {{ __('Filter') }}
             </button>
             
@@ -69,7 +69,7 @@
                         @endif
                         <div class="flex-1">
                             <div class="font-bold text-gray-900 leading-tight">{{ $service->title }}</div>
-                            <div class="text-xs text-gray-400 mt-0.5 font-mono">{{ $service->slug }}</div>
+                            <div class="text-xs text-muted mt-0.5 font-mono">{{ $service->slug }}</div>
                             <div class="text-xs text-gray-500 mt-1 line-clamp-1">{{ Str::limit($service->description, 60) }}</div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                 <td class="px-6 py-4">
                     @if($service->price)
                         <div class="text-sm font-bold text-gray-900">{{ number_format($service->price, 0) }} {{ __('SAR') }}</div>
-                        <div class="text-[10px] uppercase tracking-wider font-bold text-gray-400">{{ $service->price_type }}</div>
+                        <div class="text-[10px] uppercase tracking-wider font-bold text-muted">{{ $service->price_type }}</div>
                     @else
                         <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">{{ __('Custom Quote') }}</span>
                     @endif
