@@ -33,7 +33,7 @@
                 data-aos="fade-up" 
                 data-aos-delay="300">
                 <span class="text-gray-900 block mb-2">{{ __('CREATIVE') }}</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block">
+                <span class="text-gradient block relative inline-block">
                     {{ __('SOLUTIONS') }}
                     <!-- Shimmer overlay -->
                     <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
@@ -412,7 +412,7 @@
 
         <!-- Headline -->
         <h2 class="text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 mb-8 leading-[0.85] tracking-tighter" data-aos="fade-up" data-aos-delay="100">
-            {{ __('READY TO') }} <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{{ __('DOMINATE?') }}</span>
+            {{ __('READY TO') }} <span class="text-gradient">{{ __('DOMINATE?') }}</span>
         </h2>
 
         <!-- Description -->
@@ -423,7 +423,7 @@
         <!-- CTA Button -->
         <div data-aos="fade-up" data-aos-delay="300">
             <a href="{{ route('contact') }}" 
-               class="group relative inline-flex items-center justify-center gap-3 min-w-[300px] bg-primary hover:bg-primary/90 text-primary-foreground font-black px-14 h-18 rounded-full text-lg shadow-[0_0_30px_rgba(0,135,206,0.3)] hover:shadow-[0_0_50px_rgba(0,135,206,0.5)] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden">
+               class="group relative inline-flex items-center justify-center gap-3 min-w-[300px] bg-primary hover:bg-primary/90 text-white font-black px-14 h-18 rounded-full text-lg shadow-[0_0_30px_rgba(0,135,206,0.3)] hover:shadow-[0_0_50px_rgba(0,135,206,0.5)] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden">
                 <span class="relative z-10">{{ __('Get Free Strategy Call') }}</span>
                 <span class="material-icons text-xl relative z-10 group-hover:translate-x-1 transition-transform">phone_in_talk</span>
                 <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>

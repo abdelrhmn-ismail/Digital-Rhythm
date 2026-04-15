@@ -11,7 +11,7 @@
                 <span class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-700">{{ __('Our Masterpieces') }}</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-black text-gray-900 uppercase leading-tight mb-8">
-                {{ __('Creative') }} <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{{ __('Gallery') }}</span>
+                {{ __('Creative') }} <span class="text-gradient">{{ __('Gallery') }}</span>
             </h1>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
                 {{ __('Explore our curated collection of digital experiences, brand identities, and creative productions that define the future of marketing.') }}
@@ -22,7 +22,7 @@
         @if($categories->count() > 0)
         <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-up" data-aos-delay="100">
             <button data-category="all" 
-                    class="gallery-filter px-6 py-2 rounded-full border border-primary bg-primary text-black font-bold text-sm transition-all hover:scale-105 active">
+                    class="gallery-filter px-6 py-2 rounded-full border border-primary bg-primary text-white font-bold text-sm transition-all hover:scale-105 active">
                 {{ __('All Works') }}
             </button>
             @foreach($categories as $category)
@@ -63,20 +63,20 @@
                     @endif
                     
                     @if($image->caption)
-                    <p class="text-gray-600 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">{{ $image->caption }}</p>
+                    <p class="text-gray-200 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">{{ $image->caption }}</p>
                     @endif
 
                     <!-- View Icon -->
                     <div class="mt-4 flex items-center gap-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span class="material-icons text-2xl">zoom_in</span>
-                        <span class="text-sm font-bold">{{ __('View') }}</span>
+                        <span class="text-sm font-bold">{{ __('View Project') }}</span>
                     </div>
                 </div>
 
                 <!-- Featured Badge -->
                 @if($image->is_featured)
                 <div class="absolute top-4 right-4">
-                    <span class="flex items-center gap-1 bg-primary/90 text-black text-xs font-bold px-3 py-1 rounded-full">
+                    <span class="flex items-center gap-1 bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full">
                         <span class="material-icons text-sm">auto_awesome</span>
                         {{ __('Featured') }}
                     </span>
@@ -97,9 +97,9 @@
         <!-- CTA Section -->
         <div class="mt-32 p-12 rounded-[40px] bg-gradient-to-br from-primary/10 to-transparent border border-gray-200 text-center relative overflow-hidden" data-aos="fade-up">
             <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6 uppercase">{{ __('Ready to create your') }} <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{{ __('masterpiece?') }}</span></h2>
+            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6 uppercase">{{ __('Ready to create your') }} <span class="text-gradient">{{ __('masterpiece?') }}</span></h2>
             <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto font-light">{{ __('Join the elite brands that have transformed their vision into global impact with Golden Bee.') }}</p>
-            <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 bg-primary text-black px-10 py-4 rounded-full font-black text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,135,206,0.5)]">
+            <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded-full font-black text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,135,206,0.5)]">
                 {{ __('Start A Project') }} <span class="material-icons">rocket_launch</span>
             </a>
         </div>
@@ -213,10 +213,10 @@ document.querySelectorAll('.gallery-filter').forEach(button => {
         
         // Update active button
         document.querySelectorAll('.gallery-filter').forEach(btn => {
-            btn.classList.remove('active', 'bg-primary', 'text-black', 'border-primary');
+            btn.classList.remove('active', 'bg-primary', 'text-white', 'border-primary');
             btn.classList.add('bg-gray-50', 'text-gray-600', 'border-gray-200');
         });
-        this.classList.add('active', 'bg-primary', 'text-black', 'border-primary');
+        this.classList.add('active', 'bg-primary', 'text-white', 'border-primary');
         this.classList.remove('bg-gray-50', 'text-gray-600', 'border-gray-200');
         
         // Filter images
@@ -236,20 +236,13 @@ document.querySelectorAll('.gallery-filter').forEach(button => {
 
 @push('styles')
 <style>
-.bg-clip-text text-transparent bg-gradient-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
 .gallery-item {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .gallery-filter.active {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    color: #000;
+    color: #fff;
     border-color: var(--color-primary);
 }
 

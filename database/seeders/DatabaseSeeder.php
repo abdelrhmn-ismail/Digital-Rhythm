@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
 
         // Seed content management data
         $this->call([
+            ColorSettingsSeeder::class,
+            GeneralSettingsSeeder::class,
             TestimonialSeeder::class,
             ServiceSeeder::class,
             PortfolioSeeder::class,

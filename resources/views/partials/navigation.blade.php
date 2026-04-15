@@ -75,7 +75,6 @@
                 </div>
                 <div class="size-1 rounded-full bg-primary shadow-[0_0_8px_rgba(0,135,206,0.5)]"></div>
             </a>
-            <a class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm disabled:opacity-50 outline-none bg-primary hover:bg-primary-400 text-white font-black rounded-full shadow-[0_0_25px_rgba(0,135,206,0.2)] transition-all hover:scale-105 overflow-hidden px-8 h-12" href="{{ route('contact') ?? '#' }}">{{ __('Get a Quote') }}</a>
         </div>
         
         <!-- Mobile Actions -->

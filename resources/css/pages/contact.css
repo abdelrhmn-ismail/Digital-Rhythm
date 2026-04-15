@@ -25,11 +25,9 @@
 .contact-hero__headline {
     font-size: clamp(3rem, 12vw, 6rem);
     font-weight: 900;
-    line-height: 0.9;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
-    gap: 0.25em;
 }
 
 .contact-hero__copy {

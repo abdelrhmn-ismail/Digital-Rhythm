@@ -131,6 +131,30 @@
             font-family: 'Material Icons', 'Material Symbols Outlined' !important;
         }
         @endif
+
+        /* Global Utilities */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-brand {
+            background: var(--color-primary);
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+
+        .btn-brand:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body class="bg-background text-foreground" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
