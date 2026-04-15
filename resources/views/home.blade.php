@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Golden Bee | Global Creative Agency'))
+@section('title', $siteTitle . ' | ' . __('Global Creative Agency'))
 
 @section('content')
 <main class="flex-grow">
@@ -14,4 +14,7 @@
     <x-home.cta />
 </main>
 @endsection
+
+
+
 

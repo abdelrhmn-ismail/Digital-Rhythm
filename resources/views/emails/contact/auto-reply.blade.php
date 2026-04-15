@@ -15,3 +15,6 @@
     <p>{{ __('- The :app Team', ['app' => config('app.name')]) }}</p>
 </body>
 </html>
+
+
+

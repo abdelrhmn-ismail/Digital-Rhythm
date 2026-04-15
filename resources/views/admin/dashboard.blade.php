@@ -6,7 +6,7 @@
 <div class="p-6">
     <!-- Welcome Header -->
     <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">{{ __('Welcome to the Golden Bee Panel') }}</h1>
+        <h1 class="text-3xl font-bold text-gray-900">{{ __('Welcome to the') }} {{ strtoupper($siteTitle) }} {{ __('Panel') }}</h1>
         <p class="text-gray-600 mt-2">{{ __('Here is an overview of your content and recent activity') }}</p>
     </div>
 
@@ -279,6 +279,9 @@
     </div>
 </div>
 @endsection
+
+
+
 
 
 

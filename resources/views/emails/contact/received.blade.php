@@ -22,3 +22,6 @@
     <p>{{ __('Manage this inquiry inside the admin panel for follow-up.') }}</p>
 </body>
 </html>
+
+
+

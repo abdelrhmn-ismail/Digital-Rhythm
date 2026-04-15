@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ __('Admin Register - Golden Bee') }}</title>
+    <title>{{ __('Admin Register') }} - {{ strtoupper($siteTitle) }}</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
         <div class="register-card rounded-xl shadow-2xl p-8">
             <!-- Logo -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-foreground">Golden Bee</h1>
+                <h1 class="text-3xl font-bold text-foreground">{{ strtoupper($siteTitle) }}</h1>
                 <p class="text-orange-100 text-sm mt-2">{{ __('Admin Registration') }}</p>
             </div>
 
@@ -121,3 +121,6 @@
     </div>
 </body>
 </html>
+
+
+

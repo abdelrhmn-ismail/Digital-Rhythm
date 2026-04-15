@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Our Services | Golden Bee'))
+@section('title', __('Our Services') . ' | ' . $siteTitle)
 @section('description', __('Explore our comprehensive digital solutions.'))
 
 @section('content')
@@ -432,3 +432,6 @@
     </div>
 </section>
 @endsection
+
+
+

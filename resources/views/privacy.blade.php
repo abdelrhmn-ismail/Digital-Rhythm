@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', __('Privacy Policy | Golden Bee Marketing'))
-@section('description', __('Privacy Policy for Golden Bee Marketing. Learn how we collect, use, and protect your personal information.'))
+@section('title', __('Privacy Policy | {{ \ }}'))
+@section('description', __('Privacy Policy for {{ \ }}. Learn how we collect, use, and protect your personal information.'))
 
 @section('content')
 <section class="pt-32 pb-20 bg-gradient-to-b from-dark to-darker">
@@ -66,3 +66,6 @@
     </div>
 </section>
 @endsection
+
+
+

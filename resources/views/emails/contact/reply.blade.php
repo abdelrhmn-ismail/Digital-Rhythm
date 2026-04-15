@@ -10,3 +10,6 @@
     <p style="margin-top: 2rem; color: #6B7280;">{{ __('Sent by :app', ['app' => config('app.name')]) }}</p>
 </body>
 </html>
+
+
+

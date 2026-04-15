@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', __('About Us | Golden Bee'))
-@section('description', __('Learn about Golden Bee Marketing Agency - Your partner in digital dominance.'))
+@section('title', __('About Us') . ' | ' . $siteTitle)
+@section('description', __('Learn about') . ' ' . $siteTitle . ' ' . __('Marketing Agency - Your partner in digital dominance.'))
 
 @section('content')
 <!-- ============================================
@@ -34,7 +34,7 @@
                 data-aos-delay="300">
                 <span class="text-gray-900 block mb-2">{{ __('WE ARE') }}</span>
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block">
-                    {{ __('GOLDEN BEE') }}
+                    {{ strtoupper($siteTitle) }}
                     <!-- Shimmer overlay -->
                     <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
                 </span>
@@ -80,10 +80,10 @@
             <!-- Left: Text -->
             <div class="space-y-8" data-aos="fade-right">
                 <p class="text-lg md:text-xl text-gray-600 font-light leading-relaxed">
-                    {{ __('Founded in the hyper-growth core of Riyadh, Golden Bee was architected to redefine digital narratives through clinical strategy and raw creativity. We don\'t just build marketing campaigns. We blueprint digital empires that communicate with intelligence and scale with purpose.') }}
+                    {{ __('Founded in the hyper-growth core of Riyadh,') }} {{ $siteTitle }} {{ __('was architected to redefine digital narratives through clinical strategy and raw creativity. We don\'t just build marketing campaigns. We blueprint digital empires that communicate with intelligence and scale with purpose.') }}
                 </p>
                 <p class="text-lg text-gray-600 font-light leading-relaxed">
-                    {{ __('At Golden Bee, we don\'t just execute marketing—we engineer comprehensive growth ecosystems. Our methodology is rooted in an aggressive pursuit of perfection, merging cutting-edge data science with unparalleled creative intuition.') }}
+                    {{ __('At') }} {{ $siteTitle }}{{ __(', we don\'t just execute marketing—we engineer comprehensive growth ecosystems. Our methodology is rooted in an aggressive pursuit of perfection, merging cutting-edge data science with unparalleled creative intuition.') }}
                 </p>
             </div>
 
@@ -392,3 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 @endpush
 @endsection
+
+
+

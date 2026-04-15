@@ -98,7 +98,7 @@
         <div class="mt-32 p-12 rounded-[40px] bg-gradient-to-br from-primary/10 to-transparent border border-gray-200 text-center relative overflow-hidden" data-aos="fade-up">
             <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
             <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6 uppercase">{{ __('Ready to create your') }} <span class="text-gradient">{{ __('masterpiece?') }}</span></h2>
-            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto font-light">{{ __('Join the elite brands that have transformed their vision into global impact with Golden Bee.') }}</p>
+            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto font-light">{{ __('Join the elite brands that have transformed their vision into global impact with') }} {{ $siteTitle }}.</p>
             <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded-full font-black text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,135,206,0.5)]">
                 {{ __('Start A Project') }} <span class="material-icons">rocket_launch</span>
             </a>
@@ -261,3 +261,6 @@ document.querySelectorAll('.gallery-filter').forEach(button => {
 @endpush
 
 @endsection
+
+
+

@@ -145,7 +145,7 @@
                     <div class="space-y-6">
                         <div>
                             <label class="block text-xs font-black text-muted uppercase tracking-widest mb-2">Meta Title (Site Name)</label>
-                            <input type="text" name="site_title" value="{{ $settings['site_title'] ?? '' }}" placeholder="Golden Bee | Creative Marketing Agency" class="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-4 focus:ring-primary/10 outline-none text-lg font-medium">
+                            <input type="text" name="site_title" value="{{ $settings['site_title'] ?? '' }}" placeholder="{{ strtoupper($siteTitle) }} | Creative Marketing Agency" class="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-xl focus:ring-4 focus:ring-primary/10 outline-none text-lg font-medium">
                         </div>
 
                         <div>
@@ -194,6 +194,9 @@
     </form>
 </div>
 @endsection
+
+
+
 
 
 

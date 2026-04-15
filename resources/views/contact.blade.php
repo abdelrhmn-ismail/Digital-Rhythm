@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', __('Contact Us | Golden Bee'))
-@section('description', __('Get in touch with Golden Bee Marketing.'))
+@section('title', __('') . ' | ' . \)
+@section('description', __('Get in touch with {{ \ }}.'))
 
 @section('content')
 <main class="contact-page">
@@ -24,3 +24,6 @@
 @push('scripts')
 <script src="{{ asset('js/pages/contact.js') }}" defer></script>
 @endpush
+
+
+

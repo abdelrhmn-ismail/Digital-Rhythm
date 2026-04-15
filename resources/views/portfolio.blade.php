@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Portfolio | Golden Bee'))
+@section('title', __('') . ' | ' . \)
 @section('description', __('View our global impact projects.'))
 
 @section('content')
@@ -137,3 +137,6 @@
     </div>
 </section>
 @endsection
+
+
+

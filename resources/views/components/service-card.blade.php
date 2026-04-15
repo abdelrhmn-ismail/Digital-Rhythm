@@ -39,3 +39,6 @@
     <!-- Hover glow effect -->
     <div class="absolute inset-0 rounded-3xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-xl"></div>
 </a>
+
+
+
