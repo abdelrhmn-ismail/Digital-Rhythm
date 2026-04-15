@@ -148,16 +148,20 @@
     </div>
 </div>
 
+@php
+    $galleryData = $galleryImages->map(function($img) {
+        return [
+            'url' => $img->image_url,
+            'title' => $img->title ?? '',
+            'caption' => $img->caption ?? '',
+            'category' => $img->category ?? ''
+        ];
+    })->values();
+@endphp
+
 @push('scripts')
 <script>
-const galleryImagesData = @json($galleryImages->map(function($img) {
-    return [
-        'url' => $img->image_url,
-        'title' => $img->title ?? '',
-        'caption' => $img->caption ?? '',
-        'category' => $img->category ?? ''
-    ];
-})->values());
+const galleryImagesData = @json($galleryData);
 
 let currentIndex = 0;
 
