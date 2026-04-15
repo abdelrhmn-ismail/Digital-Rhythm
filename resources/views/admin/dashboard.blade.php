@@ -6,7 +6,7 @@
 <div class="p-6">
     <!-- Welcome Header -->
     <div class="mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">{{ __('Welcome to the Golden Bee Admin Panel') }}</h1>
+        <h1 class="text-3xl font-bold text-gray-900">{{ __('Welcome to the Golden Bee Panel') }}</h1>
         <p class="text-gray-600 mt-2">{{ __('Here is an overview of your content and recent activity') }}</p>
     </div>
 
@@ -20,7 +20,7 @@
                     <p class="text-3xl font-bold text-gray-900 mt-2">{{ $stats['users']['total'] }}</p>
                     <p class="text-xs text-green-600 mt-1">+{{ $stats['users']['recent'] }} {{ __('this week') }}</p>
                 </div>
-                <span class="material-icons text-5xl text-blue-600">people</span>
+                <span class="material-icons text-5xl text-primary">people</span>
             </div>
         </div>
 
@@ -110,7 +110,7 @@
         </div>
 
         <!-- Quick Stats -->
-        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-sm border border-blue-100 p-6">
+        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg shadow-sm border border-primary/20 p-6">
             <h3 class="text-sm font-semibold text-gray-900 mb-4">{{ __('Quick Stats') }}</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
@@ -139,7 +139,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <a href="{{ route('admin.testimonials.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all group">
                 <div class="flex items-center gap-3">
-                    <span class="material-icons text-2xl text-blue-600 group-hover:scale-110 transition-transform">add_circle</span>
+                    <span class="material-icons text-2xl text-primary group-hover:scale-110 transition-transform">add_circle</span>
                     <div>
                         <h3 class="text-sm font-medium text-gray-900">{{ __('Add Testimonial') }}</h3>
                         <p class="text-xs text-gray-500">{{ __('Create new testimonial') }}</p>
@@ -195,7 +195,7 @@
         <div class="bg-white rounded-lg shadow-sm border border-gray-200">
             <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
                 <h2 class="text-lg font-semibold text-gray-900">{{ __('Recent Contact Messages') }}</h2>
-                <a href="{{ route('admin.contacts.index') }}" class="text-sm text-blue-600 hover:text-blue-800">{{ __('View All') }}</a>
+                <a href="{{ route('admin.contacts.index') }}" class="text-sm text-primary hover:text-blue-800">{{ __('View All') }}</a>
             </div>
             <div class="p-6">
                 @forelse($recentContacts as $message)
@@ -224,7 +224,7 @@
         <div class="bg-white rounded-lg shadow-sm border border-gray-200">
             <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
                 <h2 class="text-lg font-semibold text-gray-900">{{ __('Portfolio by Category') }}</h2>
-                <a href="{{ route('admin.portfolios.index') }}" class="text-sm text-blue-600 hover:text-blue-800">{{ __('Manage') }}</a>
+                <a href="{{ route('admin.portfolios.index') }}" class="text-sm text-primary hover:text-blue-800">{{ __('Manage') }}</a>
             </div>
             <div class="p-6">
                 @forelse($portfolioCategories as $category => $count)
@@ -252,8 +252,8 @@
     <div class="mt-8 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
         <h2 class="text-lg font-semibold text-gray-900 mb-4">{{ __('Content Management') }}</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="{{ route('admin.testimonials.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-blue-50 transition-colors group">
-                <span class="material-icons text-4xl text-blue-600 mb-2 group-hover:scale-110 transition-transform">format_quote</span>
+            <a href="{{ route('admin.testimonials.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-primary/10 transition-colors group">
+                <span class="material-icons text-4xl text-primary mb-2 group-hover:scale-110 transition-transform">format_quote</span>
                 <span class="text-sm font-medium text-gray-900">{{ __('Testimonials') }}</span>
                 <span class="text-xs text-gray-500">{{ $stats['testimonials']['total'] }} {{ __('total') }}</span>
             </a>
@@ -279,3 +279,6 @@
     </div>
 </div>
 @endsection
+
+
+

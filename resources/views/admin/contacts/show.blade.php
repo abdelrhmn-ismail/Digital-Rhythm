@@ -86,8 +86,11 @@
                     <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
             </div>
-            <button type="submit" class="w-full rounded-full bg-primary py-3 text-sm font-semibold text-foreground">{{ __('Send reply') }}</button>
+            <button type="submit" class="w-full rounded-full bg-primary py-3 text-sm font-semibold text-white">{{ __('Send reply') }}</button>
         </form>
     </div>
 </div>
 @endsection
+
+
+

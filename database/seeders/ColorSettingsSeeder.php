@@ -14,18 +14,18 @@ class ColorSettingsSeeder extends Seeder
     public function run(): void
     {
         $colors = [
-            // Primary Blue
-            ['key' => 'color_primary', 'value' => '#01194A'],
-            // Secondary Blue
+            // Primary Brand Blue (Deep Navy)
+            ['key' => 'color_primary', 'value' => '#050510'],
+            // Secondary Blue (Electric)
             ['key' => 'color_secondary', 'value' => '#0087CE'],
             // Purple Accent
             ['key' => 'color_accent', 'value' => '#7800A8'],
-            // Light Background (Off-white)
+            // Light Background
             ['key' => 'color_background', 'value' => '#F8F9FA'],
-            // White surface for cards
+            // White surface
             ['key' => 'color_surface', 'value' => '#FFFFFF'],
             // Dark Grey Text
-            ['key' => 'color_text', 'value' => '#333333'],
+            ['key' => 'color_text', 'value' => '#1a1a1a'],
         ];
 
         foreach ($colors as $color) {

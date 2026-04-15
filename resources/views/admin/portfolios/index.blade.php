@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Portfolio') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage your showcase projects') }}</p>
         </div>
-        <a href="{{ route('admin.portfolios.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.portfolios.create') }}" class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover-bg-primary transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Project') }}
         </a>
@@ -22,12 +22,12 @@
             <div class="flex-1 min-w-[200px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search projects...') }}" 
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Category') }}</label>
-                <select name="category" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select name="category" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     <option value="">{{ __('All Categories') }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category }}" {{ request('category') === $category ? 'selected' : '' }}>{{ $category }}</option>
@@ -36,7 +36,7 @@
             </div>
             
             <div class="flex gap-4">
-                <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors">
                     {{ __('Filter') }}
                 </button>
                 <a href="{{ route('admin.portfolios.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 flex items-center">
@@ -62,7 +62,7 @@
                         @endif
                         <div class="flex-1">
                             <div class="font-bold text-gray-900 leading-tight">{{ $portfolio->title }}</div>
-                            <div class="text-xs text-blue-600 font-semibold mt-1">{{ $portfolio->category }}</div>
+                            <div class="text-xs text-primary font-semibold mt-1">{{ $portfolio->category }}</div>
                             <div class="text-[10px] text-muted mt-0.5 font-mono">{{ $portfolio->slug }}</div>
                         </div>
                     </div>
@@ -123,3 +123,6 @@
     </x-admin.table>
 </div>
 @endsection
+
+
+

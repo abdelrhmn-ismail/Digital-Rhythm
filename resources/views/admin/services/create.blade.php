@@ -27,7 +27,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title (English) *</label>
                         <input type="text" name="title[en]" required
                                value="{{ old('title.en') }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                         @error('title.en')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -36,7 +36,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title (Arabic) *</label>
                         <input type="text" name="title[ar]" required dir="rtl"
                                value="{{ old('title.ar') }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
                         @error('title.ar')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -50,7 +50,7 @@
                         <input type="text" name="slug"
                                value="{{ old('slug') }}"
                                placeholder="auto-generated from English title"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                         @error('slug')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -60,7 +60,7 @@
                         <input type="text" name="icon"
                                value="{{ old('icon') }}"
                                placeholder="e.g., trending_up, code, palette"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                         @error('icon')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -73,7 +73,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description (English) *</label>
                         <textarea name="description[en]" rows="3" required
                                   placeholder="Brief description in English..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('description.en') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">{{ old('description.en') }}</textarea>
                         @error('description.en')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -82,7 +82,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description (Arabic) *</label>
                         <textarea name="description[ar]" rows="3" required dir="rtl"
                                   placeholder="وصف مختصر باللغة العربية..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('description.ar') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">{{ old('description.ar') }}</textarea>
                         @error('description.ar')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -95,13 +95,13 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Content (English)</label>
                         <textarea name="content[en]" rows="6"
                                   placeholder="Full description in English..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('content.en') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">{{ old('content.en') }}</textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Content (Arabic)</label>
                         <textarea name="content[ar]" rows="6" dir="rtl"
                                   placeholder="الوصف الكامل باللغة العربية..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('content.ar') }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">{{ old('content.ar') }}</textarea>
                     </div>
                 </div>
 
@@ -109,7 +109,7 @@
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Service Image</label>
                     <input type="file" name="image" accept="image/*"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     <p class="mt-1 text-sm text-gray-500">Optional: Service image (max 2MB)</p>
                     @error('image')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -122,7 +122,7 @@
                     <input type="text" name="icon"
                            value="{{ old('icon') }}"
                            placeholder="e.g., trending_up, code, palette"
-                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     <p class="mt-1 text-sm text-gray-500">Material Icons name</p>
                     @error('icon')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -137,14 +137,14 @@
                             <div class="flex-1 w-full">
                                 <input type="text" name="features[en][]" placeholder="Feature in English"
                                        value="{{ old('features.en.0') }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                             </div>
                             <div class="flex-1 w-full">
                                 <input type="text" name="features[ar][]" placeholder="الميزة باللغة العربية" dir="rtl"
                                        value="{{ old('features.ar.0') }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
                             </div>
-                            <button type="button" onclick="addFeature()" class="px-3 py-2 bg-blue-600 text-foreground rounded-lg hover:bg-blue-700">
+                            <button type="button" onclick="addFeature()" class="px-3 py-2 bg-primary text-white rounded-lg hover-bg-primary">
                                 <span class="material-icons">add</span>
                             </button>
                         </div>
@@ -158,12 +158,12 @@
                         <input type="number" name="price" step="0.01" min="0"
                                value="{{ old('price') }}"
                                placeholder="0.00"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Price Type *</label>
                         <select name="price_type" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                             <option value="fixed" {{ old('price_type', 'fixed') == 'fixed' ? 'selected' : '' }}>Fixed Price</option>
                             <option value="hourly" {{ old('price_type') == 'hourly' ? 'selected' : '' }}>Hourly Rate</option>
                             <option value="project" {{ old('price_type') == 'project' ? 'selected' : '' }}>Starting at (Project)</option>
@@ -172,7 +172,7 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Display Order</label>
                         <input type="number" name="order" min="0" value="{{ old('order', 0) }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                 </div>
 
@@ -180,13 +180,13 @@
                 <div class="flex items-end gap-6">
                     <label class="flex items-center">
                         <input type="checkbox" name="featured" value="1" {{ old('featured') ? 'checked' : '' }}
-                               class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                               class="mr-2 rounded border-gray-300 text-primary focus-ring-primary">
                         <span class="text-sm font-medium text-gray-700">Featured</span>
                     </label>
                     
                     <label class="flex items-center">
                         <input type="checkbox" name="active" value="1" {{ old('active', '1') ? 'checked' : '' }}
-                               class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                               class="mr-2 rounded border-gray-300 text-primary focus-ring-primary">
                         <span class="text-sm font-medium text-gray-700">Active</span>
                     </label>
                 </div>
@@ -199,7 +199,7 @@
                     Cancel
                 </a>
                 <button type="submit" 
-                        class="px-4 py-2 bg-blue-600 text-foreground rounded-lg hover:bg-blue-700 transition-colors">
+                        class="px-4 py-2 bg-primary text-white rounded-lg hover-bg-primary transition-colors">
                     Create Service
                 </button>
             </div>
@@ -216,11 +216,11 @@ function addFeature() {
     newFeature.innerHTML = `
         <div class="flex-1 w-full">
             <input type="text" name="features[en][]" placeholder="Feature in English"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
         </div>
         <div class="flex-1 w-full">
             <input type="text" name="features[ar][]" placeholder="الميزة باللغة العربية" dir="rtl"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
         </div>
         <button type="button" onclick="removeFeature(this)" class="px-3 py-2 bg-red-200 text-red-700 rounded-lg hover:bg-red-300">
             <span class="material-icons">remove</span>
@@ -234,3 +234,6 @@ function removeFeature(button) {
 }
 </script>
 @endsection
+
+
+

@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Gallery') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage your image gallery') }}</p>
         </div>
-        <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover-bg-primary transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Image') }}
         </a>
@@ -24,7 +24,7 @@
                     <p class="text-sm text-gray-600">{{ __('Total Images') }}</p>
                     <p class="text-2xl font-bold text-gray-900 mt-1">{{ $stats['total'] }}</p>
                 </div>
-                <span class="material-icons text-4xl text-blue-600">photo_library</span>
+                <span class="material-icons text-4xl text-primary">photo_library</span>
             </div>
         </div>
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
@@ -44,12 +44,12 @@
             <div class="flex-1 min-w-[200px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search images...') }}"
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
             </div>
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Category') }}</label>
-                <select name="category" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select name="category" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     <option value="">{{ __('All Categories') }}</option>
                     @foreach($categories as $category)
                         <option value="{{ $category }}" {{ request('category') === $category ? 'selected' : '' }}>{{ $category }}</option>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="flex gap-4">
-                <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors">
                     {{ __('Filter') }}
                 </button>
                 <a href="{{ route('admin.gallery.index') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 flex items-center">
@@ -98,13 +98,13 @@
                     <!-- Badges -->
                     <div class="absolute top-2 right-2 flex flex-col gap-1">
                         @if($image->is_featured)
-                            <span class="bg-yellow-400 text-foreground text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                            <span class="bg-yellow-400 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                                 <span class="material-icons text-sm">auto_awesome</span>
                                 {{ __('Featured') }}
                             </span>
                         @endif
                         @if(!$image->is_active)
-                            <span class="bg-gray-600 text-foreground text-xs px-2 py-1 rounded-full">
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded-full">
                                 {{ __('Inactive') }}
                             </span>
                         @endif
@@ -115,7 +115,7 @@
                 <div class="p-3">
                     <h3 class="font-semibold text-gray-900 text-sm truncate">{{ $image->title ?: __('Untitled') }}</h3>
                     @if($image->category)
-                        <p class="text-xs text-blue-600 font-medium mt-1">{{ $image->category }}</p>
+                        <p class="text-xs text-primary font-medium mt-1">{{ $image->category }}</p>
                     @endif
                     <div class="flex items-center justify-between mt-2 text-xs text-gray-500">
                         <span>{{ __('Order') }}: #{{ $image->order }}</span>
@@ -138,7 +138,7 @@
             <div class="col-span-full text-center py-12 bg-white rounded-lg border border-gray-200">
                 <span class="material-icons text-6xl text-gray-300">photo_library</span>
                 <p class="text-gray-500 mt-4">{{ __('No gallery images found') }}</p>
-                <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 mt-4 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700">
+                <a href="{{ route('admin.gallery.create') }}" class="inline-flex items-center gap-2 mt-4 bg-primary text-white px-4 py-2 rounded-lg hover-bg-primary">
                     <span class="material-icons">add</span>
                     {{ __('Add Your First Image') }}
                 </a>
@@ -153,3 +153,6 @@
 </div>
 
 @endsection
+
+
+

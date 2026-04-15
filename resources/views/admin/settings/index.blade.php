@@ -13,7 +13,7 @@
                 <h1 class="text-3xl font-black text-gray-900 tracking-tight">{{ __('System Settings') }}</h1>
                 <p class="text-muted text-sm">{{ __("Control your website's identity, SEO, and visual branding") }}</p>
             </div>
-            <button type="submit" class="bg-primary text-foreground px-8 py-3 rounded-xl font-black shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
+            <button type="submit" class="bg-primary text-white px-8 py-3 rounded-xl font-black shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
                 <span class="material-icons">save</span>
                 {{ __('Save All Changes') }}
             </button>
@@ -159,9 +159,9 @@
                         </div>
                     </div>
 
-                    <div class="mt-10 p-6 bg-blue-50 border border-blue-100 rounded-2xl">
+                    <div class="mt-10 p-6 bg-primary/10 border border-primary/20 rounded-2xl">
                         <div class="flex gap-4">
-                            <span class="material-icons text-blue-600">tips_and_updates</span>
+                            <span class="material-icons text-primary">tips_and_updates</span>
                             <div>
                                 <h4 class="font-bold text-blue-900 mb-1">SEO Tip</h4>
                                 <p class="text-sm text-blue-700 leading-relaxed">Keep your Meta Title under 60 characters and Description under 160 characters for best results in Google search results.</p>
@@ -194,3 +194,6 @@
     </form>
 </div>
 @endsection
+
+
+

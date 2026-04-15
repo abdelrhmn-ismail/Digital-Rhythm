@@ -1,10 +1,21 @@
+@php
+    $siteTitle = \App\Helpers\SettingsHelper::siteTitle();
+    $siteLogo = \App\Helpers\SettingsHelper::siteLogo();
+    $favicon = \App\Helpers\SettingsHelper::favicon();
+    $colorPrimary = \App\Models\Setting::get('color_primary', '#F59E0B');
+    $colorSecondary = \App\Models\Setting::get('color_secondary', '#D97706');
+    $colorBackground = \App\Models\Setting::get('color_background', '#F8F9FA');
+    $colorSurface = \App\Models\Setting::get('color_surface', '#FFFFFF');
+    $colorText = \App\Models\Setting::get('color_text', '#333333');
+    $adminSidebarBg = \App\Models\Setting::get('admin_sidebar_bg', '#1e293b'); // Default dark sidebar
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', __('Admin')) - Golden Bee</title>
+    <title>@yield('title', __('Admin')) - {{ $siteTitle }}</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,24 +27,114 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     @stack('styles')
-    @if(app()->getLocale() == 'ar')
+    
     <style>
+        :root {
+            --color-primary: {{ $colorPrimary }};
+            --color-secondary: {{ $colorSecondary }};
+            --color-background: {{ $colorBackground }};
+            --color-surface: {{ $colorSurface }};
+            --color-text: {{ $colorText }};
+            --sidebar-bg: {{ $adminSidebarBg }};
+        }
+
+        .admin-sidebar {
+            background-color: var(--sidebar-bg) !important;
+            background-image: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .admin-nav-item.active {
+            background-color: var(--color-primary) !important;
+            color: #000 !important;
+        }
+
+        .admin-nav-item:hover:not(.active) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-primary, .bg-primary {
+            background-color: #2563eb !important; /* Professional Admin Blue */
+            border-color: #1d4ed8 !important;
+            color: #ffffff !important;
+        }
+
+        .hover-bg-primary:hover {
+            background-color: #1d4ed8 !important;
+        }
+
+        .text-primary {
+            color: var(--color-primary) !important;
+        }
+
+        .border-primary {
+            border-color: var(--color-primary) !important;
+        }
+
+        .focus-ring-primary:focus {
+            --tw-ring-color: var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
+        }
+
+        /* Unified Headings and Overrides */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-text) !important;
+        }
+
+        .admin-header {
+            background-color: var(--color-surface) !important;
+            border-bottom-color: rgba(0,0,0,0.05) !important;
+        }
+
+        .admin-body {
+            background-color: var(--color-background) !important;
+        }
+
+        .admin-card, .bg-white {
+            background-color: var(--color-surface) !important;
+            color: var(--color-text) !important;
+        }
+
+        .text-gray-900:not(.admin-sidebar *), 
+        .text-gray-800:not(.admin-sidebar *), 
+        .text-gray-700:not(.admin-sidebar *),
+        .text-gray-600:not(.admin-sidebar *) {
+            color: var(--color-text) !important;
+        }
+
+        .bg-gray-50, .bg-gray-100 {
+            background-color: var(--color-background) !important;
+        }
+
+        .admin-sidebar h3 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .admin-sidebar .admin-nav-item:not(.active) {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        @if(app()->getLocale() == 'ar')
         body, h1, h2, h3, h4, h5, h6, p, span, a, div, section, article, header, footer, nav, ul, li, button, input, textarea, select, label {
             font-family: 'Alexandria', sans-serif !important;
         }
-        /* Preserve Material Icons font */
         .material-icons, .material-symbols-outlined, [class*="material-icons"], [class*="material-symbols"] {
             font-family: 'Material Icons', 'Material Symbols Outlined' !important;
         }
+        @endif
     </style>
-    @endif
 </head>
-<body class="bg-gray-100 text-gray-900 antialiased" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
+<body class="admin-body text-gray-900 antialiased" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
-        <aside class="admin-sidebar w-64 min-h-screen text-foreground shadow-xl">
-            <div class="flex h-16 items-center justify-center border-b border-orange-700">
-                <a href="{{ route('admin.dashboard') }}" class="text-xl font-bold">Golden Bee Admin</a>
+        <aside class="admin-sidebar w-64 min-h-screen text-white shadow-xl">
+            <div class="flex h-16 items-center justify-center border-b border-white/10">
+                <a href="{{ route('admin.dashboard') }}" class="text-xl font-bold flex items-center gap-2">
+                    @if($siteLogo)
+                        <img src="{{ $siteLogo }}" alt="{{ $siteTitle }}" class="h-8">
+                    @endif
+                    <span class="hidden sm:inline">{{ $siteTitle }}</span>
+                </a>
             </div>
             <nav class="mt-6">
                 <div class="px-4">
@@ -105,11 +206,11 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Header -->
-            <header class="bg-white shadow-sm border-b border-gray-200">
+            <header class="admin-header shadow-sm border-b">
                 <div class="px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between items-center h-16">
                         <div class="flex items-center">
-                            <h1 class="text-lg font-semibold text-gray-900">@yield('title', __('Dashboard'))</h1>
+                            <h1 class="text-lg font-semibold">@yield('title', __('Dashboard'))</h1>
                         </div>
                         <div class="flex items-center gap-4">
                             <a href="{{ route('home') }}" class="text-gray-500 hover:text-gray-700" title="{{ __('View Website') }}">
@@ -184,3 +285,6 @@
     @stack('scripts')
 </body>
 </html>
+
+
+

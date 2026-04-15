@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Testimonials') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage customer testimonials and reviews') }}</p>
         </div>
-        <a href="{{ route('admin.testimonials.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.testimonials.create') }}" class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover-bg-primary transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Testimonial') }}
         </a>
@@ -22,12 +22,12 @@
             <div class="flex-1 min-w-[200px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search testimonials...') }}" 
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Featured') }}</label>
-                <select name="featured" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select name="featured" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     <option value="">{{ __('All') }}</option>
                     <option value="true" {{ request('featured') === 'true' ? 'selected' : '' }}>{{ __('Featured') }}</option>
                     <option value="false" {{ request('featured') === 'false' ? 'selected' : '' }}>{{ __('Not Featured') }}</option>
@@ -36,14 +36,14 @@
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Status') }}</label>
-                <select name="active" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select name="active" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     <option value="">{{ __('All') }}</option>
                     <option value="true" {{ request('active') === 'true' ? 'selected' : '' }}>{{ __('Active') }}</option>
                     <option value="false" {{ request('active') === 'false' ? 'selected' : '' }}>{{ __('Inactive') }}</option>
                 </select>
             </div>
             
-            <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+            <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors">
                 {{ __('Filter') }}
             </button>
             
@@ -103,7 +103,7 @@
                 <td class="px-6 py-4">
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.testimonials.edit', $testimonial) }}" 
-                           class="group p-2 rounded-lg hover:bg-blue-50 text-blue-600 transition-all border border-transparent hover:border-blue-100" title="{{ __('Edit') }}">
+                           class="group p-2 rounded-lg hover:bg-primary/10 text-primary transition-all border border-transparent hover:border-primary/20" title="{{ __('Edit') }}">
                             <span class="material-icons text-lg">edit</span>
                         </a>
                         
@@ -134,3 +134,6 @@
     </x-admin.table>
 </div>
 @endsection
+
+
+

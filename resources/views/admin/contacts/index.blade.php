@@ -42,7 +42,7 @@
         </div>
         <div class="flex items-end justify-end gap-2 md:col-span-4">
             <a href="{{ route('admin.contacts.index') }}" class="rounded-lg border border-gray-200 px-4 py-2 text-sm text-gray-500">{{ __('Reset') }}</a>
-            <button type="submit" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-foreground">{{ __('Filter') }}</button>
+            <button type="submit" class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white">{{ __('Filter') }}</button>
         </div>
     </form>
 
@@ -104,3 +104,6 @@
     </x-admin.table>
 </div>
 @endsection
+
+
+

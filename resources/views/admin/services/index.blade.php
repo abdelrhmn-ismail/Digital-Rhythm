@@ -10,7 +10,7 @@
             <h1 class="text-2xl font-bold text-gray-900">{{ __('Services') }}</h1>
             <p class="text-gray-600 mt-1">{{ __('Manage your service offerings') }}</p>
         </div>
-        <a href="{{ route('admin.services.create') }}" class="inline-flex items-center gap-2 bg-blue-600 text-foreground px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+        <a href="{{ route('admin.services.create') }}" class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover-bg-primary transition-colors">
             <span class="material-icons">add</span>
             {{ __('Add Service') }}
         </a>
@@ -22,12 +22,12 @@
             <div class="flex-1 min-w-[200px]">
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Search') }}</label>
                 <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ __('Search services...') }}" 
-                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary">
             </div>
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Featured') }}</label>
-                <select name="featured" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select name="featured" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary">
                     <option value="">{{ __('All') }}</option>
                     <option value="true" {{ request('featured') === 'true' ? 'selected' : '' }}>{{ __('Featured') }}</option>
                     <option value="false" {{ request('featured') === 'false' ? 'selected' : '' }}>{{ __('Not Featured') }}</option>
@@ -36,14 +36,14 @@
             
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Status') }}</label>
-                <select name="active" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                <select name="active" class="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary">
                     <option value="">{{ __('All') }}</option>
                     <option value="true" {{ request('active') === 'true' ? 'selected' : '' }}>{{ __('Active') }}</option>
                     <option value="false" {{ request('active') === 'false' ? 'selected' : '' }}>{{ __('Inactive') }}</option>
                 </select>
             </div>
             
-            <button type="submit" class="bg-gray-600 text-foreground px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+            <button type="submit" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors">
                 {{ __('Filter') }}
             </button>
             
@@ -63,7 +63,7 @@
                             <img src="{{ $service->image_url }}" alt="{{ $service->title }}" 
                                  class="w-14 h-14 rounded-xl object-cover shadow-sm border border-gray-100">
                         @else
-                            <div class="w-14 h-14 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center border border-blue-100">
+                            <div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center border border-primary/20">
                                 <span class="material-icons">{{ $service->icon ?? 'business_center' }}</span>
                             </div>
                         @endif
@@ -79,7 +79,7 @@
                         <div class="text-sm font-bold text-gray-900">{{ number_format($service->price, 0) }} {{ __('SAR') }}</div>
                         <div class="text-[10px] uppercase tracking-wider font-bold text-muted">{{ $service->price_type }}</div>
                     @else
-                        <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-0.5 rounded">{{ __('Custom Quote') }}</span>
+                        <span class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded border border-primary/20">{{ __('Custom Quote') }}</span>
                     @endif
                 </td>
                 <td class="px-6 py-4">
@@ -127,3 +127,6 @@
     </x-admin.table>
 </div>
 @endsection
+
+
+

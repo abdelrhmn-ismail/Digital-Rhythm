@@ -25,7 +25,7 @@
                     <input type="text" name="ar" id="ar" required class="w-full px-4 py-2.5 rounded-xl border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm text-right transition-all" dir="rtl">
                 </div>
                 <div>
-                    <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-bold rounded-xl text-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors active:scale-95 shadow-sm">
+                    <button type="submit" class="w-full inline-flex justify-center items-center px-4 py-2 border border-transparent text-sm font-bold rounded-xl text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors active:scale-95 shadow-sm">
                         <span class="material-icons text-sm mr-1.5">add</span>
                         {{ __('Add') }}
                     </button>
@@ -38,7 +38,7 @@
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
             <h2 class="text-lg font-semibold text-gray-900">{{ __('Translations') }}</h2>
-            <button type="submit" form="translations-form" class="inline-flex items-center px-4 py-2.5 border border-transparent text-sm font-bold rounded-xl text-foreground bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors active:scale-95 shadow-sm">
+            <button type="submit" form="translations-form" class="inline-flex items-center px-4 py-2.5 border border-transparent text-sm font-bold rounded-xl text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors active:scale-95 shadow-sm">
                 <span class="material-icons text-sm mr-1.5">save</span>
                 {{ __('Save All') }}
             </button>
@@ -69,7 +69,7 @@
                                 <input type="text" name="ar[{{ $key }}]" value="{{ $translations['ar'][$key] ?? '' }}" class="w-full px-3 py-2 rounded-lg border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/10 text-sm text-right transition-all" dir="rtl">
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <button type="button" onclick="deleteKey('{{ $key }}')" class="w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:text-foreground hover:bg-red-600 flex items-center justify-center transition-all mx-auto active:scale-95" title="{{ __('Delete') }}">
+                                <button type="button" onclick="deleteKey('{{ $key }}')" class="w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:text-white hover:bg-red-600 flex items-center justify-center transition-all mx-auto active:scale-95" title="{{ __('Delete') }}">
                                     <span class="material-icons text-base">delete</span>
                                 </button>
                             </td>
@@ -101,3 +101,6 @@
     }
 </script>
 @endpush
+
+
+

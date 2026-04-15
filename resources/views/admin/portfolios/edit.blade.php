@@ -28,13 +28,13 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title (English) *</label>
                         <input type="text" name="title[en]" required
                                value="{{ old('title.en', $portfolio->getTranslation('title', 'en')) }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Title (Arabic) *</label>
                         <input type="text" name="title[ar]" required dir="rtl"
                                value="{{ old('title.ar', $portfolio->getTranslation('title', 'ar')) }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
                     </div>
                 </div>
 
@@ -45,11 +45,11 @@
                         <input type="text" name="slug"
                                value="{{ old('slug', $portfolio->slug) }}"
                                placeholder="auto-generated from English title"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-                        <select name="category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <select name="category" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                             @foreach($categories as $category)
                                 <option value="{{ $category }}" {{ old('category', $portfolio->category) == $category ? 'selected' : '' }}>{{ $category }}</option>
                             @endforeach
@@ -64,14 +64,14 @@
                         <input type="text" name="client[en]"
                                value="{{ old('client.en', $portfolio->getTranslation('client', 'en')) }}"
                                placeholder="e.g. Acme Corp"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Client Name (Arabic)</label>
                         <input type="text" name="client[ar]" dir="rtl"
                                value="{{ old('client.ar', $portfolio->getTranslation('client', 'ar')) }}"
                                placeholder="اسم العميل..."
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
                     </div>
                 </div>
 
@@ -81,14 +81,14 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Completion Date</label>
                         <input type="date" name="completed_date"
                                value="{{ old('completed_date', $portfolio->completed_date ? $portfolio->completed_date->format('Y-m-d') : '') }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Project URL</label>
                         <input type="url" name="project_url"
                                value="{{ old('project_url', $portfolio->project_url) }}"
                                placeholder="https://example.com"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                 </div>
 
@@ -98,13 +98,13 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description (English) *</label>
                         <textarea name="description[en]" rows="3" required
                                   placeholder="Brief description in English..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('description.en', $portfolio->getTranslation('description', 'en')) }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">{{ old('description.en', $portfolio->getTranslation('description', 'en')) }}</textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Description (Arabic) *</label>
                         <textarea name="description[ar]" rows="3" required dir="rtl"
                                   placeholder="وصف مختصر باللغة العربية..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('description.ar', $portfolio->getTranslation('description', 'ar')) }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">{{ old('description.ar', $portfolio->getTranslation('description', 'ar')) }}</textarea>
                     </div>
                 </div>
 
@@ -114,13 +114,13 @@
                         <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Content (English)</label>
                         <textarea name="content[en]" rows="6"
                                   placeholder="Full description in English..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">{{ old('content.en', $portfolio->getTranslation('content', 'en')) }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">{{ old('content.en', $portfolio->getTranslation('content', 'en')) }}</textarea>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Content (Arabic)</label>
                         <textarea name="content[ar]" rows="6" dir="rtl"
                                   placeholder="الوصف الكامل باللغة العربية..."
-                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">{{ old('content.ar', $portfolio->getTranslation('content', 'ar')) }}</textarea>
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">{{ old('content.ar', $portfolio->getTranslation('content', 'ar')) }}</textarea>
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@
                             </div>
                         @endif
                         <input type="file" name="thumbnail" accept="image/*"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                         <p class="mt-1 text-sm text-gray-500">Leave empty to keep current.</p>
                     </div>
                     <div>
@@ -147,7 +147,7 @@
                             </div>
                         @endif
                         <input type="file" name="images[]" multiple accept="image/*"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                         <p class="mt-1 text-sm text-gray-500">Uploading new images will replace all old gallery images.</p>
                     </div>
                 </div>
@@ -167,15 +167,15 @@
                                 <div class="flex-1 w-full">
                                     <input type="text" name="technologies[en][]" placeholder="Technology (English)"
                                            value="{{ $enTechs[$i] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                                 </div>
                                 <div class="flex-1 w-full">
                                     <input type="text" name="technologies[ar][]" placeholder="التقنية باللغة العربية" dir="rtl"
                                            value="{{ $arTechs[$i] ?? '' }}"
-                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
                                 </div>
                                 @if($i === 0)
-                                    <button type="button" onclick="addTechnology()" class="px-3 py-2 bg-blue-600 text-foreground rounded-lg hover:bg-blue-700">
+                                    <button type="button" onclick="addTechnology()" class="px-3 py-2 bg-primary text-white rounded-lg hover-bg-primary">
                                         <span class="material-icons">add</span>
                                     </button>
                                 @else
@@ -193,18 +193,18 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Display Order</label>
                         <input type="number" name="order" min="0" value="{{ old('order', $portfolio->order) }}"
-                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
                     </div>
                     <div class="flex items-center gap-6 pb-2">
                         <label class="flex items-center">
                             <input type="checkbox" name="featured" value="1" {{ old('featured', $portfolio->featured) ? 'checked' : '' }}
-                                   class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                   class="mr-2 rounded border-gray-300 text-primary focus-ring-primary">
                             <span class="text-sm font-medium text-gray-700">Featured</span>
                         </label>
                         
                         <label class="flex items-center">
                             <input type="checkbox" name="active" value="1" {{ old('active', $portfolio->active) ? 'checked' : '' }}
-                                   class="mr-2 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                   class="mr-2 rounded border-gray-300 text-primary focus-ring-primary">
                             <span class="text-sm font-medium text-gray-700">Active</span>
                         </label>
                     </div>
@@ -218,7 +218,7 @@
                     Cancel
                 </a>
                 <button type="submit" 
-                        class="px-4 py-2 bg-blue-600 text-foreground rounded-lg hover:bg-blue-700 transition-colors">
+                        class="px-4 py-2 bg-primary text-white rounded-lg hover-bg-primary transition-colors">
                     Update Portfolio Item
                 </button>
             </div>
@@ -234,11 +234,11 @@ function addTechnology() {
     newRow.innerHTML = `
         <div class="flex-1 w-full">
             <input type="text" name="technologies[en][]" placeholder="Technology (English)"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary">
         </div>
         <div class="flex-1 w-full">
             <input type="text" name="technologies[ar][]" placeholder="التقنية باللغة العربية" dir="rtl"
-                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
+                   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus-ring-primary focus-ring-primary text-right">
         </div>
         <button type="button" onclick="removeRow(this)" class="px-3 py-2 bg-red-200 text-red-700 rounded-lg hover:bg-red-300">
             <span class="material-icons">remove</span>
@@ -252,3 +252,6 @@ function removeRow(button) {
 }
 </script>
 @endsection
+
+
+

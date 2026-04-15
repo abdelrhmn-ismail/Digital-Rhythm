@@ -83,7 +83,7 @@ class SettingsHelper
     public static function siteLogo()
     {
         $logo = self::get('site_logo');
-        return $logo ? asset('storage/' . $logo) : asset('images/logo-white.png');
+        return $logo ? asset($logo) : asset('images/logo.png');
     }
 
     /**
@@ -93,7 +93,7 @@ class SettingsHelper
     public static function favicon()
     {
         $favicon = self::get('site_favicon');
-        return $favicon ? asset('storage/' . $favicon) : asset('images/favicon.png');
+        return $favicon ? asset($favicon) : asset('images/favicon.png');
     }
 
     /**
