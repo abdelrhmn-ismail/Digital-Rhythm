@@ -150,12 +150,14 @@
 
 @push('scripts')
 <script>
-const galleryImagesData = @json($galleryImages->map(fn($img) => [
-    'url' => $img->image_url,
-    'title' => $img->title ?? '',
-    'caption' => $img->caption ?? '',
-    'category' => $img->category ?? ''
-]).values());
+const galleryImagesData = @json($galleryImages->map(function($img) {
+    return [
+        'url' => $img->image_url,
+        'title' => $img->title ?? '',
+        'caption' => $img->caption ?? '',
+        'category' => $img->category ?? ''
+    ];
+})->values());
 
 let currentIndex = 0;
 
