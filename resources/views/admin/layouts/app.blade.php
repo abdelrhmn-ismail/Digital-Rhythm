@@ -4,6 +4,7 @@
     $favicon = \App\Helpers\SettingsHelper::favicon();
     $colorPrimary = \App\Models\Setting::get('color_primary', '#F59E0B');
     $colorSecondary = \App\Models\Setting::get('color_secondary', '#D97706');
+    $colorAccent = \App\Models\Setting::get('color_accent', '#7800A8');
     $colorBackground = \App\Models\Setting::get('color_background', '#F8F9FA');
     $colorSurface = \App\Models\Setting::get('color_surface', '#FFFFFF');
     $colorText = \App\Models\Setting::get('color_text', '#333333');
@@ -27,7 +28,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     
     <!-- TinyMCE -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{ \App\Helpers\SettingsHelper::tinymceApiKey() }}/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -38,6 +39,7 @@
         :root {
             --color-primary: {{ $colorPrimary }};
             --color-secondary: {{ $colorSecondary }};
+            --color-accent: {{ $colorAccent }};
             --color-background: {{ $colorBackground }};
             --color-surface: {{ $colorSurface }};
             --color-text: {{ $colorText }};
@@ -52,7 +54,9 @@
 
         .admin-nav-item.active {
             background-color: var(--color-primary) !important;
-            color: #000 !important;
+            color: #ffffff !important;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .admin-nav-item:hover:not(.active) {
@@ -60,17 +64,27 @@
         }
 
         .btn-primary, .bg-primary {
-            background-color: #2563eb !important; /* Professional Admin Blue */
-            border-color: #1d4ed8 !important;
+            background-color: var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
             color: #ffffff !important;
         }
 
+        .btn-primary:hover, .bg-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
         .hover-bg-primary:hover {
-            background-color: #1d4ed8 !important;
+            background-color: var(--color-primary) !important;
+            opacity: 0.9;
         }
 
         .text-primary {
             color: var(--color-primary) !important;
+        }
+
+        .text-accent {
+            color: var(--color-accent) !important;
         }
 
         .border-primary {

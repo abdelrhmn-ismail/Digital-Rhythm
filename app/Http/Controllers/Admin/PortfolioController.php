@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use App\Helpers\UploadHelper;
 
 class PortfolioController extends Controller
 {
@@ -101,19 +102,14 @@ class PortfolioController extends Controller
         $uploadedImages = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('portfolios', $imageName, 'public');
-                $uploadedImages[] = $imageName;
+                $uploadedImages[] = UploadHelper::upload($image, 'portfolios');
             }
         }
         $validated['images'] = $uploadedImages;
 
         // Handle thumbnail upload
         if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file('thumbnail');
-            $thumbnailName = time() . '_thumb.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->storeAs('portfolios', $thumbnailName, 'public');
-            $validated['thumbnail'] = $thumbnailName;
+            $validated['thumbnail'] = UploadHelper::upload($request->file('thumbnail'), 'portfolios');
         }
 
         $validated['order'] = $validated['order'] ?? 0;
@@ -189,30 +185,20 @@ class PortfolioController extends Controller
             // Delete old images if they exist
             if ($portfolio->images) {
                 foreach ($portfolio->images as $oldImage) {
-                    Storage::disk('public')->delete('portfolios/' . $oldImage);
+                    Storage::disk('public')->delete($oldImage);
                 }
             }
 
             $uploadedImages = [];
             foreach ($request->file('images') as $image) {
-                $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('portfolios', $imageName, 'public');
-                $uploadedImages[] = $imageName;
+                $uploadedImages[] = UploadHelper::upload($image, 'portfolios');
             }
             $validated['images'] = $uploadedImages;
         }
 
         // Handle thumbnail upload
         if ($request->hasFile('thumbnail')) {
-            // Delete old thumbnail if exists
-            if ($portfolio->thumbnail) {
-                Storage::disk('public')->delete('portfolios/' . $portfolio->thumbnail);
-            }
-
-            $thumbnail = $request->file('thumbnail');
-            $thumbnailName = time() . '_thumb.' . $thumbnail->getClientOriginalExtension();
-            $thumbnail->storeAs('portfolios', $thumbnailName, 'public');
-            $validated['thumbnail'] = $thumbnailName;
+            $validated['thumbnail'] = UploadHelper::upload($request->file('thumbnail'), 'portfolios', $portfolio->thumbnail);
         }
 
         $validated['order'] = $validated['order'] ?? 0;

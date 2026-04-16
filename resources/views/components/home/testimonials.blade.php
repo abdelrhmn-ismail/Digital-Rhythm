@@ -33,8 +33,8 @@
                 </div>
 
                 <div class="flex items-center gap-4 mt-auto">
-                    <div class="w-12 h-12 rounded-full border-2 border-primary/20 bg-primary/10 overflow-hidden">
-                        <img src="{{ $testimonial->image ? asset('storage/' . $testimonial->image) : 'https://ui-avatars.com/api/?name=' . urlencode($testimonial->name) . '&background=01194A&color=fff' }}" alt="{{ $testimonial->name }}" class="w-full h-full object-cover">
+                    <div class="w-12 h-12 rounded-full border-2 border-primary/20 bg-primary/10 overflow-hidden shadow-sm">
+                        <img src="{{ $testimonial->image_url }}" alt="{{ $testimonial->name }}" class="w-full h-full object-cover">
                     </div>
                     <div>
                         <h4 class="font-black text-gray-900 uppercase text-sm tracking-widest">{{ $testimonial->name }}</h4>

@@ -76,7 +76,7 @@
                     <input id="email" name="email" type="email" required
                            value="{{ old('email') }}"
                            class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01194A]/20 transition-all"
-                           placeholder="admin@goldenbee.com">
+                           placeholder="admin@digital-rhythm.com">
                     @error('email')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
                     @enderror

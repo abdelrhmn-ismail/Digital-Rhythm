@@ -55,10 +55,12 @@ class Service extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image) {
+            if (str_contains($this->image, 'services/')) {
+                return asset('storage/' . $this->image);
+            }
             return asset('storage/services/' . $this->image);
         }
         
-        // Return default service image
         return asset('images/services/service-default.png');
     }
 

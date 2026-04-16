@@ -69,7 +69,7 @@
                         @endif
                         <div class="flex-1">
                             <div class="font-semibold text-gray-900">{{ $testimonial->name }}</div>
-                            <div class="text-sm text-gray-500 mt-1 line-clamp-1 italic">"{{ Str::limit($testimonial->content, 80) }}"</div>
+                            <div class="text-sm text-gray-500 mt-1 line-clamp-1 italic">"{{ Str::limit(strip_tags($testimonial->content), 80) }}"</div>
                         </div>
                     </div>
                 </td>

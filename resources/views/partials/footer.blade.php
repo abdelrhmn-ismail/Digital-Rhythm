@@ -94,7 +94,7 @@
                         <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <span class="text-muted font-light">{{ $contactAddress }}</span>
+                        <span class="text-muted font-light">{!! $contactAddress !!}</span>
                     </div>
                     @endif
                 </div>

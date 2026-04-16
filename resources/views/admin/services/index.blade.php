@@ -70,7 +70,7 @@
                         <div class="flex-1">
                             <div class="font-bold text-gray-900 leading-tight">{{ $service->title }}</div>
                             <div class="text-xs text-muted mt-0.5 font-mono">{{ $service->slug }}</div>
-                            <div class="text-xs text-gray-500 mt-1 line-clamp-1">{{ Str::limit($service->description, 60) }}</div>
+                            <div class="text-xs text-gray-500 mt-1 line-clamp-1">{{ Str::limit(strip_tags($service->description), 60) }}</div>
                         </div>
                     </div>
                 </td>

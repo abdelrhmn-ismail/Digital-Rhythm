@@ -1,11 +1,16 @@
 @props(['service'])
 
 <a href="{{ route('services') }}" {{ $attributes->merge(['class' => 'group relative flex flex-col p-8 rounded-3xl bg-white/[0.02] border border-black/[0.05] hover:border-primary/40 hover:bg-white/[0.04] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,135,206,0.1)]']) }}>
-    <!-- Icon -->
-    <div class="mb-6">
-        <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
-            <span class="material-icons text-primary text-3xl">{{ $service->icon ?? 'business_center' }}</span>
-        </div>
+    <!-- Image/Icon -->
+    <div class="mb-6 h-14">
+        @if($service->image)
+            <img src="{{ $service->image_url }}" alt="{{ $service->title }}" 
+                 class="w-14 h-14 rounded-2xl object-cover group-hover:scale-110 transition-all duration-500 shadow-sm border border-primary/10">
+        @else
+            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
+                <span class="material-icons text-primary text-3xl">{{ $service->icon ?? 'business_center' }}</span>
+            </div>
+        @endif
     </div>
 
     <!-- Title -->

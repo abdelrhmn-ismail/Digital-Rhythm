@@ -64,6 +64,7 @@
                             <div class="font-bold text-gray-900 leading-tight">{{ $portfolio->title }}</div>
                             <div class="text-xs text-primary font-semibold mt-1">{{ $portfolio->category }}</div>
                             <div class="text-[10px] text-muted mt-0.5 font-mono">{{ $portfolio->slug }}</div>
+                            <div class="text-[10px] text-gray-500 mt-1 line-clamp-1 border-t border-gray-100 pt-1">{{ Str::limit(strip_tags($portfolio->description), 60) }}</div>
                         </div>
                     </div>
                 </td>

@@ -46,6 +46,10 @@
                             <span class="material-icons text-lg">share</span>
                             {{ __('Social Channels') }}
                         </button>
+                        <button type="button" @click="section = 'integrations'" :class="section === 'integrations' ? 'bg-primary/5 text-primary' : 'text-gray-400 hover:bg-gray-50'" class="w-full flex items-center gap-3 px-6 py-4 rounded-3xl text-xs font-black uppercase tracking-widest transition-all text-left">
+                            <span class="material-icons text-lg">extension</span>
+                            {{ __('Integrations') }}
+                        </button>
                     </nav>
                 </div>
             </div>
@@ -66,7 +70,7 @@
                                 <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-6 ml-1">{{ __('Primary Logo') }}</label>
                                 <div class="relative group aspect-video rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-8 bg-grid">
                                     @if(isset($settings['site_logo']))
-                                        <img src="{{ asset('storage/' . $settings['site_logo']) }}" class="max-h-full object-contain mix-blend-multiply">
+                                        <img src="{{ \App\Helpers\SettingsHelper::siteLogo() }}" class="max-h-full object-contain mix-blend-multiply">
                                     @else
                                         <span class="material-icons text-gray-200 text-4xl mb-2">cloud_upload</span>
                                         <span class="text-[9px] font-black text-gray-300 uppercase tracking-widest">{{ __('Upload Brand Logo') }}</span>
@@ -78,7 +82,7 @@
                                 <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-6 ml-1">{{ __('Site Favicon') }}</label>
                                 <div class="relative group w-32 h-32 rounded-[24px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4 mx-auto">
                                     @if(isset($settings['site_favicon']))
-                                        <img src="{{ asset('storage/' . $settings['site_favicon']) }}" class="w-12 h-12 object-contain">
+                                        <img src="{{ \App\Helpers\SettingsHelper::favicon() }}" class="w-12 h-12 object-contain">
                                     @else
                                         <span class="material-icons text-gray-200 text-2xl mb-1">style</span>
                                         <span class="text-[8px] font-black text-gray-300 uppercase tracking-widest">{{ __('ICO/PNG') }}</span>
@@ -161,8 +165,8 @@
                     </div>
                 </div>
 
-                <!-- Contact & Social Sections (Condensed) -->
-                <div x-show="['contact', 'social'].includes(section)" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-8">
+                <!-- Contact, Social & Integrations Sections (Condensed) -->
+                <div x-show="['contact', 'social', 'integrations'].includes(section)" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-8">
                     <!-- Contact Section -->
                     <div x-show="section === 'contact'" class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100">
                         <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-10 ml-1">
@@ -208,6 +212,27 @@
                                     </div>
                                 </div>
                             @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Integrations Section -->
+                    <div x-show="section === 'integrations'" class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[100px] -mr-10 -mt-10 pointer-events-none"></div>
+                        <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-10 ml-1">
+                            <span class="material-icons text-sm">extension</span>
+                            {{ __('Third-Party Services') }}
+                        </h3>
+                        
+                        <div class="space-y-8">
+                            <div>
+                                <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 ml-1">{{ __('TinyMCE Cloud API Key') }}</label>
+                                <input type="text" name="tinymce_api_key" value="{{ $settings['tinymce_api_key'] ?? '' }}" placeholder="d6p619q500usx6xzhjjcjffco74pupud9d9fu4vesw6famkq" 
+                                    class="w-full px-8 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm font-bold text-gray-800 shadow-inner">
+                                <p class="mt-4 text-[10px] text-gray-400 italic leading-relaxed">
+                                    {{ __('Your API key from Tiny Cloud. This enables the rich text editor across the admin panel.') }}
+                                    <a href="https://www.tiny.cloud/my-account/dashboard/" target="_blank" class="text-primary hover:underline font-bold ml-1">{{ __('Get your key here') }}</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

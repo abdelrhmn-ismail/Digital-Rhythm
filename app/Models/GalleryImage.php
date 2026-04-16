@@ -53,7 +53,10 @@ class GalleryImage extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image_path) {
-            return asset('storage/gallery/'.$this->image_path);
+            if (str_contains($this->image_path, 'gallery/')) {
+                return asset('storage/' . $this->image_path);
+            }
+            return asset('storage/gallery/' . $this->image_path);
         }
 
         return asset('images/gallery/default.png');

@@ -71,11 +71,16 @@
                data-aos="fade-up" 
                data-aos-delay="{{ ($index % 5) * 50 }}">
                 
-                <!-- Icon -->
-                <div class="mb-6">
-                    <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
-                        <span class="material-icons text-primary text-3xl">{{ $portfolio->icon ?? 'work' }}</span>
-                    </div>
+                <!-- Image/Icon -->
+                <div class="mb-6 h-14">
+                    @if($portfolio->thumbnail)
+                        <img src="{{ $portfolio->thumbnail_url }}" alt="{{ $portfolio->title }}" 
+                             class="w-14 h-14 rounded-2xl object-cover group-hover:scale-110 transition-all duration-500 shadow-sm border border-primary/10">
+                    @else
+                        <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-500">
+                            <span class="material-icons text-primary text-3xl">{{ $portfolio->icon ?? 'work' }}</span>
+                        </div>
+                    @endif
                 </div>
 
                 <!-- Title -->

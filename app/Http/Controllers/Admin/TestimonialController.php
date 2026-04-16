@@ -7,6 +7,7 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use App\Helpers\UploadHelper;
 
 class TestimonialController extends Controller
 {
@@ -63,10 +64,7 @@ class TestimonialController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('testimonials', $imageName, 'public');
-            $validated['image'] = $imageName;
+            $validated['image'] = UploadHelper::upload($request->file('image'), 'testimonials');
         }
 
         $validated['order'] = $validated['order'] ?? 0;
@@ -112,15 +110,7 @@ class TestimonialController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($testimonial->image) {
-                Storage::disk('public')->delete('testimonials/' . $testimonial->image);
-            }
-
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('testimonials', $imageName, 'public');
-            $validated['image'] = $imageName;
+            $validated['image'] = UploadHelper::upload($request->file('image'), 'testimonials', $testimonial->image);
         }
 
         $validated['order'] = $validated['order'] ?? 0;

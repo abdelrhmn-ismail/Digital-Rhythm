@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')</title>
-    <meta name="description" content="@yield('description', $siteDescription)">
+    <meta name="description" content="@yield('description', strip_tags($siteDescription))">
     <meta name="keywords" content="@yield('keywords', $siteKeywords)">
     <meta name="author" content="{{ $siteTitle }}">
     <meta name="robots" content="index, follow">
@@ -31,7 +31,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')">
-    <meta property="og:description" content="@yield('description', $siteDescription)">
+    <meta property="og:description" content="@yield('description', strip_tags($siteDescription))">
     <meta property="og:image" content="@yield('og_image', $siteLogo)">
     <meta property="og:locale" content="{{ app()->getLocale() }}">
     <meta property="og:site_name" content="{{ $siteTitle }}">
@@ -40,7 +40,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')">
-    <meta property="twitter:description" content="@yield('description', $siteDescription)">
+    <meta property="twitter:description" content="@yield('description', strip_tags($siteDescription))">
     <meta property="twitter:image" content="@yield('og_image', $siteLogo)">
 
     <!-- Canonical URL -->
@@ -55,7 +55,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet">
 
-    <!-- Goldenbee Exact Core CSS -->
+    <!-- Digital Rhythm Exact Core CSS -->
     <link rel="stylesheet" href="{{ asset('css/goldenbee-core.css') }}">
     
     <!-- Tailwind CSS -->
@@ -83,7 +83,7 @@
             --color-surface: {{ $colorSurface }};
             --color-text: {{ $colorText }};
 
-            /* Legacy Goldenbee Core Mappings (HSL) */
+            /* Legacy Digital Rhythm Core Mappings (HSL) */
             --background: {{ \App\Helpers\SettingsHelper::hexToHsl($colorBackground) }};
             --foreground: {{ \App\Helpers\SettingsHelper::hexToHsl($colorText) }};
             --primary: {{ \App\Helpers\SettingsHelper::hexToHsl($colorPrimary) }};

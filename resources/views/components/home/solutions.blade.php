@@ -23,9 +23,15 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
                     <div class="flex justify-between items-start mb-12 relative z-10">
-                        <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white shadow-[0_4px_15px_rgba(1,25,74,0.2)] group-hover:scale-110 group-hover:shadow-[0_8px_25px_rgba(1,25,74,0.3)] transition-all duration-700">
-                             <span class="material-icons text-3xl">{{ $service->icon ?? 'settings' }}</span>
-                        </div>
+                        @if($service->image)
+                            <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-lg group-hover:scale-110 group-hover:shadow-2xl transition-all duration-700">
+                                <img src="{{ $service->image_url }}" alt="{{ $service->title }}" class="w-full h-full object-cover">
+                            </div>
+                        @else
+                            <div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-white shadow-[0_4px_15px_rgba(1,25,74,0.25)] group-hover:scale-110 group-hover:shadow-2xl transition-all duration-700">
+                                 <span class="material-icons text-3xl">{{ $service->icon ?? 'settings' }}</span>
+                            </div>
+                        @endif
                         <span class="text-lg font-black text-gray-300 group-hover:text-primary transition-colors duration-700 tracking-tighter">0{{ $index + 1 }}</span>
                     </div>
 

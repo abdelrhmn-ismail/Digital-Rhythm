@@ -8,7 +8,7 @@
         [
             'icon' => 'fa-envelope',
             'title' => __('Email Access'),
-            'copy' => '<a href="mailto:info@goldenbee.sa" class="contact-info__link">info@goldenbee.sa</a>',
+            'copy' => '<a href="mailto:info@digital-rhythm.sa" class="contact-info__link">info@digital-rhythm.sa</a>',
         ],
         [
             'icon' => 'fa-phone',

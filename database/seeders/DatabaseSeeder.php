@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create admin user (only if doesn't exist)
-        if (!User::where('email', 'admin@goldenbee.com')->exists()) {
+        if (!User::where('email', 'admin@digital-rhythm.com')->exists()) {
             User::factory()->create([
                 'name' => 'Admin User',
-                'email' => 'admin@goldenbee.com',
+                'email' => 'admin@digital-rhythm.com',
                 'password' => bcrypt('password'), // password
             ]);
         }

@@ -55,7 +55,7 @@ class SettingsHelper
      */
     public static function siteTitle()
     {
-        return self::get('site_title', 'Golden Bee');
+        return self::get('site_title', 'Digital Rhythm');
     }
 
     /**
@@ -64,7 +64,7 @@ class SettingsHelper
      */
     public static function siteDescription()
     {
-        return self::get('site_description', 'Golden Bee Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.');
+        return self::get('site_description', 'Digital Rhythm Marketing Agency in Riyadh - Engineering Global Impact through bespoke branding, digital strategy, and high-performance web solutions.');
     }
 
     /**
@@ -83,7 +83,13 @@ class SettingsHelper
     public static function siteLogo()
     {
         $logo = self::get('site_logo');
-        return $logo ? asset($logo) : asset('images/logo.png');
+        if (!$logo) return asset('images/logo.png');
+        
+        if (str_starts_with($logo, 'images/')) {
+            return asset($logo);
+        }
+        
+        return asset('storage/' . $logo);
     }
 
     /**
@@ -93,7 +99,13 @@ class SettingsHelper
     public static function favicon()
     {
         $favicon = self::get('site_favicon');
-        return $favicon ? asset($favicon) : asset('images/favicon.png');
+        if (!$favicon) return asset('images/favicon.png');
+        
+        if (str_starts_with($favicon, 'images/')) {
+            return asset($favicon);
+        }
+        
+        return asset('storage/' . $favicon);
     }
 
     /**
@@ -145,6 +157,15 @@ class SettingsHelper
             'instagram' => self::socialLink('instagram'),
             'linkedin' => self::socialLink('linkedin'),
         ];
+    }
+
+    /**
+     * Get TinyMCE API key
+     * @return string
+     */
+    public static function tinymceApiKey()
+    {
+        return self::get('tinymce_api_key', 'no-api-key');
     }
 
     /**

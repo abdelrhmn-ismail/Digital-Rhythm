@@ -63,10 +63,12 @@ class Portfolio extends Model
     public function getThumbnailUrlAttribute()
     {
         if ($this->thumbnail) {
+            if (str_contains($this->thumbnail, 'portfolios/')) {
+                return asset('storage/' . $this->thumbnail);
+            }
             return asset('storage/portfolios/' . $this->thumbnail);
         }
         
-        // Return default thumbnail
         return asset('images/portfolio/portfolio-default.png');
     }
 
@@ -77,6 +79,9 @@ class Portfolio extends Model
         }
 
         return collect($this->images)->map(function ($image) {
+            if (str_contains($image, 'portfolios/')) {
+                return asset('storage/' . $image);
+            }
             return asset('storage/portfolios/' . $image);
         })->toArray();
     }

@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Helpers\UploadHelper;
 
 class GalleryImageService
 {
@@ -108,16 +109,13 @@ class GalleryImageService
 
     protected function uploadImage($image): string
     {
-        $imageName = time().'_'.Str::random(10).'.'.$image->getClientOriginalExtension();
-        $image->storeAs('gallery', $imageName, 'public');
-
-        return $imageName;
+        return UploadHelper::upload($image, 'gallery');
     }
 
     protected function deleteImage(?string $imagePath): void
     {
         if ($imagePath) {
-            Storage::disk('public')->delete('gallery/'.$imagePath);
+            Storage::disk('public')->delete($imagePath);
         }
     }
 }
