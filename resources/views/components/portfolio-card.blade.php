@@ -15,7 +15,7 @@
 
     <!-- Description -->
     <p class="text-muted font-light leading-relaxed text-sm mb-6 flex-grow">
-        {{ $portfolio->description }}
+        {!! $portfolio->description !!}
     </p>
 
     <!-- Category Badge -->

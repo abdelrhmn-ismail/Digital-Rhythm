@@ -63,332 +63,40 @@
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
-        <!-- Category 1: Branding & Identity -->
-        <div class="mb-32 last:mb-0" data-aos="fade-up">
-            <!-- Category Header -->
-            <div class="flex items-center gap-4 mb-12">
-                <div class="text-6xl md:text-8xl font-black text-gray-200">01</div>
-                <div class="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
-            </div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tight">
-                {{ __('BRANDING & IDENTITY') }}
-            </h2>
-            <p class="text-lg text-gray-600 font-light mb-12 max-w-3xl">
-                {{ __('Building distinctive visual identities that resonate with your audience and define your market presence.') }}
-            </p>
+        @php
+            $orderedCategories = [
+                'Branding & Identity' => ['num' => '01', 'desc' => __('Building distinctive visual identities that resonate with your audience and define your market presence.')],
+                'Digital Marketing' => ['num' => '02', 'desc' => __('Data-driven marketing campaigns that maximize reach, engagement, and conversions.')],
+                'Web Design & Development' => ['num' => '03', 'desc' => __('High-performance websites that blend aesthetics with seamless functionality.')],
+                'Production & Events' => ['num' => '04', 'desc' => __('Professional photography, videography, and event coverage that captures every moment.')]
+            ];
+            $groupedServices = $services->groupBy('category');
+        @endphp
 
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Logo Design -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">brush</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Logo Design') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Innovative logo designs that reflect your brand identity.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
+        @foreach($orderedCategories as $catName => $catDetails)
+            @if($groupedServices->has($catName))
+            <div class="mb-32 last:mb-0" data-aos="fade-up" id="category-{{ Str::slug($catName) }}">
+                <!-- Category Header -->
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="text-6xl md:text-8xl font-black text-gray-200">{{ $catDetails['num'] }}</div>
+                    <div class="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
                 </div>
+                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tight">
+                    {{ __($catName) }}
+                </h2>
+                <p class="text-lg text-gray-600 font-light mb-12 max-w-3xl">
+                    {{ $catDetails['desc'] }}
+                </p>
 
-                <!-- Identity Design -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">palette</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Identity Design') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Building a comprehensive visual identity that leaves a lasting impression.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Profile Design -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">description</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Profile Design') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Professional profile designs that highlight your company capabilities.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Packaging Design -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">inventory_2</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Packaging Design') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Attractive packaging designs that enhance the customer experience.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    @foreach($groupedServices->get($catName) as $service)
+                        <x-service-card :service="$service" />
+                    @endforeach
                 </div>
             </div>
-        </div>
-
-        <!-- Category 2: Digital Marketing -->
-        <div class="mb-32 last:mb-0" data-aos="fade-up">
-            <!-- Category Header -->
-            <div class="flex items-center gap-4 mb-12">
-                <div class="text-6xl md:text-8xl font-black text-gray-200">02</div>
-                <div class="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
-            </div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tight">
-                {{ __('DIGITAL MARKETING') }}
-            </h2>
-            <p class="text-lg text-gray-600 font-light mb-12 max-w-3xl">
-                {{ __('Data-driven marketing campaigns that maximize reach, engagement, and conversions.') }}
-            </p>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Social Media Management -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">share</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Social Media Management') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Professional management of social media platforms to enhance your digital presence.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Paid Marketing Campaigns -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">campaign</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Paid Marketing Campaigns') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Targeted advertising campaigns to increase sales and reach.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Professional Graphic Design -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">graphic_eq</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Professional Graphic Design') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Creative designs that support your marketing goals.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- E-Commerce Management -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">shopping_cart</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('E-Commerce Management') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Comprehensive management of your online store to ensure optimal performance.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category 3: Web Design & Development -->
-        <div class="mb-32 last:mb-0" data-aos="fade-up">
-            <!-- Category Header -->
-            <div class="flex items-center gap-4 mb-12">
-                <div class="text-6xl md:text-8xl font-black text-gray-200">03</div>
-                <div class="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
-            </div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tight">
-                {{ __('WEB DESIGN & DEVELOPMENT') }}
-            </h2>
-            <p class="text-lg text-gray-600 font-light mb-12 max-w-3xl">
-                {{ __('High-performance websites that blend aesthetics with seamless functionality.') }}
-            </p>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Custom Websites -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">web</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Custom Websites') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Design and development of custom websites that fit your unique project needs.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- CMS Websites -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">dashboard</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('CMS Websites') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Easy-to-manage websites that give you full control over your content.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- E-Commerce Websites -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">store</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('E-Commerce Websites') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Complete e-commerce solutions to increase your online sales.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Category 4: Production & Events Services -->
-        <div data-aos="fade-up">
-            <!-- Category Header -->
-            <div class="flex items-center gap-4 mb-12">
-                <div class="text-6xl md:text-8xl font-black text-gray-200">04</div>
-                <div class="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent"></div>
-            </div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4 uppercase tracking-tight">
-                {{ __('PRODUCTION & EVENTS') }}
-            </h2>
-            <p class="text-lg text-gray-600 font-light mb-12 max-w-3xl">
-                {{ __('Professional photography, videography, and event coverage that captures every moment.') }}
-            </p>
-
-            <!-- Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Product Photography -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">camera_alt</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Product Photography') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Professional photography of your products that highlights their details and appeal.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Drone Photography -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">flight</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Drone Photography') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Enchanting aerial shots that give your project a new and distinct perspective.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Event Photography -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">event</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Event Photography') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Integrated coverage of your events to document every moment of success.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-
-                <!-- Short Advertising Videos -->
-                <div class="group p-8 rounded-3xl bg-gray-50 border border-gray-200 hover:border-primary/30 hover:bg-white hover:shadow-lg transition-all duration-500 hover:-translate-y-2">
-                    <div class="mb-6">
-                        <span class="material-icons text-4xl text-primary">videocam</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
-                        {{ __('Short Advertising Videos') }}
-                    </h3>
-                    <p class="text-gray-600 font-light leading-relaxed text-sm mb-6">
-                        {{ __('Short and impactful videos that increase your audience engagement with your brand.') }}
-                    </p>
-                    <a href="{{ route('contact') }}" class="inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-3 transition-all duration-300">
-                        {{ __('EXPLORE SOLUTION') }}
-                        <span class="material-icons text-sm">arrow_forward</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </div>
 </section>
 

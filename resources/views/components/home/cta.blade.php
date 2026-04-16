@@ -15,7 +15,7 @@
         </div>
 
         <!-- Headline -->
-        <h2 class="text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 mb-8 leading-[0.85] tracking-tighter" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 mb-8 leading-normal tracking-tighter" data-aos="fade-up" data-aos-delay="100">
             {{ __('YOUR BRAND?') }}
         </h2>
 

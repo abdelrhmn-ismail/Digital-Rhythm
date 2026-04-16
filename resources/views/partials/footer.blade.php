@@ -14,7 +14,7 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
             <!-- Company Info -->
             <div class="col-span-1 md:col-span-12 lg:col-span-5">
-                <div class="flex items-center space-x-3 mb-8">
+                <div class="flex items-center gap-3 mb-8">
                     <div class="w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/30 rounded-xl flex items-center justify-center">
                         <i class="fas fa-crown text-primary text-2xl"></i>
                     </div>
@@ -23,7 +23,7 @@
                 <p class="text-muted mb-8 max-w-md font-light leading-relaxed text-lg">
                     {{ __('A creative powerhouse specialized in high-performance digital architectures and global-scale brand transformations.') }}
                 </p>
-                <div class="flex space-x-4">
+                <div class="flex gap-4">
                     @if(!empty($socialLinks['facebook']) && $socialLinks['facebook'] !== '#')
                     <a href="{{ $socialLinks['facebook'] }}" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-foreground/70 hover:text-foreground hover:bg-primary hover:border-primary transition-all duration-300 hover:-translate-y-1">
                         <i class="fab fa-facebook-f text-lg"></i>
@@ -74,7 +74,7 @@
                 <h3 class="text-sm font-bold text-foreground mb-8 tracking-[0.2em] uppercase">{{ __('CONNECT') }}</h3>
                 <div class="space-y-6">
                     @if(!empty($contactEmail))
-                    <a href="mailto:{{ $contactEmail }}" class="group flex items-center space-x-4">
+                    <a href="mailto:{{ $contactEmail }}" class="group flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-foreground transition-all duration-300">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -82,7 +82,7 @@
                     </a>
                     @endif
                     @if(!empty($contactPhone))
-                    <a href="tel:{{ str_replace(' ', '', $contactPhone) }}" class="group flex items-center space-x-4">
+                    <a href="tel:{{ str_replace(' ', '', $contactPhone) }}" class="group flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-foreground transition-all duration-300">
                             <i class="fas fa-phone"></i>
                         </div>
@@ -90,7 +90,7 @@
                     </a>
                     @endif
                     @if(!empty($contactAddress))
-                    <div class="flex items-center space-x-4">
+                    <div class="flex items-center gap-4">
                         <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
@@ -106,7 +106,7 @@
                 <p class="text-foreground/60 text-sm font-light mb-4 md:mb-0">
                     &copy; {{ date('Y') }} {{ $siteTitle }}. {{ __('ALL RIGHTS RESERVED.') }}
                 </p>
-                <div class="flex space-x-8 items-center">
+                <div class="flex gap-8 items-center">
                     <a href="#" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Privacy Policy') }}</a>
                     <a href="#" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Terms of Service') }}</a>
                     <span class="text-zinc-600 text-xs font-light hidden md:inline">|</span>

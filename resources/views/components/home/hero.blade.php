@@ -23,7 +23,7 @@
             </div>
 
             <!-- Main Headline -->
-            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.85]"
+            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-normal"
                 data-aos="fade-up"
                 data-aos-delay="300">
                 <span class="text-gray-900 block mb-2">{{ __('TRANSLATE YOUR') }}</span>

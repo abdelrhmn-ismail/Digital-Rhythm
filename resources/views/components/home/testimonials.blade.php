@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="flex-grow">
-                    <p class="text-xl text-gray-600 font-light italic leading-relaxed mb-12">"{{ $testimonial->content }}"</p>
+                    <div class="text-xl text-gray-600 font-light italic leading-relaxed mb-12">{!! $testimonial->content !!}</div>
                 </div>
 
                 <div class="flex items-center gap-4 mt-auto">

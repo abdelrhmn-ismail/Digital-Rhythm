@@ -4,83 +4,76 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Models\Translation;
+use App\Translation\DatabaseLoader;
 
 class TranslationController extends Controller
 {
-    protected $locales = ['en', 'ar'];
-
-    public function index()
+    /**
+     * Display a listing of the translations.
+     */
+    public function index(Request $request)
     {
-        $translations = [];
-        foreach ($this->locales as $locale) {
-            $path = lang_path("$locale.json");
-            if (File::exists($path)) {
-                $translations[$locale] = json_decode(File::get($path), true);
-            } else {
-                $translations[$locale] = [];
-            }
+        $query = Translation::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('key', 'like', "%{$search}%")
+                  ->orWhere('en', 'like', "%{$search}%")
+                  ->orWhere('ar', 'like', "%{$search}%");
+            });
         }
 
-        // Get all unique keys from all locales
-        $allKeys = [];
-        foreach ($translations as $locale => $keys) {
-            $allKeys = array_unique(array_merge($allKeys, array_keys($keys)));
-        }
+        $translations = $query->latest()->paginate(20)->withQueryString();
 
-        return view('admin.translations.index', compact('translations', 'allKeys'));
+        return view('admin.translations.index', compact('translations'));
     }
 
+    /**
+     * Store a newly created translation in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'key' => 'required|string',
+            'key' => 'required|string|unique:translations,key',
             'en' => 'required|string',
             'ar' => 'required|string',
         ]);
 
-        foreach ($this->locales as $locale) {
-            $path = lang_path("$locale.json");
-            $translations = File::exists($path) ? json_decode(File::get($path), true) : [];
-            $translations[$request->key] = $request->$locale;
-            File::put($path, json_encode($translations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        }
+        Translation::create($request->all());
+        DatabaseLoader::clearCache();
 
-        return redirect()->back()->with('success', __('Translations updated successfully'));
+        return redirect()->back()->with('success', __('Translation added successfully'));
     }
 
-    public function update(Request $request)
+    /**
+     * Update the specified translation in storage.
+     */
+    public function update(Request $request, Translation $translation)
     {
-        $translationsData = $request->except('_token');
+        $request->validate([
+            'en' => 'required|string',
+            'ar' => 'required|string',
+        ]);
 
-        foreach ($this->locales as $locale) {
-            $path = lang_path("$locale.json");
-            $newTranslations = [];
-            
-            if (isset($translationsData[$locale])) {
-                foreach ($translationsData[$locale] as $key => $value) {
-                    $newTranslations[$key] = $value;
-                }
-            }
+        $translation->update($request->only('en', 'ar'));
+        DatabaseLoader::clearCache();
 
-            File::put($path, json_encode($newTranslations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        if ($request->ajax()) {
+            return response()->json(['success' => true, 'message' => __('Translation updated successfully')]);
         }
 
-        return redirect()->back()->with('success', __('Translations updated successfully'));
+        return redirect()->back()->with('success', __('Translation updated successfully'));
     }
 
-    public function destroy($key)
+    /**
+     * Remove the specified translation from storage.
+     */
+    public function destroy(Translation $translation)
     {
-        foreach ($this->locales as $locale) {
-            $path = lang_path("$locale.json");
-            if (File::exists($path)) {
-                $translations = json_decode(File::get($path), true);
-                if (isset($translations[$key])) {
-                    unset($translations[$key]);
-                    File::put($path, json_encode($translations, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-                }
-            }
-        }
+        $translation->delete();
+        DatabaseLoader::clearCache();
 
         return redirect()->back()->with('success', __('Translation deleted successfully'));
     }

@@ -224,8 +224,8 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     // Translations Management
     Route::get('/translations', [TranslationController::class, 'index'])->name('translations.index');
     Route::post('/translations', [TranslationController::class, 'store'])->name('translations.store');
-    Route::put('/translations', [TranslationController::class, 'update'])->name('translations.update');
-    Route::delete('/translations/{key}', [TranslationController::class, 'destroy'])->name('translations.destroy');
+    Route::put('/translations/{translation}', [TranslationController::class, 'update'])->name('translations.update');
+    Route::delete('/translations/{translation}', [TranslationController::class, 'destroy'])->name('translations.destroy');
 });
 
 // Authentication Routes

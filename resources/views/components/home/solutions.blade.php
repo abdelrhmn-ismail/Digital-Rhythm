@@ -31,7 +31,7 @@
 
                     <div class="flex-grow relative z-10">
                         <h3 class="text-2xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors duration-500 uppercase">{{ $service->title }}</h3>
-                        <p class="text-gray-600 text-sm font-light leading-relaxed mb-10 group-hover:text-gray-700 transition-colors duration-500">{{ $service->description }}</p>
+                        <p class="text-gray-600 text-sm font-light leading-relaxed mb-10 group-hover:text-gray-700 transition-colors duration-500">{!! $service->description !!}</p>
                     </div>
 
                     <div class="flex items-center text-[10px] font-black uppercase tracking-[0.3em] text-primary mt-auto relative z-10">

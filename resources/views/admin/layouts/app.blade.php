@@ -23,6 +23,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Alexandria:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -230,13 +236,21 @@
             <!-- Page Content -->
             <main class="flex-1 p-6">
                 @if(session('success'))
-                    <div class="mb-4 rounded-lg bg-green-100 p-4 text-green-800" role="alert">
-                        {{ session('success') }}
+                    <div class="mb-6 flex items-center gap-3 rounded-2xl bg-green-50 p-4 border border-green-100 text-green-700 shadow-sm" x-data="{ show: true }" x-show="show" x-transition>
+                        <span class="material-icons text-xl">check_circle</span>
+                        <div class="flex-1 text-sm font-bold">{{ session('success') }}</div>
+                        <button @click="show = false" class="text-green-400 hover:text-green-600 transition-colors">
+                            <span class="material-icons font-bold">close</span>
+                        </button>
                     </div>
                 @endif
                 @if(session('error'))
-                    <div class="mb-4 rounded-lg bg-red-100 p-4 text-red-800" role="alert">
-                        {{ session('error') }}
+                    <div class="mb-6 flex items-center gap-3 rounded-2xl bg-red-50 p-4 border border-red-100 text-red-700 shadow-sm" x-data="{ show: true }" x-show="show" x-transition>
+                        <span class="material-icons text-xl">error_outline</span>
+                        <div class="flex-1 text-sm font-bold">{{ session('error') }}</div>
+                        <button @click="show = false" class="text-red-400 hover:text-red-600 transition-colors">
+                            <span class="material-icons font-bold">close</span>
+                        </button>
                     </div>
                 @endif
                 @yield('content')
@@ -281,6 +295,27 @@
             })
             .catch(error => console.error('Error:', error));
         }
+    </script>
+    <!-- Global TinyMCE Initialization -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof tinymce !== 'undefined') {
+                tinymce.init({
+                    selector: '.tinymce',
+                    menubar: false,
+                    plugins: 'link lists autolink code',
+                    toolbar: 'bold italic | bullist numlist | link | removeformat | code',
+                    skin: 'oxide',
+                    content_css: 'default',
+                    height: 300,
+                    setup: function (editor) {
+                        editor.on('change', function () {
+                            editor.save();
+                        });
+                    }
+                });
+            }
+        });
     </script>
     @stack('scripts')
 </body>

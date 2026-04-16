@@ -63,7 +63,7 @@
                     @endif
                     
                     @if($image->caption)
-                    <p class="text-gray-200 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">{{ $image->caption }}</p>
+                    <div class="text-gray-200 text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-2">{!! $image->caption !!}</div>
                     @endif
 
                     <!-- View Icon -->
@@ -182,7 +182,7 @@ function updateLightbox() {
     document.getElementById('lightbox-image').src = image.url;
     document.getElementById('lightbox-image').alt = image.title;
     document.getElementById('lightbox-title').textContent = image.title;
-    document.getElementById('lightbox-caption').textContent = image.caption;
+    document.getElementById('lightbox-caption').innerHTML = image.caption;
     document.getElementById('lightbox-category').textContent = image.category;
     document.getElementById('lightbox-counter').textContent = currentIndex + 1;
 }

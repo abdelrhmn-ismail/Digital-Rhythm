@@ -85,7 +85,7 @@
 
                 <!-- Description -->
                 <p class="text-gray-600 font-light leading-relaxed text-sm mb-6 flex-grow">
-                    {{ $portfolio->description }}
+                    {!! $portfolio->description !!}
                 </p>
 
                 <!-- CTA -->

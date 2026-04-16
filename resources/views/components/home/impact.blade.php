@@ -48,7 +48,7 @@
             <!-- Stat 4: Success Rate -->
             <div class="text-center group">
                 <div class="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500">
-                    <span class="material-icons text-3xl text-primary">emoji-events</span>
+                    <span class="material-icons text-3xl text-primary">emoji_events</span>
                 </div>
                 <div class="text-5xl md:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-2 counter" data-target="100" data-suffix="%">
                     0%

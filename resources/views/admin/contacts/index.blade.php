@@ -21,23 +21,23 @@
     <form method="GET" class="grid gap-4 rounded-2xl bg-white p-4 shadow-sm border border-gray-100 md:grid-cols-4">
         <div class="md:col-span-2">
             <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">{{ __('Search') }}</label>
-            <input type="text" name="search" value="{{ $filters['search'] ?? ' }}" placeholder="{{ __('Search by name, email or message') }}" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            <input type="text" name="search" value="{{ $filters['search'] ?? '' }}" placeholder="{{ __('Search by name, email or message') }}" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none" />
         </div>
         <div>
             <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">{{ __('Status') }}</label>
             <select name="status" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none">
                 <option value="">{{ __('All') }}</option>
-                <option value="unread" @selected(($filters['status'] ?? ') === 'unread')>{{ __('Unread') }}</option>
-                <option value="read" @selected(($filters['status'] ?? ') === 'read')>{{ __('Read') }}</option>
+                <option value="unread" @selected(($filters['status'] ?? '') === 'unread')>{{ __('Unread') }}</option>
+                <option value="read" @selected(($filters['status'] ?? '') === 'read')>{{ __('Read') }}</option>
             </select>
         </div>
         <div>
             <label class="text-xs font-semibold text-gray-500 uppercase tracking-wide">{{ __('Received') }}</label>
             <select name="date" class="mt-1 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:outline-none">
                 <option value="">{{ __('Anytime') }}</option>
-                <option value="today" @selected(($filters['date'] ?? ') === 'today')>{{ __('Today') }}</option>
-                <option value="week" @selected(($filters['date'] ?? ') === 'week')>{{ __('Last 7 days') }}</option>
-                <option value="month" @selected(($filters['date'] ?? ') === 'month')>{{ __('Last 30 days') }}</option>
+                <option value="today" @selected(($filters['date'] ?? '') === 'today')>{{ __('Today') }}</option>
+                <option value="week" @selected(($filters['date'] ?? '') === 'week')>{{ __('Last 7 days') }}</option>
+                <option value="month" @selected(($filters['date'] ?? '') === 'month')>{{ __('Last 30 days') }}</option>
             </select>
         </div>
         <div class="flex items-end justify-end gap-2 md:col-span-4">
