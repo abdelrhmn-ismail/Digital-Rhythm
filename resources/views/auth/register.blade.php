@@ -16,12 +16,32 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         body {
-            background: linear-gradient(135deg, #f58d0a 0%, #ea580c 100%);
+            background-color: #f8fafc;
+            background-image: radial-gradient(circle at 100% 0%, #01194A 0%, transparent 15%),
+                              radial-gradient(circle at 0% 100%, #0087CE 0%, transparent 15%);
         }
         .register-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+        .register-card input {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+        }
+        .register-card input:focus {
+            border-color: #01194A;
+            ring-color: #01194A;
+        }
+        .btn-register {
+            background: linear-gradient(135deg, #01194A 0%, #0087CE 100%);
+            color: #fff;
+        }
+        .btn-register:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
         }
     </style>
 </head>
@@ -30,8 +50,8 @@
         <div class="register-card rounded-xl shadow-2xl p-8">
             <!-- Logo -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-foreground">{{ strtoupper($siteTitle) }}</h1>
-                <p class="text-orange-100 text-sm mt-2">{{ __('Admin Registration') }}</p>
+                <h1 class="text-3xl font-black text-[#01194A] tracking-tighter">{{ strtoupper($siteTitle) }}</h1>
+                <p class="text-gray-500 text-sm mt-2 uppercase tracking-[0.2em] font-bold">{{ __('Admin Registration') }}</p>
             </div>
 
             <!-- Register Form -->
@@ -43,7 +63,7 @@
                     <label for="name" class="block text-sm font-medium text-foreground mb-2">{{ __('Full Name') }}</label>
                     <input id="name" name="name" type="text" required
                            value="{{ old('name') }}"
-                           class="w-full px-4 py-3 bg-background/10 border border-black/20 rounded-lg text-foreground placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                           class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01194A]/20 transition-all"
                            placeholder="John Doe">
                     @error('name')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -55,7 +75,7 @@
                     <label for="email" class="block text-sm font-medium text-foreground mb-2">{{ __('Email Address') }}</label>
                     <input id="email" name="email" type="email" required
                            value="{{ old('email') }}"
-                           class="w-full px-4 py-3 bg-background/10 border border-black/20 rounded-lg text-foreground placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                           class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01194A]/20 transition-all"
                            placeholder="admin@goldenbee.com">
                     @error('email')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -66,7 +86,7 @@
                 <div>
                     <label for="password" class="block text-sm font-medium text-foreground mb-2">{{ __('Password') }}</label>
                     <input id="password" name="password" type="password" required
-                           class="w-full px-4 py-3 bg-background/10 border border-black/20 rounded-lg text-foreground placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                           class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01194A]/20 transition-all"
                            placeholder="••••••••••">
                     @error('password')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -77,7 +97,7 @@
                 <div>
                     <label for="password_confirmation" class="block text-sm font-medium text-foreground mb-2">{{ __('Confirm Password') }}</label>
                     <input id="password_confirmation" name="password_confirmation" type="password" required
-                           class="w-full px-4 py-3 bg-background/10 border border-black/20 rounded-lg text-foreground placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+                           class="w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01194A]/20 transition-all"
                            placeholder="••••••••••">
                     @error('password_confirmation')
                         <p class="mt-2 text-sm text-red-200">{{ $message }}</p>
@@ -87,7 +107,7 @@
                 <!-- Submit Button -->
                 <div>
                     <button type="submit" 
-                            class="w-full flex justify-center py-3 px-4 bg-white text-orange-600 font-semibold rounded-lg hover:bg-orange-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-orange-600 transition-all">
+                            class="w-full btn-register flex justify-center py-4 px-4 font-black rounded-lg transition-all shadow-lg shadow-[#01194A]/10">
                         {{ __('Create Admin Account') }}
                     </button>
                 </div>

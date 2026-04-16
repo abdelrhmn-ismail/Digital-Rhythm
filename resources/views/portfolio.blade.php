@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('') . ' | ' . \)
+@section('title', __('Our Portfolio') . ' | ' . $siteTitle)
 @section('description', __('View our global impact projects.'))
 
 @section('content')

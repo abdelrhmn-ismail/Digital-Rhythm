@@ -2,11 +2,11 @@
     $siteTitle = \App\Helpers\SettingsHelper::siteTitle();
     $siteLogo = \App\Helpers\SettingsHelper::siteLogo();
     $favicon = \App\Helpers\SettingsHelper::favicon();
-    $colorPrimary = \App\Models\Setting::get('color_primary', '#F59E0B');
-    $colorSecondary = \App\Models\Setting::get('color_secondary', '#D97706');
-    $colorBackground = \App\Models\Setting::get('color_background', '#050506');
-    $colorText = \App\Models\Setting::get('color_text', '#F9FAFB');
-    $colorSurface = \App\Models\Setting::get('color_surface', '#0A0A0C');
+    $colorPrimary = \App\Models\Setting::get('color_primary', '#01194A');
+    $colorSecondary = \App\Models\Setting::get('color_secondary', '#0087CE');
+    $colorBackground = \App\Models\Setting::get('color_background', '#F8F9FA');
+    $colorText = \App\Models\Setting::get('color_text', '#333333');
+    $colorSurface = \App\Models\Setting::get('color_surface', '#FFFFFF');
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
@@ -33,26 +33,31 @@
             --color-text: {{ $colorText }};
         }
         body {
-            background-color: var(--color-background);
-            background-image: radial-gradient(circle at 0% 0%, var(--color-primary) 0%, transparent 20%),
-                              radial-gradient(circle at 100% 100%, var(--color-secondary) 0%, transparent 20%);
+            background-color: #f8fafc;
+            background-image: radial-gradient(circle at 100% 0%, var(--color-primary) 0%, transparent 15%),
+                              radial-gradient(circle at 0% 100%, var(--color-secondary) 0%, transparent 15%);
             color: var(--color-text);
             font-family: 'Outfit', 'Alexandria', sans-serif;
+            min-height: 100vh;
         }
         .login-card {
-            background: rgba(15, 15, 20, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
         }
         .btn-theme {
-            background-color: var(--color-primary);
-            color: #000;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .btn-theme:hover {
-            background-color: var(--color-secondary);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(1, 25, 74, 0.3);
+            filter: brightness(1.1);
         }
         .text-theme {
             color: var(--color-primary);

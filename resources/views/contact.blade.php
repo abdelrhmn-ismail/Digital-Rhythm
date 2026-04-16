@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', __('') . ' | ' . \)
-@section('description', __('Get in touch with {{ \ }}.'))
+@section('title', __('Contact Us') . ' | ' . $siteTitle)
+@section('description', __('Get in touch with') . ' ' . $siteTitle . '.')
 
 @section('content')
 <main class="contact-page">
