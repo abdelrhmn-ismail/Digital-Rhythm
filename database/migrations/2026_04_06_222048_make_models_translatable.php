@@ -81,23 +81,23 @@ return new class extends Migration
         // Reverting this is complex because we converted data to JSON. 
         // For simplicity, we just change types back, but data would be JSON strings.
         Schema::table('services', function (Blueprint $blueprint) {
-            $blueprint->string('title')->change();
+            $blueprint->text('title')->change();
             $blueprint->text('description')->change();
             $blueprint->longText('content')->change();
             $blueprint->json('features')->change();
         });
 
         Schema::table('portfolios', function (Blueprint $blueprint) {
-            $blueprint->string('title')->change();
+            $blueprint->text('title')->change();
             $blueprint->text('description')->change();
             $blueprint->longText('content')->change();
             $blueprint->json('technologies')->change();
-            $blueprint->string('client')->change();
+            $blueprint->text('client')->change();
         });
 
         Schema::table('testimonials', function (Blueprint $blueprint) {
-            $blueprint->string('position')->change();
-            $blueprint->string('company')->change();
+            $blueprint->text('position')->change();
+            $blueprint->text('company')->change();
             $blueprint->text('content')->change();
         });
     }

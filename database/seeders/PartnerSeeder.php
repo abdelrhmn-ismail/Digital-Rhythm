@@ -13,22 +13,28 @@ class PartnerSeeder extends Seeder
     public function run(): void
     {
         $partners = [
-            'Adwaa Namar', 'Olye Spa', 'Noble Smile', 'Software Art', 
-            'Strong Motors', 'ALoeVera Construction', 'Pure Health', 
-            'Fantastic Care', 'Healthy Clinics', 'Loqma Wafia', 
-            'Takadi Law', 'Sky House', 'Care Plus', 'Drr Aljazera', 
-            'Almugheb', 'Perstige', 'LioraFlower'
+            ['name' => 'Apex Systems', 'logo_path' => 'partners/logo_1.png'],
+            ['name' => 'Olye Spa', 'logo_path' => 'partners/logo_2.png'],
+            ['name' => 'Pure Health', 'logo_path' => 'partners/logo_3.png'],
+            ['name' => 'Software Art', 'logo_path' => 'partners/logo_4.png'],
+            ['name' => 'AloeVera Construction', 'logo_path' => 'partners/logo_5.png'],
+            ['name' => 'Strong Motors', 'logo_path' => 'partners/logo_6.png'],
+            ['name' => 'Green Leaf', 'logo_path' => 'partners/logo_7.png'],
+            ['name' => 'Noble Smile', 'logo_path' => 'partners/logo_8.png'],
+            ['name' => 'Nova Intelligence', 'logo_path' => 'partners/logo_9.png'],
+            ['name' => 'Timeless Watches', 'logo_path' => 'partners/logo_10.png'],
         ];
 
-        foreach ($partners as $index => $name) {
-            Partner::updateOrCreate(
-                ['name' => $name],
-                [
-                    'logo_path' => null, // Will use placeholder by default in accessor
-                    'order' => $index,
-                    'is_active' => true,
-                ]
-            );
+        // Clear existing partners to avoid duplicates if running multiple times
+        Partner::truncate();
+
+        foreach ($partners as $index => $partnerData) {
+            Partner::create([
+                'name' => $partnerData['name'],
+                'logo_path' => $partnerData['logo_path'],
+                'order' => $index + 1,
+                'is_active' => true,
+            ]);
         }
     }
 }
