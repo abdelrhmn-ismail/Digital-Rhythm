@@ -19,7 +19,7 @@
                 <h1 class="text-4xl font-black text-gray-900 tracking-tight">{{ __('Settings') }}</h1>
             </div>
             
-            <button type="submit" class="inline-flex items-center gap-3 px-10 py-5 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
+            <button type="submit" class="inline-flex items-center gap-3 px-10 py-4 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
                 <span class="material-icons text-sm">save</span>
                 {{ __('Commit Changes') }}
             </button>
@@ -306,3 +306,5 @@ document.addEventListener('DOMContentLoaded', function() {
 [x-cloak] { display: none !important; }
 </style>
 @endsection
+
+

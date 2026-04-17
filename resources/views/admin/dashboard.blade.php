@@ -52,17 +52,7 @@
             </div>
         </div>
 
-        <!-- Services -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-gray-600">{{ __('Services') }}</p>
-                    <p class="text-3xl font-bold text-gray-900 mt-2">{{ $stats['services']['total'] }}</p>
-                    <p class="text-xs text-gray-500 mt-1">{{ $stats['services']['featured'] }} {{ __('featured') }}</p>
-                </div>
-                <span class="material-icons text-5xl text-purple-600">business_center</span>
-            </div>
-        </div>
+
     </div>
 
     <!-- Secondary Stats Cards (3 columns) -->
@@ -116,13 +106,13 @@
                 <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-600">{{ __('Total Content') }}</span>
                     <span class="text-lg font-bold text-gray-900">
-                        {{ $stats['testimonials']['total'] + $stats['services']['total'] + $stats['portfolios']['total'] + $stats['gallery']['total'] }}
+                        {{ $stats['testimonials']['total'] + $stats['portfolios']['total'] + $stats['gallery']['total'] }}
                     </span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-600">{{ __('Active Content') }}</span>
                     <span class="text-lg font-bold text-green-600">
-                        {{ $stats['testimonials']['active'] + $stats['services']['active'] + $stats['portfolios']['active'] + $stats['gallery']['active'] }}
+                        {{ $stats['testimonials']['active'] + $stats['portfolios']['active'] + $stats['gallery']['active'] }}
                     </span>
                 </div>
                 <div class="flex justify-between items-center">
@@ -147,15 +137,7 @@
                 </div>
             </a>
 
-            <a href="{{ route('admin.services.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-green-300 transition-all group">
-                <div class="flex items-center gap-3">
-                    <span class="material-icons text-2xl text-green-600 group-hover:scale-110 transition-transform">add_business</span>
-                    <div>
-                        <h3 class="text-sm font-medium text-gray-900">{{ __('Add Service') }}</h3>
-                        <p class="text-xs text-gray-500">{{ __('Create new service') }}</p>
-                    </div>
-                </div>
-            </a>
+
 
             <a href="{{ route('admin.portfolios.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-yellow-300 transition-all group">
                 <div class="flex items-center gap-3">
@@ -258,11 +240,7 @@
                 <span class="text-xs text-gray-500">{{ $stats['testimonials']['total'] }} {{ __('total') }}</span>
             </a>
 
-            <a href="{{ route('admin.services.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-green-50 transition-colors group">
-                <span class="material-icons text-4xl text-green-600 mb-2 group-hover:scale-110 transition-transform">business_center</span>
-                <span class="text-sm font-medium text-gray-900">{{ __('Services') }}</span>
-                <span class="text-xs text-gray-500">{{ $stats['services']['total'] }} {{ __('total') }}</span>
-            </a>
+
 
             <a href="{{ route('admin.portfolios.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-yellow-50 transition-colors group">
                 <span class="material-icons text-4xl text-yellow-600 mb-2 group-hover:scale-110 transition-transform">work</span>

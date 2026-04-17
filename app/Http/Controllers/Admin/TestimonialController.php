@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use App\Helpers\UploadHelper;
 
 class TestimonialController extends Controller
 {
@@ -56,16 +54,13 @@ class TestimonialController extends Controller
             'content' => 'required|array',
             'content.en' => 'required|string',
             'content.ar' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'rating' => 'required|numeric|min:1|max:5',
             'featured' => 'boolean',
             'active' => 'boolean',
             'order' => 'nullable|integer|min:0',
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = UploadHelper::upload($request->file('image'), 'testimonials');
-        }
+
 
         $validated['order'] = $validated['order'] ?? 0;
         $validated['featured'] = $request->has('featured');
@@ -102,16 +97,13 @@ class TestimonialController extends Controller
             'content' => 'required|array',
             'content.en' => 'required|string',
             'content.ar' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'rating' => 'required|numeric|min:1|max:5',
             'featured' => 'boolean',
             'active' => 'boolean',
             'order' => 'nullable|integer|min:0',
         ]);
 
-        if ($request->hasFile('image')) {
-            $validated['image'] = UploadHelper::upload($request->file('image'), 'testimonials', $testimonial->image);
-        }
+
 
         $validated['order'] = $validated['order'] ?? 0;
         $validated['featured'] = $request->has('featured');
@@ -129,10 +121,7 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        // Delete image if exists
-        if ($testimonial->image) {
-            Storage::disk('public')->delete('testimonials/' . $testimonial->image);
-        }
+
 
         $testimonial->delete();
 

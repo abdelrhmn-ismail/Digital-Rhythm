@@ -18,7 +18,6 @@ class ContactMessageReceived extends Mailable
     public function build(): self
     {
         return $this->subject(__('New contact inquiry from :name', ['name' => $this->contactMessage->name]))
-            ->view('emails.contact.received')
-            ->with(['message' => $this->contactMessage]);
+            ->view('emails.contact.received');
     }
 }

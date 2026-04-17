@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Testimonial;
-use App\Models\Service;
+
 use App\Models\Portfolio;
 use App\Models\GalleryImage;
 use App\Models\ContactMessage;
@@ -27,11 +27,7 @@ class DashboardController extends Controller
                 'active' => Testimonial::where('active', true)->count(),
                 'featured' => Testimonial::where('featured', true)->count(),
             ],
-            'services' => [
-                'total' => Service::count(),
-                'active' => Service::where('active', true)->count(),
-                'featured' => Service::where('featured', true)->count(),
-            ],
+
             'portfolios' => [
                 'total' => Portfolio::count(),
                 'active' => Portfolio::where('active', true)->count(),

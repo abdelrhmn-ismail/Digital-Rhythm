@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
             ColorSettingsSeeder::class,
             GeneralSettingsSeeder::class,
             TestimonialSeeder::class,
-            ServiceContentSeeder::class,
             PortfolioSeeder::class,
             GalleryImageSeeder::class,
         ]);

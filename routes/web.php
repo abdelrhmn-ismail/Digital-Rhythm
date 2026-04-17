@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\ServiceController;
+
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -26,22 +26,12 @@ Route::get('sitemap.xml', function () {
     $pages = [
         ['loc' => route('home'), 'lastmod' => now()->toIso8601String(), 'priority' => '1.0'],
         ['loc' => route('about'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
-        ['loc' => route('services'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.9'],
         ['loc' => route('portfolio'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
         ['loc' => route('gallery'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.7'],
         ['loc' => route('contact'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.6'],
     ];
 
     // Add dynamic content
-    $services = \App\Models\Service::where('active', true)->get();
-    foreach ($services as $service) {
-        $pages[] = [
-            'loc' => route('services') . '#service-' . $service->id,
-            'lastmod' => $service->updated_at->toIso8601String(),
-            'priority' => '0.7',
-        ];
-    }
-
     $portfolios = \App\Models\Portfolio::where('active', true)->get();
     foreach ($portfolios as $portfolio) {
         $pages[] = [
@@ -72,10 +62,9 @@ Route::get('robots.txt', function () {
 
 // Home Page
 Route::get('/', function () {
-    $services = \App\Models\Service::where('active', true)->orderBy('order')->take(4)->get();
     $testimonials = \App\Models\Testimonial::where('active', true)->orderBy('order')->get();
     $portfolios = \App\Models\Portfolio::where('active', true)->where('featured', true)->orderBy('order')->get();
-    return view('home', compact('services', 'testimonials', 'portfolios'));
+    return view('home', compact('testimonials', 'portfolios'));
 })->name('home');
 
 // About Page
@@ -83,11 +72,7 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-// Services Page
-Route::get('/services', function () {
-    $services = \App\Models\Service::where('active', true)->orderBy('order')->get();
-    return view('services', compact('services'));
-})->name('services');
+
 
 // Portfolio Page
 Route::get('/portfolio', function () {
@@ -148,24 +133,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::post('testimonials/reorder', [TestimonialController::class, 'reorder'])
         ->name('testimonials.reorder');
     
-    // Services Management
-    Route::resource('services', ServiceController::class)->names([
-        'index' => 'services.index',
-        'create' => 'services.create',
-        'store' => 'services.store',
-        'edit' => 'services.edit',
-        'update' => 'services.update',
-        'destroy' => 'services.destroy',
-    ]);
-    
-    Route::post('services/{service}/toggle-featured', [ServiceController::class, 'toggleFeatured'])
-        ->name('services.toggle-featured');
-    
-    Route::post('services/{service}/toggle-active', [ServiceController::class, 'toggleActive'])
-        ->name('services.toggle-active');
-    
-    Route::post('services/reorder', [ServiceController::class, 'reorder'])
-        ->name('services.reorder');
+
     
     // Portfolios Management
     Route::resource('portfolios', PortfolioController::class)->names([

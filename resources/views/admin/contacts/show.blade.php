@@ -132,7 +132,7 @@
                         <label class="block text-[9px] font-black uppercase tracking-widest text-white/40 mb-3 ml-1">{{ __('Draft Message') }}</label>
                         <textarea name="body" class="tinymce w-full px-5 py-4 rounded-[24px] bg-white/5 border-transparent focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-xs font-medium text-white/80 leading-relaxed shadow-inner" required>{{ old('body', $contact->reply_body) }}</textarea>
                     </div>
-                    <button type="submit" class="w-full py-5 rounded-[24px] bg-primary text-white text-[10px] font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
+                    <button type="submit" class="w-full py-4 rounded-[24px] bg-primary text-white text-[10px] font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
                         {{ __('Transmit Reply') }}
                     </button>
                     <p class="text-center text-[8px] font-bold text-white/20 italic">{{ __('Response will be delivered instantly via SMTP') }}</p>
@@ -171,3 +171,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endsection
+
+

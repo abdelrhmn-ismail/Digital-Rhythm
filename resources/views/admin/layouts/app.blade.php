@@ -174,10 +174,7 @@
                             <span class="material-icons">format_quote</span>
                             {{ __('Testimonials') }}
                         </a>
-                        <a href="{{ route('admin.services.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
-                            <span class="material-icons">business_center</span>
-                            {{ __('Services') }}
-                        </a>
+
                         <a href="{{ route('admin.portfolios.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.portfolios.*') ? 'active' : '' }}">
                             <span class="material-icons">work</span>
                             {{ __('Portfolio') }}

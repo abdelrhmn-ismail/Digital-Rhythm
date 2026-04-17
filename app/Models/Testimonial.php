@@ -19,7 +19,6 @@ class Testimonial extends Model
         'position',
         'company',
         'content',
-        'image',
         'rating',
         'featured',
         'active',
@@ -48,15 +47,5 @@ class Testimonial extends Model
         return $query->orderBy('order')->orderBy('created_at', 'desc');
     }
 
-    public function getImageUrlAttribute()
-    {
-        if ($this->image) {
-            if (str_contains($this->image, 'testimonials/')) {
-                return asset('storage/' . $this->image);
-            }
-            return asset('storage/testimonials/' . $this->image);
-        }
-        
-        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
-    }
+
 }

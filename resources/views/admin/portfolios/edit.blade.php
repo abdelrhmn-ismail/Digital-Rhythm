@@ -226,10 +226,10 @@
 
                 <!-- Final Action -->
                 <div class="pt-4 flex flex-col gap-3">
-                    <button type="submit" class="w-full py-5 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
+                    <button type="submit" class="w-full py-4 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
                         {{ __('Release Project') }}
                     </button>
-                    <a href="{{ route('admin.portfolios.index') }}" class="w-full py-5 rounded-[24px] bg-white text-gray-400 text-[10px] font-black uppercase tracking-[0.3em] text-center border border-gray-100 hover:bg-gray-50 transition-all active:scale-95">
+                    <a href="{{ route('admin.portfolios.index') }}" class="w-full py-4 rounded-[24px] bg-white text-gray-400 text-[10px] font-black uppercase tracking-[0.3em] text-center border border-gray-100 hover:bg-gray-50 transition-all active:scale-95">
                         {{ __('Abort Update') }}
                     </a>
                 </div>
@@ -273,3 +273,5 @@ function previewThumbnail(event) {
 
 </script>
 @endsection
+
+

@@ -65,7 +65,7 @@
                                     {!! $translation->en ?: '<span class="italic text-gray-300">'.__('No translation').'</span>' !!}
                                 </div>
                                 <div x-show="editing" x-cloak>
-                                    <textarea id="en-{{ $translation->id }}" class="tinymce w-full px-3 py-2 rounded-xl border-gray-200 text-sm focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none">{{ $translation->en }}</textarea>
+                                    <textarea id="en-{{ $translation->id }}" class="w-full px-4 py-3 rounded-xl border-gray-200 text-sm focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none bg-gray-50/50 min-h-[100px] shadow-inner font-medium">{{ $translation->en }}</textarea>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-600 leading-relaxed text-right" dir="rtl">
@@ -73,12 +73,12 @@
                                     {!! $translation->ar ?: '<span class="italic text-gray-300">'.__('No translation').'</span>' !!}
                                 </div>
                                 <div x-show="editing" x-cloak>
-                                    <textarea id="ar-{{ $translation->id }}" class="tinymce w-full px-3 py-2 rounded-xl border-gray-200 text-sm focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all text-right outline-none font-alexandria">{{ $translation->ar }}</textarea>
+                                    <textarea id="ar-{{ $translation->id }}" class="w-full px-4 py-3 rounded-xl border-gray-200 text-sm focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all text-right outline-none bg-gray-50/50 min-h-[100px] shadow-inner font-alexandria font-medium">{{ $translation->ar }}</textarea>
                                 </div>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex items-center justify-center gap-2">
-                                    <button x-show="!editing" @click="editing = true; initTinyMCE('en-{{ $translation->id }}'); initTinyMCE('ar-{{ $translation->id }}')" class="w-9 h-9 rounded-xl flex items-center justify-center bg-gray-100 text-gray-400 hover:bg-primary/10 hover:text-primary transition-all active:scale-90" title="{{ __('Edit') }}">
+                                    <button x-show="!editing" @click="editing = true" class="w-9 h-9 rounded-xl flex items-center justify-center bg-gray-100 text-gray-400 hover:bg-primary/10 hover:text-primary transition-all active:scale-90" title="{{ __('Edit') }}">
                                         <span class="material-icons text-lg">edit_note</span>
                                     </button>
                                     
@@ -86,7 +86,7 @@
                                         <span class="material-icons text-lg">check</span>
                                     </button>
 
-                                    <button x-show="editing" @click="editing = false; destroyTinyMCE('en-{{ $translation->id }}'); destroyTinyMCE('ar-{{ $translation->id }}')" class="w-9 h-9 rounded-xl flex items-center justify-center bg-red-50 text-red-400 hover:bg-red-100 transition-all active:scale-90" title="{{ __('Cancel') }}">
+                                    <button x-show="editing" @click="editing = false" class="w-9 h-9 rounded-xl flex items-center justify-center bg-red-50 text-red-400 hover:bg-red-100 transition-all active:scale-90" title="{{ __('Cancel') }}">
                                         <span class="material-icons text-lg">close</span>
                                     </button>
 
@@ -123,15 +123,15 @@
 
 <!-- Add Translation Modal -->
 <div x-data="{ open: false }" 
-    @open-modal.window="if($event.detail === 'add-translation') { open = true; $nextTick(() => { initTinyMCE('new-en'); initTinyMCE('new-ar'); }); }" 
+    @open-modal.window="if($event.detail === 'add-translation') { open = true; }" 
     x-show="open" class="fixed inset-0 z-50 overflow-y-auto" x-cloak>
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 transition-opacity bg-gray-500/75 backdrop-blur-sm" @click="open = false"></div>
 
-        <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="inline-block overflow-hidden transition-all transform bg-white rounded-3xl shadow-xl sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+        <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="relative z-10 inline-block overflow-hidden transition-all transform bg-white rounded-3xl shadow-xl sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
             <div class="px-6 py-6 border-b border-gray-100 flex justify-between items-center">
                 <h3 class="text-xl font-bold text-gray-900">{{ __('Add New Translation') }}</h3>
-                <button @click="open = false; destroyTinyMCE('new-en'); destroyTinyMCE('new-ar');" class="text-gray-400 hover:text-gray-500 transition-colors">
+                <button @click="open = false" class="text-gray-400 hover:text-gray-500 transition-colors">
                     <span class="material-icons">close</span>
                 </button>
             </div>
@@ -146,16 +146,16 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-2">{{ __('English Translation') }}</label>
-                        <textarea id="new-en" name="en" required class="tinymce-modal w-full px-4 py-3 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm min-h-[120px]"></textarea>
+                        <textarea id="new-en" name="en" required class="w-full px-4 py-3 rounded-2xl bg-gray-50 border-gray-200 focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm min-h-[120px] shadow-inner font-medium"></textarea>
                     </div>
                     <div>
                         <label class="block text-[10px] font-black uppercase tracking-wider text-gray-400 mb-2 text-right">{{ __('Arabic Translation') }}</label>
-                        <textarea id="new-ar" name="ar" required dir="rtl" class="tinymce-modal w-full px-4 py-3 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm min-h-[120px] text-right font-alexandria"></textarea>
+                        <textarea id="new-ar" name="ar" required dir="rtl" class="w-full px-4 py-3 rounded-2xl bg-gray-50 border-gray-200 focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm min-h-[120px] text-right font-alexandria shadow-inner font-medium"></textarea>
                     </div>
                 </div>
 
                 <div class="pt-4 flex gap-3">
-                    <button type="button" @click="open = false; destroyTinyMCE('new-en'); destroyTinyMCE('new-ar');" class="flex-1 px-6 py-3 rounded-2xl text-sm font-bold text-gray-500 bg-gray-100 hover:bg-gray-200 transition-all active:scale-95">
+                    <button type="button" @click="open = false" class="flex-1 px-6 py-3 rounded-2xl text-sm font-bold text-gray-500 bg-gray-100 hover:bg-gray-200 transition-all active:scale-95">
                         {{ __('Cancel') }}
                     </button>
                     <button type="submit" class="flex-1 px-6 py-3 rounded-2xl text-sm font-bold text-white bg-primary hover:bg-primary/90 transition-all active:scale-95 shadow-lg shadow-primary/20">
@@ -176,33 +176,9 @@
 
 @push('scripts')
 <script>
-    function initTinyMCE(id) {
-        destroyTinyMCE(id);
-        tinymce.init({
-            selector: `#${id}`,
-            menubar: false,
-            plugins: 'link lists autolink',
-            toolbar: 'bold italic | bullist numlist | link | removeformat',
-            skin: 'oxide',
-            content_css: 'default',
-            height: 150,
-            setup: function (editor) {
-                editor.on('change', function () {
-                    editor.save();
-                });
-            }
-        });
-    }
-
-    function destroyTinyMCE(id) {
-        if (tinymce.get(id)) {
-            tinymce.get(id).remove();
-        }
-    }
-
     function saveTranslation(id, enId, arId) {
-        const enContent = tinymce.get(enId) ? tinymce.get(enId).getContent() : document.getElementById(enId).value;
-        const arContent = tinymce.get(arId) ? tinymce.get(arId).getContent() : document.getElementById(arId).value;
+        const enContent = document.getElementById(enId).value;
+        const arContent = document.getElementById(arId).value;
 
         fetch(`/admin/translations/${id}`, {
             method: 'PUT',

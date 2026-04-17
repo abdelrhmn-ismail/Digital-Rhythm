@@ -3,7 +3,7 @@
 @section('title', __('Create Testimonial'))
 
 @section('content')
-<div x-data="{ tab: 'en' }" class="max-w-6xl mx-auto pb-24">
+<div x-data="{ tab: 'en', currentRating: {{ old('rating', 5) }} }" class="max-w-6xl mx-auto pb-24">
     <!-- Page Header -->
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
         <div>
@@ -112,13 +112,18 @@
                     <div class="space-y-6">
                         <div>
                             <label class="block text-[10px] font-black uppercase tracking-widest text-primary/40 mb-2 ml-1">{{ __('Rating') }}</label>
-                            <div class="grid grid-cols-5 gap-2">
+                            <div class="flex items-center gap-1 bg-white/50 p-3 rounded-3xl border border-primary/5 w-fit">
                                 @for($i = 1; $i <= 5; $i++)
-                                    <label class="cursor-pointer">
-                                        <input type="radio" name="rating" value="{{ $i }}" {{ old('rating', 5) == $i ? 'checked' : '' }} class="sr-only peer">
-                                        <div class="aspect-square flex flex-col items-center justify-center rounded-xl bg-white border border-transparent peer-checked:bg-primary peer-checked:text-white transition-all shadow-sm">
-                                            <span class="text-xs font-black">{{ $i }}</span>
-                                            <span class="material-icons text-[10px]">star</span>
+                                    <label class="cursor-pointer group relative">
+                                        <input type="radio" name="rating" value="{{ $i }}" 
+                                            x-model="currentRating"
+                                            class="sr-only">
+                                        <div class="p-1 transition-all duration-300 transform group-hover:scale-125"
+                                            :class="currentRating >= {{ $i }} ? 'text-amber-400' : 'text-gray-200'">
+                                            <span class="material-icons text-3xl" 
+                                                x-text="currentRating >= {{ $i }} ? 'star' : 'star_border'">
+                                                star
+                                            </span>
                                         </div>
                                     </label>
                                 @endfor
@@ -149,26 +154,14 @@
                     </div>
                 </div>
 
-                <!-- Profile Photo -->
-                <div class="bg-white rounded-[40px] p-8 shadow-sm border border-gray-100 space-y-6 text-center">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6 ml-1">{{ __('Client Image') }}</h3>
-                    
-                    <div class="relative group aspect-square rounded-full overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4">
-                        <img id="preview-image" src="" alt="Preview" class="absolute inset-0 w-full h-full object-cover hidden">
-                        <div class="preview-placeholder">
-                            <span class="material-icons text-4xl text-gray-200 mb-2">account_circle</span>
-                            <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest block">{{ __('Upload Photo') }}</span>
-                        </div>
-                        <input type="file" name="image" onchange="previewFile(event)" class="absolute inset-0 opacity-0 cursor-pointer">
-                    </div>
-                </div>
+
 
                 <!-- Final Action -->
                 <div class="pt-4 flex flex-col gap-3">
-                    <button type="submit" class="w-full py-5 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
+                    <button type="submit" class="w-full py-4 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
                         {{ __('Deploy Testimony') }}
                     </button>
-                    <a href="{{ route('admin.testimonials.index') }}" class="w-full py-5 rounded-[24px] bg-white text-gray-400 text-[10px] font-black uppercase tracking-[0.3em] text-center border border-gray-100 hover:bg-gray-50 transition-all active:scale-95">
+                    <a href="{{ route('admin.testimonials.index') }}" class="w-full py-4 rounded-[24px] bg-white text-gray-400 text-[10px] font-black uppercase tracking-[0.3em] text-center border border-gray-100 hover:bg-gray-50 transition-all active:scale-95">
                         {{ __('Cancel Creation') }}
                     </a>
                 </div>
@@ -178,13 +171,7 @@
 </div>
 
 <script>
-function previewFile(event) {
-    const output = document.getElementById('preview-image');
-    const placeholder = document.querySelector('.preview-placeholder');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.classList.remove('hidden');
-    placeholder.classList.add('hidden');
-}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     tinymce.init({

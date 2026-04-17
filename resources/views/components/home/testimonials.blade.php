@@ -33,9 +33,7 @@
                 </div>
 
                 <div class="flex items-center gap-4 mt-auto">
-                    <div class="w-12 h-12 rounded-full border-2 border-primary/20 bg-primary/10 overflow-hidden shadow-sm">
-                        <img src="{{ $testimonial->image_url }}" alt="{{ $testimonial->name }}" class="w-full h-full object-cover">
-                    </div>
+
                     <div>
                         <h4 class="font-black text-gray-900 uppercase text-sm tracking-widest">{{ $testimonial->name }}</h4>
                         <p class="text-primary text-[10px] font-black uppercase tracking-widest">{{ $testimonial->position }} <span class="text-gray-400">•</span> {{ $testimonial->company }}</p>

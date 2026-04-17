@@ -20,7 +20,6 @@ class ContactMessageReplyMail extends Mailable
         $subject = $this->contactMessage->reply_subject ?? __('Response from :app', ['app' => config('app.name')]);
 
         return $this->subject($subject)
-            ->view('emails.contact.reply')
-            ->with(['message' => $this->contactMessage]);
+            ->view('emails.contact.reply');
     }
 }

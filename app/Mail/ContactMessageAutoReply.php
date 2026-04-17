@@ -18,7 +18,6 @@ class ContactMessageAutoReply extends Mailable
     public function build(): self
     {
         return $this->subject(__('We received your message at :app', ['app' => config('app.name')]))
-            ->view('emails.contact.auto-reply')
-            ->with(['message' => $this->contactMessage]);
+            ->view('emails.contact.auto-reply');
     }
 }

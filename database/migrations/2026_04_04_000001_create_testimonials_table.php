@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('position')->nullable();
             $table->string('company')->nullable();
             $table->text('content');
-            $table->string('image')->nullable();
             $table->decimal('rating', 2, 1)->default(5.0);
             $table->boolean('featured')->default(false);
             $table->boolean('active')->default(true);

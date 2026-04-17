@@ -47,16 +47,7 @@
                 </div>
             </div>
             
-            <!-- Services -->
-            <div class="col-span-1 md:col-span-4 lg:col-span-2">
-                <h3 class="text-sm font-bold text-foreground mb-8 tracking-[0.2em] uppercase">{{ __('Services') }}</h3>
-                <ul class="space-y-4 font-light text-muted">
-                    <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Digital Marketing') }}</a></li>
-                    <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Web Development') }}</a></li>
-                    <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Media Production') }}</a></li>
-                    <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Brand Identity') }}</a></li>
-                </ul>
-            </div>
+
             
             <!-- Agency -->
             <div class="col-span-1 md:col-span-4 lg:col-span-2">
