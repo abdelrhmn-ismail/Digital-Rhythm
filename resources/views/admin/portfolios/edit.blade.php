@@ -187,21 +187,14 @@
                 </div>
 
                 <!-- Main Thumbnail -->
-                <div class="bg-white rounded-[40px] p-8 shadow-sm border border-gray-100 space-y-6">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6 ml-1">{{ __('Project Hero') }}</h3>
-                    
-                    <div class="relative group aspect-square rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4">
-                        @if($portfolio->thumbnail)
-                            <img id="preview-thumbnail" src="{{ $portfolio->thumbnail_url }}" alt="Preview" class="absolute inset-0 w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                                <span class="material-icons text-white text-3xl">cloud_upload</span>
-                            </div>
-                        @else
-                            <span class="material-icons text-4xl text-gray-200 mb-2">add_photo_alternate</span>
-                            <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest">{{ __('Upload Hero') }}</span>
-                        @endif
-                        <input type="file" name="thumbnail" onchange="previewThumbnail(event)" class="absolute inset-0 opacity-0 cursor-pointer">
-                    </div>
+                <div class="bg-white rounded-[40px] p-8 shadow-sm border border-gray-100">
+                    <x-admin.image-upload 
+                        name="thumbnail"
+                        :value="$portfolio->thumbnail_url"
+                        :label="__('Project Hero')"
+                        :placeholder="__('Change Hero Image')"
+                        aspect="aspect-square"
+                    />
                 </div>
 
                 <!-- Gallery Selection -->
@@ -261,15 +254,7 @@ function addTech() {
     container.appendChild(newTech);
 }
 
-function previewThumbnail(event) {
-    const output = document.getElementById('preview-thumbnail') || document.createElement('img');
-    if (!output.id) {
-        output.id = 'preview-thumbnail';
-        output.className = 'absolute inset-0 w-full h-full object-cover';
-        event.target.parentElement.appendChild(output);
-    }
-    output.src = URL.createObjectURL(event.target.files[0]);
-}
+
 
 </script>
 @endsection

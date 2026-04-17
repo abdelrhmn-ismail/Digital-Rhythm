@@ -79,21 +79,14 @@
                 </div>
 
                 <!-- Visual Asset -->
-                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100 space-y-6">
-                    <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6 ml-1">
-                        <span class="material-icons text-sm">file_upload</span>
-                        {{ __('Upload Image') }}
-                    </h3>
-                    
-                    <div class="relative group aspect-video rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4">
-                        <img id="preview-image" src="" alt="Preview" class="absolute inset-0 w-full h-full object-contain hidden">
-                        <div id="upload-placeholder" class="flex flex-col items-center justify-center text-center">
-                            <span class="material-icons text-4xl text-gray-200 mb-2">add_a_photo</span>
-                            <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest block">{{ __('Click to Upload Asset') }}</span>
-                            <p class="text-[9px] text-gray-300 mt-1 italic">{{ __('Max size: 5MB') }}</p>
-                        </div>
-                        <input type="file" name="image" required onchange="previewFile(event)" class="absolute inset-0 opacity-0 cursor-pointer">
-                    </div>
+                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100">
+                    <x-admin.image-upload 
+                        name="image"
+                        :label="__('Upload Visual Asset')"
+                        :placeholder="__('Click to Upload Asset')"
+                        aspect="aspect-video"
+                        required="true"
+                    />
                 </div>
             </div>
 
@@ -158,13 +151,7 @@
 </div>
 
 <script>
-function previewFile(event) {
-    const output = document.getElementById('preview-image');
-    const placeholder = document.getElementById('upload-placeholder');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.classList.remove('hidden');
-    placeholder.classList.add('hidden');
-}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     tinymce.init({

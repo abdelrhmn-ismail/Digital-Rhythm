@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TestimonialController;
 
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
@@ -64,7 +65,8 @@ Route::get('robots.txt', function () {
 Route::get('/', function () {
     $testimonials = \App\Models\Testimonial::where('active', true)->orderBy('order')->get();
     $portfolios = \App\Models\Portfolio::where('active', true)->where('featured', true)->orderBy('order')->get();
-    return view('home', compact('testimonials', 'portfolios'));
+    $partners = \App\Models\Partner::where('is_active', true)->orderBy('order')->get();
+    return view('home', compact('testimonials', 'portfolios', 'partners'));
 })->name('home');
 
 // About Page
@@ -153,6 +155,22 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     
     Route::post('portfolios/reorder', [PortfolioController::class, 'reorder'])
         ->name('portfolios.reorder');
+
+    // Partners Management
+    Route::resource('partners', PartnerController::class)->names([
+        'index' => 'partners.index',
+        'create' => 'partners.create',
+        'store' => 'partners.store',
+        'edit' => 'partners.edit',
+        'update' => 'partners.update',
+        'destroy' => 'partners.destroy',
+    ]);
+
+    Route::post('partners/{partner}/toggle-active', [PartnerController::class, 'toggleActive'])
+        ->name('partners.toggle-active');
+
+    Route::post('partners/reorder', [PartnerController::class, 'reorder'])
+        ->name('partners.reorder');
 
     // Gallery Management
     Route::resource('gallery', GalleryImageController::class)->names([

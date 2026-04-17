@@ -67,28 +67,23 @@
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                             <div>
-                                <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-6 ml-1">{{ __('Primary Logo') }}</label>
-                                <div class="relative group aspect-video rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-8 bg-grid">
-                                    @if(isset($settings['site_logo']))
-                                        <img src="{{ \App\Helpers\SettingsHelper::siteLogo() }}" class="max-h-full object-contain mix-blend-multiply">
-                                    @else
-                                        <span class="material-icons text-gray-200 text-4xl mb-2">cloud_upload</span>
-                                        <span class="text-[9px] font-black text-gray-300 uppercase tracking-widest">{{ __('Upload Brand Logo') }}</span>
-                                    @endif
-                                    <input type="file" name="logo" class="absolute inset-0 opacity-0 cursor-pointer">
-                                </div>
+                                <x-admin.image-upload 
+                                    name="logo"
+                                    :value="\App\Helpers\SettingsHelper::siteLogo()"
+                                    :label="__('Primary Logo')"
+                                    :placeholder="__('Upload Brand Logo')"
+                                    aspect="aspect-video"
+                                />
                             </div>
                             <div>
-                                <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-6 ml-1">{{ __('Site Favicon') }}</label>
-                                <div class="relative group w-32 h-32 rounded-[24px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4 mx-auto">
-                                    @if(isset($settings['site_favicon']))
-                                        <img src="{{ \App\Helpers\SettingsHelper::favicon() }}" class="w-12 h-12 object-contain">
-                                    @else
-                                        <span class="material-icons text-gray-200 text-2xl mb-1">style</span>
-                                        <span class="text-[8px] font-black text-gray-300 uppercase tracking-widest">{{ __('ICO/PNG') }}</span>
-                                    @endif
-                                    <input type="file" name="favicon" class="absolute inset-0 opacity-0 cursor-pointer">
-                                </div>
+                                <x-admin.image-upload 
+                                    name="favicon"
+                                    :value="\App\Helpers\SettingsHelper::favicon()"
+                                    :label="__('Site Favicon')"
+                                    :placeholder="__('Upload Favicon')"
+                                    aspect="aspect-square"
+                                    hint="ICO/PNG Recommended"
+                                />
                                 <p class="text-[9px] text-gray-300 mt-4 text-center italic">{{ __('Recommended size: 32x32px or 64x64px') }}</p>
                             </div>
                         </div>

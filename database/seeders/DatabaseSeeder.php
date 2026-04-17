@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             TestimonialSeeder::class,
             PortfolioSeeder::class,
             GalleryImageSeeder::class,
+            PartnerSeeder::class,
         ]);
     }
 }

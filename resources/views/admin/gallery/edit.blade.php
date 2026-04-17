@@ -80,19 +80,14 @@
                 </div>
 
                 <!-- Visual Asset -->
-                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100 space-y-6">
-                    <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6 ml-1">
-                        <span class="material-icons text-sm">photo</span>
-                        {{ __('Image Asset') }}
-                    </h3>
-                    
-                    <div class="relative group aspect-video rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4">
-                        <img id="preview-image" src="{{ $gallery->image_url }}" alt="Preview" class="absolute inset-0 w-full h-full object-contain">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                            <span class="material-icons text-white text-3xl">add_a_photo</span>
-                        </div>
-                        <input type="file" name="image" onchange="previewFile(event)" class="absolute inset-0 opacity-0 cursor-pointer">
-                    </div>
+                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100">
+                    <x-admin.image-upload 
+                        name="image"
+                        :value="$gallery->image_url"
+                        :label="__('Image Asset')"
+                        :placeholder="__('Click to Change Asset')"
+                        aspect="aspect-video"
+                    />
                 </div>
             </div>
 
@@ -157,10 +152,7 @@
 </div>
 
 <script>
-function previewFile(event) {
-    const output = document.getElementById('preview-image');
-    output.src = URL.createObjectURL(event.target.files[0]);
-}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     tinymce.init({

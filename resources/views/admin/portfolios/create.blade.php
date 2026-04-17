@@ -178,17 +178,13 @@
                 </div>
 
                 <!-- Main Thumbnail -->
-                <div class="bg-white rounded-[40px] p-8 shadow-sm border border-gray-100 space-y-6">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6 ml-1 text-alexandria">{{ __('Project Hero') }}</h3>
-                    
-                    <div class="relative group aspect-square rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-4 text-center">
-                        <img id="preview-thumbnail" src="" alt="Preview" class="absolute inset-0 w-full h-full object-cover hidden">
-                        <div class="preview-placeholder">
-                            <span class="material-icons text-4xl text-gray-200 mb-2">add_photo_alternate</span>
-                            <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest block">{{ __('Upload Hero Image') }}</span>
-                        </div>
-                        <input type="file" name="thumbnail" onchange="previewThumbnail(event)" class="absolute inset-0 opacity-0 cursor-pointer">
-                    </div>
+                <div class="bg-white rounded-[40px] p-8 shadow-sm border border-gray-100">
+                    <x-admin.image-upload 
+                        name="thumbnail"
+                        :label="__('Project Hero')"
+                        :placeholder="__('Upload Hero Image')"
+                        aspect="aspect-square"
+                    />
                 </div>
 
                 <!-- Gallery Selection -->
@@ -239,13 +235,7 @@ function addTech() {
     container.appendChild(newTech);
 }
 
-function previewThumbnail(event) {
-    const output = document.getElementById('preview-thumbnail');
-    const placeholder = document.querySelector('.preview-placeholder');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.classList.remove('hidden');
-    placeholder.classList.add('hidden');
-}
+
 
 document.addEventListener('DOMContentLoaded', function() {
     tinymce.init({

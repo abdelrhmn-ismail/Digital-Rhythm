@@ -23,22 +23,17 @@
             </div>
 
             <!-- Main Headline -->
-            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-normal"
+            <h1 class="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 tracking-tighter leading-tight"
                 data-aos="fade-up"
                 data-aos-delay="300">
-                <span class="text-gray-900 block mb-2">{{ __('TRANSLATE YOUR') }}</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block">
-                    {{ __('VISION INTO REALITY') }}
-                    <!-- Shimmer overlay -->
-                    <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
-                </span>
+                <span class="text-gray-900 block mb-2">{{ __('We help you increase your sales and grow your project through effective digital marketing strategies') }}</span>
             </h1>
 
             <!-- Subheadline -->
             <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light"
                data-aos="fade-up"
                data-aos-delay="400">
-                {{ __('Your premier creative partner specializing in digital dominance, bespoke branding, and global scale.') }}
+                {{ __('Ads Management – Social Media – Design – Websites') }}
             </p>
 
             <!-- CTA Buttons -->
@@ -49,7 +44,7 @@
                 <!-- Primary CTA -->
                 <a class="group relative inline-flex items-center justify-center gap-3 min-w-[280px] bg-primary hover:bg-primary/90 text-white font-black px-12 h-16 rounded-full text-lg shadow-[0_4px_20px_rgba(1,25,74,0.25)] hover:shadow-[0_8px_30px_rgba(1,25,74,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden"
                    href="{{ route('contact') }}">
-                    <span class="relative z-10">{{ __('Get a Quote') }}</span>
+                    <span class="relative z-10">{{ __('Start Now / Book a Free Consultation') }}</span>
                     <span class="material-icons text-xl relative z-10 group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 </a>

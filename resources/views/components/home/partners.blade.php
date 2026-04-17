@@ -1,3 +1,5 @@
+@props(['partners' => []])
+
 <div class="h-40"></div>
 <section class="py-24 relative overflow-hidden bg-white border-y border-gray-200">
     <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
@@ -11,24 +13,21 @@
         <div class="flex w-full overflow-hidden">
             <div class="flex w-max animate-marquee pb-4 pt-4">
                 @php
-                    $partners = [
-                        'Adwaa Namar', 'Olye Spa', 'Noble Smile', 'Software Art', 
-                        'Strong Motors', 'ALoeVera Construction', 'Pure Health', 
-                        'Fantastic Care', 'Healthy Clinics', 'Loqma Wafia', 
-                        'Takadi Law', 'Sky House', 'Care Plus', 'Drr Aljazera', 
-                        'Almugheb', 'Perstige', 'LioraFlower'
-                    ];
+                    // Ensure we have enough items for a smooth marquee
+                    $displayPartners = count($partners) > 0 ? $partners : collect([]);
+                    // Double it if it's too short for the marquee effect
+                    $loopPartners = $displayPartners->count() < 10 ? $displayPartners->concat($displayPartners)->concat($displayPartners)->concat($displayPartners) : $displayPartners->concat($displayPartners);
                 @endphp
 
-                @foreach(array_merge($partners, $partners) as $name)
+                @foreach($loopPartners as $partner)
                     <div class="px-8 md:px-12 flex flex-col items-center justify-center gap-4 group transition-all duration-700">
                         <div class="flex flex-col items-center justify-center gap-4 cursor-default">
                             <div class="size-24 md:size-32 flex items-center justify-center relative p-4">
-                                <img src="https://placehold.co/200x80/ffffff/01194A?text={{ urlencode($name) }}" 
-                                     alt="{{ $name }}" 
+                                <img src="{{ $partner->logo_url }}" 
+                                     alt="{{ $partner->name }}" 
                                      class="object-contain transition-all duration-700 group-hover:scale-110 relative z-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100" />
                             </div>
-                            <span class="text-[10px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-primary transition-colors whitespace-nowrap">{{ $name }}</span>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-primary transition-colors whitespace-nowrap">{{ $partner->name }}</span>
                         </div>
                     </div>
                 @endforeach
