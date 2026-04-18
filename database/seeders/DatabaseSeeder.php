@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             PortfolioSeeder::class,
             GalleryImageSeeder::class,
             PartnerSeeder::class,
+            PageSeeder::class,
         ]);
     }
 }

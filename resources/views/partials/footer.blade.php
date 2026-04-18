@@ -98,8 +98,8 @@
                     &copy; {{ date('Y') }} {{ $siteTitle }}. {{ __('ALL RIGHTS RESERVED.') }}
                 </p>
                 <div class="flex gap-8 items-center">
-                    <a href="#" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Privacy Policy') }}</a>
-                    <a href="#" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Terms of Service') }}</a>
+                    <a href="{{ route('privacy') }}" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Privacy Policy') }}</a>
+                    <a href="{{ route('terms') }}" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Terms of Service') }}</a>
                     <span class="text-zinc-600 text-xs font-light hidden md:inline">|</span>
                     <span class="text-zinc-600 text-xs font-light">Live Systems</span>
                 </div>

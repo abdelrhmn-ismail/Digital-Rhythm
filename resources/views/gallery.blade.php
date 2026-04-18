@@ -10,8 +10,13 @@
             <div class="inline-block py-1 px-4 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md mb-6">
                 <span class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-700">{{ __('Our Masterpieces') }}</span>
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-gray-900 uppercase leading-tight mb-8">
-                {{ __('Creative') }} <span class="text-gradient">{{ __('Gallery') }}</span>
+            <h1 class="text-5xl md:text-7xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.85]" data-aos="fade-up" data-aos-delay="300">
+                <span class="text-gray-900 block mb-2">{{ __('CREATIVE') }}</span>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block">
+                    {{ __('GALLERY') }}
+                    <!-- Shimmer overlay -->
+                    <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
+                </span>
             </h1>
             <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
                 {{ __('Explore our curated collection of digital experiences, brand identities, and creative productions that define the future of marketing.') }}

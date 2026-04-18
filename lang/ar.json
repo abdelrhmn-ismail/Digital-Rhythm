@@ -732,5 +732,22 @@
     "active": "نشط",
     "this week": "هذا الأسبوع",
     "unread": "غير مقروء",
-    "was architected to redefine digital narratives through clinical strategy and raw creativity. We don't just build marketing campaigns. We blueprint digital empires that communicate with intelligence and scale with purpose.": "صُممت لإعادة تعريف السرديات الرقمية من خلال الاستراتيجية الدقيقة والإبداع الخام. نحن لا نبني حملات تسويقية فحسب، بل نضع مخططات لإمبراطوريات رقمية تتواصل بذكاء وتتوسع بهدف."
+    "was architected to redefine digital narratives through clinical strategy and raw creativity. We don't just build marketing campaigns. We blueprint digital empires that communicate with intelligence and scale with purpose.": "صُممت لإعادة تعريف السرديات الرقمية من خلال الاستراتيجية الدقيقة والإبداع الخام. نحن لا نبني حملات تسويقية فحسب، بل نضع مخططات لإمبراطوريات رقمية تتواصل بذكاء وتتوسع بهدف.",
+    "Pages Management": "إدارة الصفحات",
+    "CONTENT": "المحتوى",
+    "STATIC PAGES": "صفحات ثابتة",
+    "Page Title": "عنوان الصفحة",
+    "Slug": "الرابط",
+    "Active": "نشط",
+    "Inactive": "غير نشط",
+    "Edit Page": "تعديل الصفحة",
+    "PAGES": "الصفحات",
+    "EDITING": "جاري التعديل",
+    "Save Page": "حفظ الصفحة",
+    "Configuration": "الإعدادات",
+    "Page Active": "الصفحة نشطة",
+    "URL Slug": "رابط الصفحة",
+    "English Title": "العنوان بالإنجليزية",
+    "Arabic Title": "العنوان بالعربية",
+    "Back to home": "العودة للرئيسية"
 }

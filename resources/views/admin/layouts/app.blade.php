@@ -187,6 +187,10 @@
                             <span class="material-icons">business_center</span>
                             {{ __('Partners') }}
                         </a>
+                        <a href="{{ route('admin.pages.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}">
+                            <span class="material-icons">description</span>
+                            {{ __('Pages') }}
+                        </a>
                     </div>
                 </div>
                 

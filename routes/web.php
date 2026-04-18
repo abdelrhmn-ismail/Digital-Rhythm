@@ -104,12 +104,14 @@ Route::get('/gallery', function () {
 
 // Privacy Policy
 Route::get('/privacy', function () {
-    return view('privacy');
+    $page = \App\Models\Page::where('slug', 'privacy-policy')->firstOrFail();
+    return view('page', compact('page'));
 })->name('privacy');
 
 // Terms of Service
 Route::get('/terms', function () {
-    return view('terms');
+    $page = \App\Models\Page::where('slug', 'terms-of-service')->firstOrFail();
+    return view('page', compact('page'));
 })->name('terms');
 
 // Admin Routes
@@ -206,6 +208,13 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     // Settings
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings/update', [SettingController::class, 'update'])->name('settings.update');
+
+    // Pages Management
+    Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)->only(['index', 'edit', 'update'])->names([
+        'index' => 'pages.index',
+        'edit' => 'pages.edit',
+        'update' => 'pages.update',
+    ]);
 
     // Translations Management
     Route::get('/translations', [TranslationController::class, 'index'])->name('translations.index');
