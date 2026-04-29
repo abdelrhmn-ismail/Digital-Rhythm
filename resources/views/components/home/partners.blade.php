@@ -2,8 +2,11 @@
 
 <div class="h-40"></div>
 <section class="py-24 relative overflow-hidden bg-white border-y border-gray-200">
-    <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
-        <p class="text-[10px] font-black uppercase tracking-[0.4em] text-primary/60 mb-4">{{ __('STRATEGIC PARTNERS') }}</p>
+    <div class="max-w-7xl mx-auto px-6 mb-12">
+        <x-section-header 
+            badge="{{ __('STRATEGIC PARTNERS') }}"
+            title="{{ __('SUPPORTED BY') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('GLOBAL LEADERS') }}</span>"
+        />
     </div>
     
     <div class="flex relative items-center overflow-hidden h-40 md:h-56">

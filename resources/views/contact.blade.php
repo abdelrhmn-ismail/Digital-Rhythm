@@ -5,7 +5,12 @@
 
 @section('content')
 <main class="contact-page">
-    <x-contact.hero />
+    <x-page-header 
+        badge="{{ __('START THE CLOCK') }}"
+        titleTop="{{ __('INITIATE') }}"
+        titleBottom="{{ __('CONTACT') }}"
+        subtitle="{{ __('Ready to completely dominate your market? Secure a consultation with our architects today.') }}"
+    />
     <section class="contact-grid">
         <div class="contact-grid__container">
             <div class="contact-grid__layout">

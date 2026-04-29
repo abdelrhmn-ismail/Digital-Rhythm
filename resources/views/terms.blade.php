@@ -4,11 +4,15 @@
 @section('description', __('Terms of Service for') . ' ' . $siteTitle . '.')
 
 @section('content')
-<section class="pt-32 pb-20 bg-white">
+<x-page-header 
+    badge="{{ __('Digital Rhythm') }}"
+    titleBottom="{{ __('Terms of Service') }}"
+    subtitle="{{ __('Last updated:') }} {{ date('F j, Y') }}"
+/>
+
+<section class="pb-20 bg-white">
     <div class="container mx-auto px-6">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-tight tracking-tighter">{{ __('Terms of Service') }}</h1>
-            <p class="text-gray-600 mb-8 font-light">{{ __('Last updated:') }} {{ date('F j, Y') }}</p>
             
             <div class="space-y-12">
                 <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-12 hover:shadow-lg transition-all duration-300">

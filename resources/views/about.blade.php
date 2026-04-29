@@ -4,54 +4,13 @@
 @section('description', __('Learn about') . ' ' . $siteTitle . ' ' . __('Marketing Agency - Your partner in digital dominance.'))
 
 @section('content')
-<!-- ============================================
-     SECTION 1: HERO
-     ============================================ -->
-<section class="relative min-h-[75vh] flex items-center justify-center overflow-hidden bg-white">
-    <!-- Background Effects -->
-    <div class="absolute inset-0 pointer-events-none">
-        <!-- Radial gradient glow -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,_rgba(0,135,206,0.08)_0%,_transparent_60%)]"></div>
-        <!-- Grid pattern -->
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]"></div>
-    </div>
-
-    <!-- Content -->
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 pt-32 pb-20">
-        <div class="max-w-5xl mx-auto text-center space-y-12">
-            
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl text-sm font-bold text-primary mb-4 shadow-[0_0_20px_rgba(0,135,206,0.1)] hover:border-primary/40 transition-all duration-300" 
-                 data-aos="fade-down" 
-                 data-aos-delay="200">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                <span class="tracking-[0.2em] uppercase text-[10px] md:text-xs">{{ __('WHO WE ARE') }}</span>
-            </div>
-
-            <!-- Main Headline -->
-            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.85]" 
-                data-aos="fade-up" 
-                data-aos-delay="300">
-                <span class="text-gray-900 block mb-2">{{ __('WE ARE') }}</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block">
-                    {{ strtoupper($siteTitle) }}
-                    <!-- Shimmer overlay -->
-                    <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
-                </span>
-            </h1>
-
-            <!-- Subheadline -->
-            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light" 
-               data-aos="fade-up" 
-               data-aos-delay="400">
-                {{ __('We are architects of digital transformation. A collective of visionaries, strategists, and creators dedicated to forging global market leaders.') }}
-            </p>
-        </div>
-    </div>
-
-    <!-- Bottom fade effect -->
-    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
-</section>
+<x-page-header 
+    minHeight="min-h-[75vh]"
+    badge="{{ __('WHO WE ARE') }}"
+    titleTop="{{ __('WE ARE') }}"
+    titleBottom="{{ strtoupper($siteTitle) }}"
+    subtitle="{{ __('We are architects of digital transformation. A collective of visionaries, strategists, and creators dedicated to forging global market leaders.') }}"
+/>
 
 <!-- ============================================
      SECTION 2: COMPANY STORY
@@ -62,18 +21,10 @@
     <div class="absolute top-1/2 right-0 w-[400px] h-[400px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <!-- Section Header -->
-        <div class="max-w-4xl mx-auto mb-20 text-center flex flex-col items-center">
-            <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-8" 
-                 data-aos="zoom-in">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                {{ __('OUR LEGACY') }}
-            </div>
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight tracking-tighter" 
-                data-aos="fade-up">
-                {{ __('INNOVATION IS NOT') }} <br/> <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{{ __('AN ACCIDENT.') }}</span>
-            </h2>
-        </div>
+        <x-section-header 
+            badge="{{ __('OUR LEGACY') }}"
+            title="{{ __('INNOVATION IS NOT') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('AN ACCIDENT.') }}</span>"
+        />
 
         <!-- Story Content -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -131,23 +82,11 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <!-- Mission Section -->
-        <div class="max-w-4xl mx-auto mb-32 text-center">
-            <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-8" 
-                 data-aos="zoom-in">
-                <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                {{ __('OUR MISSION') }}
-            </div>
-            <h2 class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight tracking-tighter" 
-                data-aos="fade-up">
-                {{ __('TO EMPOWER ORGANIZATIONS') }}
-            </h2>
-            <p class="text-xl text-gray-600 font-light leading-relaxed" 
-               data-aos="fade-up" 
-               data-aos-delay="200">
-                {{ __('To empower organizations by transmuting their vision into a high-performance digital reality through clinical strategy.') }}
-            </p>
-        </div>
+        <x-section-header 
+            badge="{{ __('OUR MISSION') }}"
+            title="{{ __('TO EMPOWER') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('ORGANIZATIONS') }}</span>"
+            subtitle="{{ __('To empower organizations by transmuting their vision into a high-performance digital reality through clinical strategy.') }}"
+        />
 
         <!-- Core Values Grid -->
         <div class="text-center mb-16">
@@ -317,21 +256,11 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10" data-aos="fade-up">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-8" data-aos="zoom-in">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            {{ __('READY TO DOMINATE?') }}
-        </div>
-
-        <!-- Headline -->
-        <h2 class="text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 mb-8 leading-[0.85] tracking-tighter" data-aos="fade-up" data-aos-delay="100">
-            {{ __('YOUR NEXT') }} <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{{ __('SUCCESS STORY') }}</span>
-        </h2>
-
-        <!-- Description -->
-        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-            {{ __("Let's blueprint your next success story with surgical precision and engineer your digital empire.") }}
-        </p>
+        <x-section-header 
+            badge="{{ __('READY TO DOMINATE?') }}"
+            title="{{ __('YOUR NEXT') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('SUCCESS STORY') }}</span>"
+            subtitle="{{ __('Let\'s blueprint your next success story with surgical precision and engineer your digital empire.') }}"
+        />
 
         <!-- CTA Button -->
         <div data-aos="fade-up" data-aos-delay="300">

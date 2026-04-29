@@ -8,21 +8,11 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10" data-aos="fade-up">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xl text-primary font-bold tracking-[0.3em] uppercase text-[10px] mb-8" data-aos="zoom-in">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            {{ __('READY TO TRANSFORM') }}
-        </div>
-
-        <!-- Headline -->
-        <h2 class="text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 mb-8 leading-normal tracking-tighter" data-aos="fade-up" data-aos-delay="100">
-            {{ __('YOUR BRAND?') }}
-        </h2>
-
-        <!-- Description -->
-        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-            {{ __("Let's engineer your global success story together. Contact us today for a strategic consultation.") }}
-        </p>
+        <x-section-header 
+            badge="{{ __('READY TO TRANSFORM') }}"
+            title="{{ __('ENGINEER YOUR') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('SUCCESS STORY') }}</span>"
+            subtitle="{{ __('Let\'s engineer your global success story together. Contact us today for a strategic consultation.') }}"
+        />
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="300">

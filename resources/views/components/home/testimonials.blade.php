@@ -2,18 +2,11 @@
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-white to-white z-0"></div>
 
     <div class="container mx-auto px-6 relative z-10">
-        <div class="mb-20 flex flex-col items-center text-center" data-aos="fade-up">
-            <div class="inline-block py-1 px-4 rounded-full border border-gray-200 bg-white/80 backdrop-blur-md mb-6">
-                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-700">{{ __('TESTIMONIALS') }}</span>
-            </div>
-            <h2 class="text-[56px] md:text-[72px] font-black leading-[1] uppercase mb-8">
-                <span class="text-gray-900 block">{{ __('THE VOICE OF') }}</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block">{{ __('GLOBAL TRUST') }}</span>
-            </h2>
-            <p class="text-xl text-gray-600 max-w-3xl font-light" data-aos="fade-up" data-aos-delay="200">
-                {{ __('We engineer growth for those who dare to define the future. Their success is our only metric.') }}
-            </p>
-        </div>
+        <x-section-header 
+            badge="{{ __('TESTIMONIALS') }}"
+            title="{{ __('THE VOICE OF') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('GLOBAL TRUST') }}</span>"
+            subtitle="{{ __('We engineer growth for those who dare to define the future. Their success is our only metric.') }}"
+        />
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($testimonials as $index => $testimonial)

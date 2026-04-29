@@ -3,25 +3,15 @@
 @section('title', __('Gallery | Creative Works Showcase'))
 
 @section('content')
-<div class="pt-32 pb-20 bg-white">
+<x-page-header 
+    badge="{{ __('Our Masterpieces') }}"
+    titleTop="{{ __('CREATIVE') }}"
+    titleBottom="{{ __('GALLERY') }}"
+    subtitle="{{ __('Explore our curated collection of digital experiences, brand identities, and creative productions that define the future of marketing.') }}"
+/>
+
+<div class="pb-20 bg-white">
     <div class="max-w-7xl mx-auto px-6">
-        <!-- Header -->
-        <div class="mb-16 text-center" data-aos="fade-up">
-            <div class="inline-block py-1 px-4 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-md mb-6">
-                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-700">{{ __('Our Masterpieces') }}</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.85]" data-aos="fade-up" data-aos-delay="300">
-                <span class="text-gray-900 block mb-2">{{ __('CREATIVE') }}</span>
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block">
-                    {{ __('GALLERY') }}
-                    <!-- Shimmer overlay -->
-                    <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
-                </span>
-            </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light">
-                {{ __('Explore our curated collection of digital experiences, brand identities, and creative productions that define the future of marketing.') }}
-            </p>
-        </div>
 
         <!-- Filter Categories -->
         @if($categories->count() > 0)
@@ -102,8 +92,12 @@
         <!-- CTA Section -->
         <div class="mt-32 p-12 rounded-[40px] bg-gradient-to-br from-primary/10 to-transparent border border-gray-200 text-center relative overflow-hidden" data-aos="fade-up">
             <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -z-10"></div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6 uppercase">{{ __('Ready to create your') }} <span class="text-gradient">{{ __('masterpiece?') }}</span></h2>
-            <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto font-light">{{ __('Join the elite brands that have transformed their vision into global impact with') }} {{ $siteTitle }}.</p>
+            
+            <x-section-header 
+                badge="{{ __('READY TO CREATE') }}"
+                title="{{ __('READY TO CREATE') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('YOUR MASTERPIECE?') }}</span>"
+                subtitle="{{ __('Join the elite brands that have transformed their vision into global impact with') }} {{ $siteTitle }}."
+            />
             <a href="{{ route('contact') }}" class="inline-flex items-center gap-3 bg-primary text-white px-10 py-4 rounded-full font-black text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,135,206,0.5)]">
                 {{ __('Start A Project') }} <span class="material-icons">rocket_launch</span>
             </a>
