@@ -3,24 +3,24 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Portfolio;
+use App\Models\Service;
 use Illuminate\Support\Str;
 
-class PortfolioSeeder extends Seeder
+class ServiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $portfolios = [
+        $services = [
             // Category 1: Branding & Identity
             [
                 'title' => ['en' => 'Logo Design', 'ar' => 'تصميم الشعارات'],
                 'slug' => 'logo-design',
                 'description' => ['en' => 'Innovative logo designs that reflect your brand identity.', 'ar' => 'تصميم شعارات مبتكرة تعكس هوية علامتك التجارية.'],
                 'content' => ['en' => 'Professional logo design services that create lasting brand impressions.', 'ar' => 'خدمات تصميم الشعارات الاحترافية التي تخلق انطباعات علامة تجارية دائمة.'],
-                'client' => ['en' => 'Golden Bee', 'ar' => 'جولدن بي'],
+                'client' => ['en' => 'Digital Rhythm', 'ar' => 'ديجيتال ريذم'],
                 'category' => 'Branding & Identity',
                 'icon' => 'brush',
                 'featured' => true,
@@ -32,7 +32,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'identity-design',
                 'description' => ['en' => 'Building a comprehensive visual identity that leaves a lasting impression.', 'ar' => 'بناء هوية بصرية شاملة تترك انطباعاً دائماً.'],
                 'content' => ['en' => 'Complete brand identity systems including colors, typography, and guidelines.', 'ar' => 'أنظمة هوية العلامة التجارية الكاملة بما في ذلك الألوان والطباعة والإرشادات.'],
-                'client' => ['en' => 'Golden Bee', 'ar' => 'جولدن بي'],
+                'client' => ['en' => 'Digital Rhythm', 'ar' => 'ديجيتال ريذم'],
                 'category' => 'Branding & Identity',
                 'icon' => 'palette',
                 'featured' => true,
@@ -44,7 +44,7 @@ class PortfolioSeeder extends Seeder
                 'slug' => 'profile-design',
                 'description' => ['en' => 'Professional profile designs that highlight your company capabilities.', 'ar' => 'تصاميم بروفايل احترافية تبرز قدرات شركتك.'],
                 'content' => ['en' => 'Corporate profile design that showcases your strengths and capabilities.', 'ar' => 'تصميم البروفايل المؤسسي الذي يبرز نقاط قوتك وقدراتك.'],
-                'client' => ['en' => 'Golden Bee', 'ar' => 'جولدن بي'],
+                'client' => ['en' => 'Digital Rhythm', 'ar' => 'ديجيتال ريذم'],
                 'category' => 'Branding & Identity',
                 'icon' => 'description',
                 'featured' => false,
@@ -191,26 +191,27 @@ class PortfolioSeeder extends Seeder
             ],
         ];
 
-        foreach ($portfolios as $portfolio) {
-            Portfolio::updateOrCreate(
-                ['slug' => $portfolio['slug']],
+        foreach ($services as $service) {
+            Service::updateOrCreate(
+                ['slug' => $service['slug']],
                 [
-                    'title' => $portfolio['title'],
-                    'description' => $portfolio['description'],
-                    'content' => $portfolio['content'],
-                    'client' => $portfolio['client'] ?? ['en' => 'Golden Bee', 'ar' => 'جولدن بي'],
-                    'technologies' => $portfolio['technologies'] ?? ['en' => ['Laravel', 'Tailwind CSS', 'Alpine.js'], 'ar' => ['لارافيل', 'تايلويند CSS', 'ألبين JS']],
-                    'thumbnail' => 'portfolios/portfolio_' . ($portfolio['order'] % 4 + 1) . '.png',
-                    'images' => ['portfolios/portfolio_' . ($portfolio['order'] % 4 + 1) . '.png'],
-                    'category' => $portfolio['category'],
-                    'icon' => $portfolio['icon'],
-                    'featured' => $portfolio['featured'],
-                    'active' => $portfolio['active'],
-                    'order' => $portfolio['order'],
+                    'title' => $service['title'],
+                    'description' => $service['description'],
+                    'content' => $service['content'],
+                    'client' => $service['client'] ?? ['en' => 'Digital Rhythm', 'ar' => 'ديجيتال ريذم'],
+                    'technologies' => $service['technologies'] ?? ['en' => ['Laravel', 'Tailwind CSS', 'Alpine.js'], 'ar' => ['لارافيل', 'تايلويند CSS', 'ألبين JS']],
+                    'features' => ['en' => ['Feature 1', 'Feature 2'], 'ar' => ['ميزة 1', 'ميزة 2']],
+                    'thumbnail' => 'services/service_' . ($service['order'] % 4 + 1) . '.png',
+                    'images' => ['services/service_' . ($service['order'] % 4 + 1) . '.png'],
+                    'category' => $service['category'],
+                    'icon' => $service['icon'],
+                    'featured' => $service['featured'],
+                    'active' => $service['active'],
+                    'order' => $service['order'],
                 ]
             );
         }
 
-        $this->command->info('Portfolio items seeded successfully!');
+        $this->command->info('Service items seeded successfully!');
     }
 }

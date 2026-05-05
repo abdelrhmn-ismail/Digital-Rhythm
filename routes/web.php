@@ -33,11 +33,11 @@ Route::get('sitemap.xml', function () {
     ];
 
     // Add dynamic content
-    $portfolios = \App\Models\Portfolio::where('active', true)->get();
-    foreach ($portfolios as $portfolio) {
+    $services = \App\Models\Service::where('active', true)->get();
+    foreach ($services as $service) {
         $pages[] = [
-            'loc' => route('portfolio') . '#portfolio-' . $portfolio->id,
-            'lastmod' => $portfolio->updated_at->toIso8601String(),
+            'loc' => route('services') . '#service-' . $service->id,
+            'lastmod' => $service->updated_at->toIso8601String(),
             'priority' => '0.6',
         ];
     }
@@ -64,9 +64,9 @@ Route::get('robots.txt', function () {
 // Home Page
 Route::get('/', function () {
     $testimonials = \App\Models\Testimonial::where('active', true)->orderBy('order')->get();
-    $portfolios = \App\Models\Portfolio::where('active', true)->where('featured', true)->orderBy('order')->get();
+    $services = \App\Models\Service::where('active', true)->where('featured', true)->orderBy('order')->get();
     $partners = \App\Models\Partner::where('is_active', true)->orderBy('order')->get();
-    return view('home', compact('testimonials', 'portfolios', 'partners'));
+    return view('home', compact('testimonials', 'services', 'partners'));
 })->name('home');
 
 // About Page
@@ -76,11 +76,11 @@ Route::get('/about', function () {
 
 
 
-// Portfolio Page
-Route::get('/portfolio', function () {
-    $portfolios = \App\Models\Portfolio::where('active', true)->orderBy('order')->get();
-    return view('portfolio', compact('portfolios'));
-})->name('portfolio');
+// Services Page
+Route::get('/services', function () {
+    $services = \App\Models\Service::where('active', true)->orderBy('order')->get();
+    return view('services', compact('services'));
+})->name('services');
 
 // Contact Page
 Route::get('/contact', ContactPageController::class)->name('contact');
@@ -139,24 +139,24 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     
 
     
-    // Portfolios Management
-    Route::resource('portfolios', PortfolioController::class)->names([
-        'index' => 'portfolios.index',
-        'create' => 'portfolios.create',
-        'store' => 'portfolios.store',
-        'edit' => 'portfolios.edit',
-        'update' => 'portfolios.update',
-        'destroy' => 'portfolios.destroy',
+    // Services Management
+    Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class)->names([
+        'index' => 'services.index',
+        'create' => 'services.create',
+        'store' => 'services.store',
+        'edit' => 'services.edit',
+        'update' => 'services.update',
+        'destroy' => 'services.destroy',
     ]);
     
-    Route::post('portfolios/{portfolio}/toggle-featured', [PortfolioController::class, 'toggleFeatured'])
-        ->name('portfolios.toggle-featured');
+    Route::post('services/{service}/toggle-featured', [\App\Http\Controllers\Admin\ServiceController::class, 'toggleFeatured'])
+        ->name('services.toggle-featured');
     
-    Route::post('portfolios/{portfolio}/toggle-active', [PortfolioController::class, 'toggleActive'])
-        ->name('portfolios.toggle-active');
+    Route::post('services/{service}/toggle-active', [\App\Http\Controllers\Admin\ServiceController::class, 'toggleActive'])
+        ->name('services.toggle-active');
     
-    Route::post('portfolios/reorder', [PortfolioController::class, 'reorder'])
-        ->name('portfolios.reorder');
+    Route::post('services/reorder', [\App\Http\Controllers\Admin\ServiceController::class, 'reorder'])
+        ->name('services.reorder');
 
     // Partners Management
     Route::resource('partners', PartnerController::class)->names([

@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Portfolio;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Helpers\UploadHelper;
 
-class PortfolioController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $portfolios = Portfolio::query()
+        $services = Service::query()
             ->when(request('search'), function ($query, $search) {
                 $query->where('title', 'like', "%{$search}%")
                       ->orWhere('description', 'like', "%{$search}%")
@@ -36,9 +36,9 @@ class PortfolioController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
-        $categories = Portfolio::distinct()->pluck('category')->filter()->values();
+        $categories = Service::distinct()->pluck('category')->filter()->values();
 
-        return view('admin.portfolios.index', compact('portfolios', 'categories'));
+        return view('admin.services.index', compact('services', 'categories'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PortfolioController extends Controller
     public function create()
     {
         $categories = ['Branding', 'Web Development', 'Digital Marketing', 'UI/UX Design', 'Video Production', 'SEO'];
-        return view('admin.portfolios.create', compact('categories'));
+        return view('admin.services.create', compact('categories'));
     }
 
     /**
@@ -59,7 +59,7 @@ class PortfolioController extends Controller
             'title' => 'required|array',
             'title.en' => 'required|string|max:255',
             'title.ar' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|unique:portfolios,slug',
+            'slug' => 'nullable|string|max:255|unique:services,slug',
             'description' => 'required|array',
             'description.en' => 'required|string',
             'description.ar' => 'required|string',
@@ -76,7 +76,7 @@ class PortfolioController extends Controller
             'technologies.ar' => 'nullable|array',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'icon' => 'required|string|max:50',
             'category' => 'nullable|string|max:100',
             'featured' => 'boolean',
             'active' => 'boolean',
@@ -102,46 +102,41 @@ class PortfolioController extends Controller
         $uploadedImages = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
-                $uploadedImages[] = UploadHelper::upload($image, 'portfolios');
+                $uploadedImages[] = UploadHelper::upload($image, 'services');
             }
         }
         $validated['images'] = $uploadedImages;
-
-        // Handle thumbnail upload
-        if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = UploadHelper::upload($request->file('thumbnail'), 'portfolios');
-        }
 
         $validated['order'] = $validated['order'] ?? 0;
         $validated['featured'] = $request->has('featured');
         $validated['active'] = $request->has('active');
 
-        Portfolio::create($validated);
+        Service::create($validated);
 
         return redirect()
-            ->route('admin.portfolios.index')
-            ->with('success', 'Portfolio created successfully.');
+            ->route('admin.services.index')
+            ->with('success', 'Service created successfully.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Portfolio $portfolio)
+    public function edit(Service $service)
     {
         $categories = ['Branding', 'Web Development', 'Digital Marketing', 'UI/UX Design', 'Video Production', 'SEO'];
-        return view('admin.portfolios.edit', compact('portfolio', 'categories'));
+        return view('admin.services.edit', compact('service', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Portfolio $portfolio)
+    public function update(Request $request, Service $service)
     {
         $validated = $request->validate([
             'title' => 'required|array',
             'title.en' => 'required|string|max:255',
             'title.ar' => 'required|string|max:255',
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('portfolios', 'slug')->ignore($portfolio->id)],
+            'slug' => ['nullable', 'string', 'max:255', Rule::unique('services', 'slug')->ignore($service->id)],
             'description' => 'required|array',
             'description.en' => 'required|string',
             'description.ar' => 'required|string',
@@ -158,7 +153,7 @@ class PortfolioController extends Controller
             'technologies.ar' => 'nullable|array',
             'images' => 'nullable|array',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'icon' => 'required|string|max:50',
             'category' => 'nullable|string|max:100',
             'featured' => 'boolean',
             'active' => 'boolean',
@@ -183,106 +178,101 @@ class PortfolioController extends Controller
         // Handle images upload
         if ($request->hasFile('images')) {
             // Delete old images if they exist
-            if ($portfolio->images) {
-                foreach ($portfolio->images as $oldImage) {
+            if ($service->images) {
+                foreach ($service->images as $oldImage) {
                     Storage::disk('public')->delete($oldImage);
                 }
             }
 
             $uploadedImages = [];
             foreach ($request->file('images') as $image) {
-                $uploadedImages[] = UploadHelper::upload($image, 'portfolios');
+                $uploadedImages[] = UploadHelper::upload($image, 'services');
             }
             $validated['images'] = $uploadedImages;
-        }
-
-        // Handle thumbnail upload
-        if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = UploadHelper::upload($request->file('thumbnail'), 'portfolios', $portfolio->thumbnail);
         }
 
         $validated['order'] = $validated['order'] ?? 0;
         $validated['featured'] = $request->has('featured');
         $validated['active'] = $request->has('active');
 
-        $portfolio->update($validated);
+        $service->update($validated);
 
         return redirect()
-            ->route('admin.portfolios.index')
-            ->with('success', 'Portfolio updated successfully.');
+            ->route('admin.services.index')
+            ->with('success', 'Service updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Portfolio $portfolio)
+    public function destroy(Service $service)
     {
         // Delete images if they exist
-        if ($portfolio->images) {
-            foreach ($portfolio->images as $image) {
-                Storage::disk('public')->delete('portfolios/' . $image);
+        if ($service->images) {
+            foreach ($service->images as $image) {
+                Storage::disk('public')->delete('services/' . $image);
             }
         }
 
         // Delete thumbnail if exists
-        if ($portfolio->thumbnail) {
-            Storage::disk('public')->delete('portfolios/' . $portfolio->thumbnail);
+        if ($service->thumbnail) {
+            Storage::disk('public')->delete('services/' . $service->thumbnail);
         }
 
-        $portfolio->delete();
+        $service->delete();
 
         return redirect()
-            ->route('admin.portfolios.index')
-            ->with('success', 'Portfolio deleted successfully.');
+            ->route('admin.services.index')
+            ->with('success', 'Service deleted successfully.');
     }
 
     /**
-     * Toggle the featured status of the portfolio.
+     * Toggle the featured status of the service.
      */
-    public function toggleFeatured(Portfolio $portfolio)
+    public function toggleFeatured(Service $service)
     {
-        $portfolio->update(['featured' => !$portfolio->featured]);
+        $service->update(['featured' => !$service->featured]);
 
         return response()->json([
             'success' => true,
-            'featured' => $portfolio->featured,
-            'message' => $portfolio->featured ? 'Portfolio featured successfully.' : 'Portfolio unfeatured successfully.'
+            'featured' => $service->featured,
+            'message' => $service->featured ? 'Service featured successfully.' : 'Service unfeatured successfully.'
         ]);
     }
 
     /**
-     * Toggle the active status of the portfolio.
+     * Toggle the active status of the service.
      */
-    public function toggleActive(Portfolio $portfolio)
+    public function toggleActive(Service $service)
     {
-        $portfolio->update(['active' => !$portfolio->active]);
+        $service->update(['active' => !$service->active]);
 
         return response()->json([
             'success' => true,
-            'active' => $portfolio->active,
-            'message' => $portfolio->active ? 'Portfolio activated successfully.' : 'Portfolio deactivated successfully.'
+            'active' => $service->active,
+            'message' => $service->active ? 'Service activated successfully.' : 'Service deactivated successfully.'
         ]);
     }
 
     /**
-     * Reorder portfolios.
+     * Reorder services.
      */
     public function reorder(Request $request)
     {
         $request->validate([
-            'portfolios' => 'required|array',
-            'portfolios.*.id' => 'required|exists:portfolios,id',
-            'portfolios.*.order' => 'required|integer|min:0',
+            'services' => 'required|array',
+            'services.*.id' => 'required|exists:services,id',
+            'services.*.order' => 'required|integer|min:0',
         ]);
 
-        foreach ($request->portfolios as $portfolioData) {
-            Portfolio::where('id', $portfolioData['id'])
-                ->update(['order' => $portfolioData['order']]);
+        foreach ($request->services as $serviceData) {
+            Service::where('id', $serviceData['id'])
+                ->update(['order' => $serviceData['order']]);
         }
 
         return response()->json([
             'success' => true,
-            'message' => 'Portfolios reordered successfully.'
+            'message' => 'Services reordered successfully.'
         ]);
     }
 }

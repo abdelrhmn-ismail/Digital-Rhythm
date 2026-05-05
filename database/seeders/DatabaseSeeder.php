@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             ColorSettingsSeeder::class,
             GeneralSettingsSeeder::class,
             TestimonialSeeder::class,
-            PortfolioSeeder::class,
+            ServiceSeeder::class,
             GalleryImageSeeder::class,
             PartnerSeeder::class,
             PageSeeder::class,

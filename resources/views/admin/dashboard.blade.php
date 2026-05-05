@@ -52,31 +52,23 @@
             </div>
         </div>
 
+        <!-- Services -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">{{ __('Services') }}</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">{{ $stats['services']['total'] }}</p>
+                    <p class="text-xs text-gray-500 mt-1">{{ $stats['services']['active'] }} {{ __('active') }}</p>
+                </div>
+                <span class="material-icons text-5xl text-blue-600">home_repair_service</span>
+            </div>
+        </div>
+
 
     </div>
 
     <!-- Secondary Stats Cards (3 columns) -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <!-- Portfolio -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between mb-4">
-                <div>
-                    <p class="text-sm font-medium text-gray-600">{{ __('Portfolio Items') }}</p>
-                    <p class="text-3xl font-bold text-gray-900 mt-2">{{ $stats['portfolios']['total'] }}</p>
-                </div>
-                <span class="material-icons text-5xl text-yellow-600">work</span>
-            </div>
-            <div class="space-y-2 text-sm">
-                <div class="flex justify-between">
-                    <span class="text-gray-600">{{ __('Active:') }}</span>
-                    <span class="font-medium">{{ $stats['portfolios']['active'] }}</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-600">{{ __('Featured:') }}</span>
-                    <span class="font-medium">{{ $stats['portfolios']['featured'] }}</span>
-                </div>
-            </div>
-        </div>
 
         <!-- Gallery -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
@@ -94,7 +86,7 @@
                 </div>
                 <div class="flex justify-between">
                     <span class="text-gray-600">{{ __('Categories:') }}</span>
-                    <span class="font-medium">{{ $portfolioCategories->count() }}</span>
+                    <span class="font-medium">{{ $serviceCategories->count() }}</span>
                 </div>
             </div>
         </div>
@@ -104,15 +96,9 @@
             <h3 class="text-sm font-semibold text-gray-900 mb-4">{{ __('Quick Stats') }}</h3>
             <div class="space-y-3">
                 <div class="flex justify-between items-center">
-                    <span class="text-sm text-gray-600">{{ __('Total Content') }}</span>
-                    <span class="text-lg font-bold text-gray-900">
-                        {{ $stats['testimonials']['total'] + $stats['portfolios']['total'] + $stats['gallery']['total'] }}
-                    </span>
-                </div>
-                <div class="flex justify-between items-center">
                     <span class="text-sm text-gray-600">{{ __('Active Content') }}</span>
                     <span class="text-lg font-bold text-green-600">
-                        {{ $stats['testimonials']['active'] + $stats['portfolios']['active'] + $stats['gallery']['active'] }}
+                        {{ $stats['testimonials']['active'] + $stats['services']['active'] }}
                     </span>
                 </div>
                 <div class="flex justify-between items-center">
@@ -137,17 +123,18 @@
                 </div>
             </a>
 
-
-
-            <a href="{{ route('admin.portfolios.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-yellow-300 transition-all group">
+            <a href="{{ route('admin.services.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all group">
                 <div class="flex items-center gap-3">
-                    <span class="material-icons text-2xl text-yellow-600 group-hover:scale-110 transition-transform">add_photo_alternate</span>
+                    <span class="material-icons text-2xl text-blue-600 group-hover:scale-110 transition-transform">add_task</span>
                     <div>
-                        <h3 class="text-sm font-medium text-gray-900">{{ __('Add Portfolio') }}</h3>
-                        <p class="text-xs text-gray-500">{{ __('Add portfolio item') }}</p>
+                        <h3 class="text-sm font-medium text-gray-900">{{ __('Add Service') }}</h3>
+                        <p class="text-xs text-gray-500">{{ __('Add new service') }}</p>
                     </div>
                 </div>
             </a>
+
+
+
 
             <a href="{{ route('admin.gallery.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-purple-300 transition-all group">
                 <div class="flex items-center gap-3">
@@ -202,28 +189,28 @@
             </div>
         </div>
 
-        <!-- Portfolio Categories -->
+        <!-- Service Categories -->
         <div class="bg-white rounded-lg shadow-sm border border-gray-200">
             <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                <h2 class="text-lg font-semibold text-gray-900">{{ __('Portfolio by Category') }}</h2>
-                <a href="{{ route('admin.portfolios.index') }}" class="text-sm text-primary hover:text-blue-800">{{ __('Manage') }}</a>
+                <h2 class="text-lg font-semibold text-gray-900">{{ __('Services by Category') }}</h2>
+                <a href="{{ route('admin.services.index') }}" class="text-sm text-primary hover:text-blue-800">{{ __('Manage') }}</a>
             </div>
             <div class="p-6">
-                @forelse($portfolioCategories as $category => $count)
+                @forelse($serviceCategories as $category => $count)
                 <div class="flex items-center justify-between py-3 {{ !$loop->last ? 'border-b border-gray-100' : '' }}">
                     <div class="flex items-center gap-3">
-                        <span class="material-icons text-yellow-600">category</span>
+                        <span class="material-icons text-blue-600">category</span>
                         <span class="text-sm font-medium text-gray-900">{{ $category }}</span>
                     </div>
                     <span class="text-sm font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full">{{ $count }}</span>
                 </div>
                 @empty
-                <p class="text-center text-gray-500 py-8">{{ __('No portfolio categories yet') }}</p>
+                <p class="text-center text-gray-500 py-8">{{ __('No service categories yet') }}</p>
                 @endforelse
 
                 <div class="mt-6 pt-4 border-t border-gray-200">
-                    <a href="{{ route('admin.portfolios.index') }}" class="inline-flex items-center gap-2 text-sm text-yellow-600 hover:text-yellow-800 font-medium">
-                        {{ __('Manage Portfolio →') }}
+                    <a href="{{ route('admin.services.index') }}" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium">
+                        {{ __('Manage Services →') }}
                     </a>
                 </div>
             </div>
@@ -240,13 +227,14 @@
                 <span class="text-xs text-gray-500">{{ $stats['testimonials']['total'] }} {{ __('total') }}</span>
             </a>
 
-
-
-            <a href="{{ route('admin.portfolios.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-yellow-50 transition-colors group">
-                <span class="material-icons text-4xl text-yellow-600 mb-2 group-hover:scale-110 transition-transform">work</span>
-                <span class="text-sm font-medium text-gray-900">{{ __('Portfolio') }}</span>
-                <span class="text-xs text-gray-500">{{ $stats['portfolios']['total'] }} {{ __('total') }}</span>
+            <a href="{{ route('admin.services.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-blue-50 transition-colors group">
+                <span class="material-icons text-4xl text-blue-600 mb-2 group-hover:scale-110 transition-transform">home_repair_service</span>
+                <span class="text-sm font-medium text-gray-900">{{ __('Services') }}</span>
+                <span class="text-xs text-gray-500">{{ $stats['services']['total'] }} {{ __('total') }}</span>
             </a>
+
+
+
 
             <a href="{{ route('admin.gallery.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-purple-50 transition-colors group">
                 <span class="material-icons text-4xl text-purple-600 mb-2 group-hover:scale-110 transition-transform">photo_library</span>

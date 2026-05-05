@@ -175,9 +175,9 @@
                             {{ __('Testimonials') }}
                         </a>
 
-                        <a href="{{ route('admin.portfolios.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.portfolios.*') ? 'active' : '' }}">
-                            <span class="material-icons">work</span>
-                            {{ __('Portfolio') }}
+                        <a href="{{ route('admin.services.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                            <span class="material-icons">home_repair_service</span>
+                            {{ __('Services') }}
                         </a>
                         <a href="{{ route('admin.gallery.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
                             <span class="material-icons">photo_library</span>

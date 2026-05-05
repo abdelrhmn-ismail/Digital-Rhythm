@@ -11,9 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('portfolios', function (Blueprint $table) {
-            $table->string('icon')->nullable()->after('category');
-        });
+        Schema::dropIfExists('portfolios');
     }
 
     /**
@@ -21,8 +19,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('portfolios', function (Blueprint $table) {
-            $table->dropColumn('icon');
-        });
+        // This is a destructive migration, but we could recreate it if needed.
+        // However, since the user wants it gone, we don't really need a rollback logic here.
     }
 };
