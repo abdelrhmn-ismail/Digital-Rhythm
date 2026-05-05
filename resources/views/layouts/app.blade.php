@@ -1,5 +1,5 @@
 @php
-    $siteTitle = \App\Helpers\SettingsHelper::siteTitle();
+    $siteTitle = __(\App\Helpers\SettingsHelper::siteTitle());
     $siteDescription = \App\Helpers\SettingsHelper::siteDescription();
     $siteKeywords = \App\Helpers\SettingsHelper::siteKeywords();
     $siteLogo = \App\Helpers\SettingsHelper::siteLogo();

@@ -1,5 +1,5 @@
 @php
-    $siteTitle = \App\Helpers\SettingsHelper::siteTitle();
+    $siteTitle = __(\App\Helpers\SettingsHelper::siteTitle());
     $contactEmail = \App\Helpers\SettingsHelper::contactEmail();
     $contactPhone = \App\Helpers\SettingsHelper::contactPhone();
     $contactAddress = \App\Helpers\SettingsHelper::contactAddress();

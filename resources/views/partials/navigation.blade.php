@@ -13,7 +13,7 @@
         <!-- Logo -->
         <a class="group flex items-center" href="{{ route('home') ?? '#' }}">
             <div class="relative flex items-center transition-all duration-500" tabindex="0">
-                <img src="{{ $siteLogo }}" alt="{{ \App\Helpers\SettingsHelper::siteTitle() }}" width="200" height="66" class="w-auto object-contain transition-all duration-500 h-[40px] lg:h-[60px]" />
+                <img src="{{ $siteLogo }}" alt="{{ __(\App\Helpers\SettingsHelper::siteTitle()) }}" width="200" height="66" class="w-auto object-contain transition-all duration-500 h-[40px] lg:h-[60px]" />
             </div>
         </a>
         

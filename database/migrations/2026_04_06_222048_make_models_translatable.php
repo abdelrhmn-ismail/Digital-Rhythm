@@ -20,14 +20,7 @@ return new class extends Migration
             $blueprint->json('features')->change();
         });
 
-        // Portfolios Table
-        Schema::table('portfolios', function (Blueprint $blueprint) {
-            $blueprint->json('title')->change();
-            $blueprint->json('description')->change();
-            $blueprint->json('content')->change();
-            $blueprint->json('technologies')->change();
-            $blueprint->json('client')->change();
-        });
+
 
         // Testimonials Table
         Schema::table('testimonials', function (Blueprint $blueprint) {
@@ -52,16 +45,7 @@ return new class extends Migration
             ]);
         });
 
-        // Portfolios
-        DB::table('portfolios')->get()->each(function ($portfolio) {
-            DB::table('portfolios')->where('id', $portfolio->id)->update([
-                'title' => json_encode(['en' => $portfolio->title, 'ar' => $portfolio->title]),
-                'description' => json_encode(['en' => $portfolio->description, 'ar' => $portfolio->description]),
-                'content' => json_encode(['en' => $portfolio->content, 'ar' => $portfolio->content]),
-                'technologies' => json_encode(['en' => json_decode($portfolio->technologies, true) ?? [], 'ar' => []]),
-                'client' => json_encode(['en' => $portfolio->client, 'ar' => $portfolio->client]),
-            ]);
-        });
+
 
         // Testimonials
         DB::table('testimonials')->get()->each(function ($testimonial) {
@@ -87,13 +71,7 @@ return new class extends Migration
             $blueprint->json('features')->change();
         });
 
-        Schema::table('portfolios', function (Blueprint $blueprint) {
-            $blueprint->text('title')->change();
-            $blueprint->text('description')->change();
-            $blueprint->longText('content')->change();
-            $blueprint->json('technologies')->change();
-            $blueprint->text('client')->change();
-        });
+
 
         Schema::table('testimonials', function (Blueprint $blueprint) {
             $blueprint->text('position')->change();

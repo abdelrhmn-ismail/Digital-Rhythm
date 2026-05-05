@@ -1,5 +1,5 @@
 @php
-    $siteTitle = \App\Helpers\SettingsHelper::siteTitle();
+    $siteTitle = __(\App\Helpers\SettingsHelper::siteTitle());
     $siteLogo = \App\Helpers\SettingsHelper::siteLogo();
     $favicon = \App\Helpers\SettingsHelper::favicon();
     $colorPrimary = \App\Models\Setting::get('color_primary', '#01194A');
