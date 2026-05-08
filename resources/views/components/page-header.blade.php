@@ -30,15 +30,15 @@
             @endif
 
             <!-- Main Headline -->
-            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[0.85]" 
+            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[1.2]" 
                 data-aos="fade-up" 
                 data-aos-delay="{{ $titleDelay }}">
                 @if($titleTop)
-                <span class="text-gray-900 block mb-2 uppercase">{{ $titleTop }}</span>
+                <span class="text-gray-900 block mb-6 uppercase">{{ $titleTop }}</span>
                 @endif
                 
                 @if($titleBottom)
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block uppercase">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block uppercase py-2">
                     {{ $titleBottom }}
                     <!-- Shimmer overlay -->
                     <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
