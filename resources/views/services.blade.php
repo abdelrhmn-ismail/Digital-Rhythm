@@ -34,8 +34,9 @@
                 
                 <!-- Icon -->
                 <div class="mb-10 relative z-10">
-                    <div class="w-20 h-20 rounded-[24px] bg-white border border-gray-100 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-sm">
-                        <span class="material-icons text-primary text-4xl group-hover:text-white transition-colors duration-500">{{ $service->icon ?? 'home_repair_service' }}</span>
+                    <div class="w-20 h-20 rounded-[24px] bg-white border border-gray-100 flex items-center justify-center relative overflow-hidden transition-all duration-500 shadow-sm">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <span class="material-icons text-primary text-4xl group-hover:text-white transition-colors duration-500 relative z-10">{{ $service->icon ?? 'home_repair_service' }}</span>
                     </div>
                 </div>
 
@@ -56,8 +57,9 @@
                         <span class="text-xs font-black uppercase tracking-[0.2em] text-primary">
                             {{ __('EXPLORE SOLUTION') }}
                         </span>
-                        <div class="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all duration-500 shadow-sm">
-                            <span class="material-icons text-gray-400 group-hover:text-white transition-colors text-sm">arrow_forward</span>
+                        <div class="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center relative overflow-hidden transition-all duration-500 shadow-sm">
+                            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <span class="material-icons text-gray-400 group-hover:text-white transition-colors text-sm relative z-10">arrow_forward</span>
                         </div>
                     </div>
                 </div>
