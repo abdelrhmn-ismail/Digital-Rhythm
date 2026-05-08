@@ -23,7 +23,7 @@
                 <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </a>
 
-            <a href="{{ route('portfolio') }}"
+            <a href="{{ route('services') }}"
                class="group inline-flex items-center justify-center gap-3 min-w-[280px] border border-gray-300 bg-white hover:bg-gray-50 hover:border-primary/40 text-gray-900 font-bold px-12 h-16 rounded-full text-lg backdrop-blur-sm transition-all duration-300 hover:scale-105 active:scale-95">
                 {{ __('View Our Work') }}
                 <span class="material-icons text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>

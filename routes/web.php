@@ -27,7 +27,7 @@ Route::get('sitemap.xml', function () {
     $pages = [
         ['loc' => route('home'), 'lastmod' => now()->toIso8601String(), 'priority' => '1.0'],
         ['loc' => route('about'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
-        ['loc' => route('portfolio'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
+        ['loc' => route('services'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
         ['loc' => route('gallery'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.7'],
         ['loc' => route('contact'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.6'],
     ];

@@ -1,6 +1,5 @@
 @props(['partners' => []])
 
-<div class="h-40"></div>
 <section class="py-24 relative overflow-hidden bg-white border-y border-gray-200">
     <div class="max-w-7xl mx-auto px-6 mb-12">
         <x-section-header 
@@ -39,38 +38,6 @@
     </div>
 </section>
 
-<section class="py-24 bg-background relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent pointer-events-none"></div>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-16 lg:gap-y-0 text-center">
-            @php
-                $stats = [
-                    ['value' => '15', 'unit' => '+', 'label' => 'YEARS OF MASTERY'],
-                    ['value' => '500', 'unit' => '+', 'label' => 'GLOBAL PROJECTS'],
-                    ['value' => '120', 'unit' => '+', 'label' => 'ELITE STRATEGIES'],
-                    ['value' => '99', 'unit' => '%', 'label' => 'SUCCESS RATE'],
-                ];
-            @endphp
-
-            @foreach($stats as $stat)
-                <div class="relative group flex flex-col items-center" data-aos="fade-up">
-                    <div class="space-y-4 px-8">
-                        <div class="text-6xl lg:text-8xl font-black text-foreground group-hover:text-primary transition-colors duration-700 tracking-tighter flex items-baseline justify-center gap-1">
-                            <div class="text-glow">
-                                <span class="counter-value" data-target="{{ $stat['value'] }}">0</span><span>{{ $stat['unit'] }}</span>
-                            </div>
-                        </div>
-                        <div class="text-[10px] lg:text-xs font-black text-muted tracking-[0.4em] uppercase transition-colors group-hover:text-gray-600 duration-500 max-w-[120px]">{{ __($stat['label']) }}</div>
-                    </div>
-                    @if(!$loop->last)
-                        <div class="absolute top-1/2 -translate-y-1/2 w-[1px] h-20 bg-gradient-to-b from-transparent via-white/10 to-transparent hidden lg:block -right-[1px]"></div>
-                    @endif
-                    <div class="absolute -bottom-8 left-1/4 right-1/4 h-[2px] bg-primary opacity-0 group-hover:opacity-100 blur-[4px] transition-all duration-700"></div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
