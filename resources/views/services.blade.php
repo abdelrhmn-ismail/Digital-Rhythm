@@ -6,9 +6,9 @@
 @section('content')
 <x-page-header 
     badge="{{ __('OUR EXPERTISE') }}"
-    titleTop="{{ __('SELECT A') }}"
-    titleBottom="{{ __('SERVICE') }}"
-    subtitle="{{ __('Enter our specialized worlds and explore how we transform ambitions into exceptional results.') }}"
+    titleTop="{{ __('CHOOSE YOUR') }}"
+    titleBottom="{{ __('DOMAIN') }}"
+    subtitle="{{ __('Step into our specialized worlds and witness how we transform your ambitions into exceptional results.') }}"
 />
 
 <!-- ============================================
@@ -80,8 +80,9 @@
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10" data-aos="fade-up">
         <x-section-header 
-            badge="{{ __('HAVE A VISION NEEDING REALITY?') }}"
-            title="{{ __('START YOUR') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('LEGACY') }}</span>"
+            badge="{{ __('READY TO CREATE') }}"
+            title="{{ __('YOUR') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('MASTERPIECE?') }}</span>"
+            subtitle="{{ __('Let\'s engineer your global success story together. Contact us today for a strategic consultation.') }}"
         />
 
         <!-- CTA Button -->

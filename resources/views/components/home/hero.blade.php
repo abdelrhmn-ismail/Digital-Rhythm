@@ -23,17 +23,17 @@
             </div>
 
             <!-- Main Headline -->
-            <h1 class="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 tracking-tighter leading-tight"
+            <h1 class="text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-black text-gray-900 tracking-tighter leading-[1.4]"
                 data-aos="fade-up"
                 data-aos-delay="300">
-                <span class="text-gray-900 block mb-2">{{ __('We help you increase your sales and grow your project through effective digital marketing strategies') }}</span>
+                <span class="text-gray-900 block mb-2">{{ __('TRANSLATE YOUR VISION INTO REALITY') }}</span>
             </h1>
 
             <!-- Subheadline -->
             <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light"
                data-aos="fade-up"
                data-aos-delay="400">
-                {{ __('Ads Management – Social Media – Design – Websites') }}
+                {{ __('Your premier creative partner specializing in digital dominance, bespoke branding, and global scale.') }}
             </p>
 
             <!-- CTA Buttons -->

@@ -7,9 +7,9 @@
     <x-page-header 
         minHeight="min-h-screen"
         badge="{{ __('Global Marketing Agency') }}"
-        titleTop="{{ __('INITIATE') }}"
-        titleBottom="{{ __('CONTACT') }}"
-        subtitle="{{ __('Ads Management – Social Media – Design – Websites') }}"
+        titleTop="{{ __('TRANSLATE YOUR') }}"
+        titleBottom="{{ __('VISION') }}"
+        subtitle="{{ __('Your premier creative partner specializing in digital dominance, bespoke branding, and global scale.') }}"
     >
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
             <!-- Primary CTA -->

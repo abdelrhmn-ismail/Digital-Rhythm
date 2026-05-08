@@ -5,9 +5,9 @@
 @section('content')
 <x-page-header 
     badge="{{ __('Our Masterpieces') }}"
-    titleTop="{{ __('CREATIVE') }}"
-    titleBottom="{{ __('GALLERY') }}"
-    subtitle="{{ __('Explore our curated collection of digital experiences, brand identities, and creative productions that define the future of marketing.') }}"
+    titleTop="{{ __('OUR VISION') }}"
+    titleBottom="{{ __('REALIZED') }}"
+    subtitle="{{ __('We don\'t just design websites and identities; we build unique experiences that put your brand at the forefront. Explore how we redefine the future of marketing.') }}"
 />
 
 <div class="pb-20 bg-white">

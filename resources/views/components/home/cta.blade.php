@@ -9,8 +9,8 @@
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10" data-aos="fade-up">
         <x-section-header 
-            badge="{{ __('READY TO TRANSFORM') }}"
-            title="{{ __('ENGINEER YOUR') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('SUCCESS STORY') }}</span>"
+            badge="{{ __('READY TO CREATE') }}"
+            title="{{ __('YOUR') }} <br/> <span class='bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary'>{{ __('MASTERPIECE?') }}</span>"
             subtitle="{{ __('Let\'s engineer your global success story together. Contact us today for a strategic consultation.') }}"
         />
 
