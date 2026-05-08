@@ -85,7 +85,7 @@
                         <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <span class="text-muted font-light">{!! $contactAddress !!}</span>
+                        <span class="text-muted font-light">{!! __($contactAddress) !!}</span>
                     </div>
                     @endif
                 </div>
@@ -101,7 +101,7 @@
                     <a href="{{ route('privacy') }}" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Privacy Policy') }}</a>
                     <a href="{{ route('terms') }}" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Terms of Service') }}</a>
                     <span class="text-zinc-600 text-xs font-light hidden md:inline">|</span>
-                    <span class="text-zinc-600 text-xs font-light">Live Systems</span>
+                    <span class="text-zinc-600 text-xs font-light">{{ __('Live Systems') }}</span>
                 </div>
             </div>
         </div>
