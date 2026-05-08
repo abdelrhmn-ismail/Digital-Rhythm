@@ -66,26 +66,26 @@
                 <div class="space-y-6">
                     @if(!empty($contactEmail))
                     <a href="mailto:{{ $contactEmail }}" class="group flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-foreground transition-all duration-300">
-                            <i class="fas fa-envelope"></i>
+                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_4px_10px_rgba(1,25,74,0.2)] group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-envelope text-sm"></i>
                         </div>
-                        <span class="text-muted font-light group-hover:text-foreground transition-colors">{{ $contactEmail }}</span>
+                        <span class="text-muted font-light group-hover:text-primary transition-colors tracking-wide">{{ $contactEmail }}</span>
                     </a>
                     @endif
                     @if(!empty($contactPhone))
                     <a href="tel:{{ str_replace(' ', '', $contactPhone) }}" class="group flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-foreground transition-all duration-300">
-                            <i class="fas fa-phone"></i>
+                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_4px_10px_rgba(1,25,74,0.2)] group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-phone text-sm"></i>
                         </div>
-                        <span class="text-muted font-light group-hover:text-foreground transition-colors">{{ $contactPhone }}</span>
+                        <span class="text-muted font-light group-hover:text-primary transition-colors tracking-wide">{{ $contactPhone }}</span>
                     </a>
                     @endif
                     @if(!empty($contactAddress))
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-primary">
-                            <i class="fas fa-map-marker-alt"></i>
+                    <div class="group flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white shadow-[0_4px_10px_rgba(1,25,74,0.2)] group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-map-marker-alt text-sm"></i>
                         </div>
-                        <span class="text-muted font-light">{!! __($contactAddress) !!}</span>
+                        <span class="text-muted font-light group-hover:text-primary transition-colors tracking-wide">{!! __($contactAddress) !!}</span>
                     </div>
                     @endif
                 </div>
@@ -100,8 +100,6 @@
                 <div class="flex gap-8 items-center">
                     <a href="{{ route('privacy') }}" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Privacy Policy') }}</a>
                     <a href="{{ route('terms') }}" class="text-foreground/60 hover:text-primary transition-colors text-sm font-light">{{ __('Terms of Service') }}</a>
-                    <span class="text-zinc-600 text-xs font-light hidden md:inline">|</span>
-                    <span class="text-zinc-600 text-xs font-light">{{ __('Live Systems') }}</span>
                 </div>
             </div>
         </div>

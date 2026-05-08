@@ -20,7 +20,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('*', function ($view) {
-            $view->with('siteTitle', \App\Helpers\SettingsHelper::siteTitle());
+            $view->with('siteTitle', __(\App\Helpers\SettingsHelper::siteTitle()));
             $view->with('siteLogo', \App\Helpers\SettingsHelper::siteLogo());
             $view->with('siteFavicon', \App\Helpers\SettingsHelper::favicon());
         });

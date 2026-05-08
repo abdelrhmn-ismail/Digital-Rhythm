@@ -106,7 +106,7 @@
                     <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,135,206,0.1)] group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_30px_rgba(0,135,206,0.3)] group-hover:scale-110 transition-all duration-700">
                         <span class="material-icons text-3xl">verified</span>
                     </div>
-                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-gray-400/30 group-hover:text-primary/20 transition-colors duration-700 tracking-tighter">01</span>
+                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-black opacity-10 group-hover:text-primary/20 transition-all duration-700 tracking-tighter">01</span>
                 </div>
                 <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors duration-500 tracking-tight uppercase">
                     {{ __('PROFESSIONALISM') }}
@@ -125,7 +125,7 @@
                     <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,135,206,0.1)] group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_30px_rgba(0,135,206,0.3)] group-hover:scale-110 transition-all duration-700">
                         <span class="material-icons text-3xl">palette</span>
                     </div>
-                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-gray-400/30 group-hover:text-primary/20 transition-colors duration-700 tracking-tighter">02</span>
+                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-black opacity-10 group-hover:text-primary/20 transition-all duration-700 tracking-tighter">02</span>
                 </div>
                 <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors duration-500 tracking-tight uppercase">
                     {{ __('CREATIVITY') }}
@@ -144,7 +144,7 @@
                     <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,135,206,0.1)] group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_30px_rgba(0,135,206,0.3)] group-hover:scale-110 transition-all duration-700">
                         <span class="material-icons text-3xl">trending_up</span>
                     </div>
-                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-gray-400/30 group-hover:text-primary/20 transition-colors duration-700 tracking-tighter">03</span>
+                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-black opacity-10 group-hover:text-primary/20 transition-all duration-700 tracking-tighter">03</span>
                 </div>
                 <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors duration-500 tracking-tight uppercase">
                     {{ __('RESULTS') }}
@@ -163,7 +163,7 @@
                     <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(0,135,206,0.1)] group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_30px_rgba(0,135,206,0.3)] group-hover:scale-110 transition-all duration-700">
                         <span class="material-icons text-3xl">handshake</span>
                     </div>
-                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-gray-400/30 group-hover:text-primary/20 transition-colors duration-700 tracking-tighter">04</span>
+                    <span class="absolute -bottom-3 -right-2 text-3xl font-black text-black opacity-10 group-hover:text-primary/20 transition-all duration-700 tracking-tighter">04</span>
                 </div>
                 <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-primary transition-colors duration-500 tracking-tight uppercase">
                     {{ __('PARTNERSHIP') }}

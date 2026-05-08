@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')</title>
+    <title>@yield('title', $siteTitle . ' | ' . __('Global Creative Agency in Riyadh'))</title>
     <meta name="description" content="@yield('description', strip_tags($siteDescription))">
     <meta name="keywords" content="@yield('keywords', $siteKeywords)">
     <meta name="author" content="{{ $siteTitle }}">
@@ -30,7 +30,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')">
+    <meta property="og:title" content="@yield('title', $siteTitle . ' | ' . __('Global Creative Agency in Riyadh'))">
     <meta property="og:description" content="@yield('description', strip_tags($siteDescription))">
     <meta property="og:image" content="@yield('og_image', $siteLogo)">
     <meta property="og:locale" content="{{ app()->getLocale() }}">
@@ -39,7 +39,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
-    <meta property="twitter:title" content="@yield('title', $siteTitle . ' | Global Creative Agency in Riyadh')">
+    <meta property="twitter:title" content="@yield('title', $siteTitle . ' | ' . __('Global Creative Agency in Riyadh'))">
     <meta property="twitter:description" content="@yield('description', strip_tags($siteDescription))">
     <meta property="twitter:image" content="@yield('og_image', $siteLogo)">
 
@@ -144,16 +144,22 @@
             background-clip: text;
         }
 
-        .btn-brand {
-            background: var(--color-primary);
+        .btn-brand, .btn-primary, .bg-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%) !important;
             color: white !important;
             transition: all 0.3s ease;
         }
 
-        .btn-brand:hover {
-            background: var(--color-secondary);
+        .btn-brand:hover, .btn-primary:hover, .bg-primary:hover {
+            opacity: 0.9;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Card Icon Hover - Blue Transition */
+        .group:hover .group-hover\:bg-primary {
+            background: var(--color-secondary) !important;
+            color: white !important;
         }
     </style>
 </head>

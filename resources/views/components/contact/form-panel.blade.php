@@ -1,5 +1,5 @@
 @props([
-    'budgets' => ['Less than $10k', '$10k-$50k', '$50k-$150k', '$150k+'],
+    'budgets' => [__('Less than $10k'), __('$10k-$50k'), __('$50k-$150k'), __('$150k+')],
 ])
 
 <div class="contact-form" data-aos="fade-left">
