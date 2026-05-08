@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ColorSettingsSeeder::class,
             GeneralSettingsSeeder::class,
-            TestimonialSeeder::class,
             ServiceSeeder::class,
             GalleryImageSeeder::class,
             PartnerSeeder::class,

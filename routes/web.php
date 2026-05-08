@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\TestimonialController;
 
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\PartnerController;
@@ -63,10 +62,9 @@ Route::get('robots.txt', function () {
 
 // Home Page
 Route::get('/', function () {
-    $testimonials = \App\Models\Testimonial::where('active', true)->orderBy('order')->get();
     $services = \App\Models\Service::where('active', true)->where('featured', true)->orderBy('order')->get();
     $partners = \App\Models\Partner::where('is_active', true)->orderBy('order')->get();
-    return view('home', compact('testimonials', 'services', 'partners'));
+    return view('home', compact('services', 'partners'));
 })->name('home');
 
 // About Page
@@ -118,24 +116,6 @@ Route::get('/terms', function () {
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     
-    // Testimonials Management
-    Route::resource('testimonials', TestimonialController::class)->names([
-        'index' => 'testimonials.index',
-        'create' => 'testimonials.create',
-        'store' => 'testimonials.store',
-        'edit' => 'testimonials.edit',
-        'update' => 'testimonials.update',
-        'destroy' => 'testimonials.destroy',
-    ]);
-    
-    Route::post('testimonials/{testimonial}/toggle-featured', [TestimonialController::class, 'toggleFeatured'])
-        ->name('testimonials.toggle-featured');
-    
-    Route::post('testimonials/{testimonial}/toggle-active', [TestimonialController::class, 'toggleActive'])
-        ->name('testimonials.toggle-active');
-    
-    Route::post('testimonials/reorder', [TestimonialController::class, 'reorder'])
-        ->name('testimonials.reorder');
     
 
     

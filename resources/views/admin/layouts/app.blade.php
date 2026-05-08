@@ -170,11 +170,6 @@
                 <div class="px-4 mt-8">
                     <h3 class="text-xs uppercase text-gray-300 font-semibold">{{ __('Content Management') }}</h3>
                     <div class="mt-3 space-y-1">
-                        <a href="{{ route('admin.testimonials.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.testimonials.*') ? 'active' : '' }}">
-                            <span class="material-icons">format_quote</span>
-                            {{ __('Testimonials') }}
-                        </a>
-
                         <a href="{{ route('admin.services.index') }}" class="admin-nav-item flex items-center gap-3 rounded-lg px-3 py-2 text-sm {{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
                             <span class="material-icons">home_repair_service</span>
                             {{ __('Services') }}

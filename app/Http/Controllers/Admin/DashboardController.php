@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\Testimonial;
-
 use App\Models\Service;
 use App\Models\GalleryImage;
 use App\Models\ContactMessage;
@@ -21,11 +19,6 @@ class DashboardController extends Controller
             'users' => [
                 'total' => User::count(),
                 'recent' => User::where('created_at', '>=', now()->subDays(7))->count(),
-            ],
-            'testimonials' => [
-                'total' => Testimonial::count(),
-                'active' => Testimonial::where('active', true)->count(),
-                'featured' => Testimonial::where('featured', true)->count(),
             ],
             'services' => [
                 'total' => Service::count(),
@@ -46,7 +39,6 @@ class DashboardController extends Controller
         // Recent Activity
         $recentContacts = ContactMessage::latest()->take(5)->get();
         $recentServices = Service::latest()->take(3)->get();
-        $recentTestimonials = Testimonial::latest()->take(3)->get();
 
         // Content by Category (Services)
         $serviceCategories = Service::where('active', true)
@@ -61,7 +53,6 @@ class DashboardController extends Controller
             'stats',
             'recentContacts',
             'recentServices',
-            'recentTestimonials',
             'serviceCategories'
         ));
     }

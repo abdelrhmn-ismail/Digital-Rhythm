@@ -21,14 +21,6 @@ return new class extends Migration
         });
 
 
-
-        // Testimonials Table
-        Schema::table('testimonials', function (Blueprint $blueprint) {
-            $blueprint->json('position')->change();
-            $blueprint->json('company')->change();
-            $blueprint->json('content')->change();
-        });
-
         // Convert existing data to JSON format {"en": "value"}
         $this->convertExistingData();
     }
@@ -45,16 +37,6 @@ return new class extends Migration
             ]);
         });
 
-
-
-        // Testimonials
-        DB::table('testimonials')->get()->each(function ($testimonial) {
-            DB::table('testimonials')->where('id', $testimonial->id)->update([
-                'position' => json_encode(['en' => $testimonial->position, 'ar' => $testimonial->position]),
-                'company' => json_encode(['en' => $testimonial->company, 'ar' => $testimonial->company]),
-                'content' => json_encode(['en' => $testimonial->content, 'ar' => $testimonial->content]),
-            ]);
-        });
     }
 
     /**
@@ -71,12 +53,5 @@ return new class extends Migration
             $blueprint->json('features')->change();
         });
 
-
-
-        Schema::table('testimonials', function (Blueprint $blueprint) {
-            $blueprint->text('position')->change();
-            $blueprint->text('company')->change();
-            $blueprint->text('content')->change();
-        });
     }
 };
