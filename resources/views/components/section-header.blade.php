@@ -24,7 +24,7 @@
     @endif
 
     <!-- Headline -->
-    <h2 class="text-4xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 leading-tight tracking-tighter" 
+    <h2 class="text-4xl md:text-7xl lg:text-8xl font-black text-gray-900 mb-8 leading-[1.5] tracking-tighter overflow-visible" 
         data-aos="fade-up" 
         data-aos-delay="{{ $titleDelay }}">
         {!! $title !!}

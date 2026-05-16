@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             GeneralSettingsSeeder::class,
             ServiceSeeder::class,
             GalleryImageSeeder::class,
-            PartnerSeeder::class,
+
             PageSeeder::class,
         ]);
     }

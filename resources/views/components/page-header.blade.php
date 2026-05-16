@@ -9,7 +9,7 @@
     'subtitleDelay' => '400'
 ])
 
-<section class="relative {{ $minHeight }} flex items-center justify-center overflow-hidden bg-white">
+<section class="relative {{ $minHeight }} flex items-center justify-center overflow-visible bg-white">
     <!-- Background Effects (Matching Branding Style) -->
     <div class="absolute inset-0 pointer-events-none">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-[radial-gradient(ellipse_at_center,_rgba(1,25,74,0.05)_0%,_transparent_60%)]"></div>
@@ -30,7 +30,7 @@
             @endif
 
             <!-- Main Headline -->
-            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[1.2]" 
+            <h1 class="text-4xl xs:text-5xl md:text-8xl lg:text-9xl font-black text-gray-900 tracking-tighter leading-[1.5]" 
                 data-aos="fade-up" 
                 data-aos-delay="{{ $titleDelay }}">
                 @if($titleTop)
@@ -38,7 +38,7 @@
                 @endif
                 
                 @if($titleBottom)
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block uppercase py-2">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary block relative inline-block uppercase py-4">
                     {{ $titleBottom }}
                     <!-- Shimmer overlay -->
                     <span class="absolute inset-0 bg-[linear-gradient(90deg,_transparent_0%,_rgba(255,255,255,0.3)_50%,_transparent_100%)] bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] pointer-events-none"></span>
