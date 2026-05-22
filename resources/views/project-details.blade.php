@@ -224,7 +224,7 @@
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 blur-[180px] rounded-full pointer-events-none"></div>
                 
                 <div class="relative z-10 flex flex-col items-center gap-10">
-                    <h3 class="text-4xl md:text-7xl font-black text-gray-900 tracking-tighter leading-none uppercase">
+                    <h3 class="text-4xl md:text-7xl font-black text-gray-900 tracking-tighter leading-tight md:leading-[1.15] uppercase">
                         {{ __('READY FOR') }} <br/> 
                         <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">{{ __('REVOLUTION?') }}</span>
                     </h3>
