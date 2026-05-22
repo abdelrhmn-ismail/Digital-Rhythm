@@ -42,12 +42,7 @@
                 @endif
             </a>
 
-            <a class="relative px-5 py-2 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 {{ $currentRoute == 'gallery' ? 'text-foreground' : 'text-foreground/60 hover:text-foreground' }}" href="{{ route('gallery') ?? '#' }}">
-                <span class="relative z-10">{{ __('Gallery') }}</span>
-                @if($currentRoute == 'gallery')
-                <div class="absolute inset-0 bg-primary/10 border border-primary/20 rounded-full shadow-[0_0_15px_rgba(0,135,206,0.1)]"></div>
-                @endif
-            </a>
+
 
             <a class="relative px-5 py-2 text-[11px] font-black uppercase tracking-[0.2em] transition-colors duration-300 {{ $currentRoute == 'contact' ? 'text-foreground' : 'text-foreground/60 hover:text-foreground' }}" href="{{ route('contact') ?? '#' }}">
                 <span class="relative z-10">{{ __('Contact') }}</span>
@@ -102,7 +97,7 @@
             <a href="{{ route('about') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'about' ? 'text-primary' : 'text-foreground/60' }}">{{ __('About') }}</a>
 
             <a href="{{ route('services') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'services' ? 'text-primary' : 'text-foreground/60' }}">{{ __('Services') }}</a>
-            <a href="{{ route('gallery') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'gallery' ? 'text-primary' : 'text-foreground/60' }}">{{ __('Gallery') }}</a>
+
             <a href="{{ route('contact') ?? '#' }}" class="w-full text-center py-4 bg-primary text-white font-black rounded-full mt-4">{{ __('GET A QUOTE') }}</a>
         </div>
     </div>

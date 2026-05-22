@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\PortfolioController;
 
-use App\Http\Controllers\Admin\GalleryImageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ContactController;
@@ -27,7 +26,6 @@ Route::get('sitemap.xml', function () {
         ['loc' => route('home'), 'lastmod' => now()->toIso8601String(), 'priority' => '1.0'],
         ['loc' => route('about'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
         ['loc' => route('services'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
-        ['loc' => route('gallery'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.7'],
         ['loc' => route('contact'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.6'],
     ];
 
@@ -83,21 +81,7 @@ Route::get('/services', function () {
 Route::get('/contact', ContactPageController::class)->name('contact');
 Route::post('/contact', [PublicContactMessageController::class, 'store'])->name('contact.store');
 
-// Image Gallery Showcase
-Route::get('/gallery', function () {
-    $galleryImages = \App\Models\GalleryImage::where('is_active', true)
-        ->orderBy('order')
-        ->orderByDesc('created_at')
-        ->get();
-    
-    $categories = \App\Models\GalleryImage::where('is_active', true)
-        ->distinct()
-        ->pluck('category')
-        ->filter()
-        ->values();
-    
-    return view('gallery', compact('galleryImages', 'categories'));
-})->name('gallery');
+
 
 // Privacy Policy
 Route::get('/privacy', function () {
@@ -139,24 +123,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
 
 
 
-    // Gallery Management
-    Route::resource('gallery', GalleryImageController::class)->names([
-        'index' => 'gallery.index',
-        'create' => 'gallery.create',
-        'store' => 'gallery.store',
-        'edit' => 'gallery.edit',
-        'update' => 'gallery.update',
-        'destroy' => 'gallery.destroy',
-    ]);
 
-    Route::post('gallery/{gallery}/toggle-featured', [GalleryImageController::class, 'toggleFeatured'])
-        ->name('gallery.toggle-featured');
-
-    Route::post('gallery/{gallery}/toggle-active', [GalleryImageController::class, 'toggleActive'])
-        ->name('gallery.toggle-active');
-
-    Route::post('gallery/reorder', [GalleryImageController::class, 'reorder'])
-        ->name('gallery.reorder');
 
     // Users Management
     Route::get('/users', [UserController::class, 'index'])->name('users.index');

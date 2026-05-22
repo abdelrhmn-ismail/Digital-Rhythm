@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Service;
-use App\Models\GalleryImage;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +24,7 @@ class DashboardController extends Controller
                 'active' => Service::where('active', true)->count(),
                 'featured' => Service::where('featured', true)->count(),
             ],
-            'gallery' => [
-                'total' => GalleryImage::count(),
-                'active' => GalleryImage::where('is_active', true)->count(),
-            ],
+
             'contacts' => [
                 'total' => ContactMessage::count(),
                 'unread' => ContactMessage::where('is_read', false)->count(),
