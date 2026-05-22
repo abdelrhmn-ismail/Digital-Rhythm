@@ -24,10 +24,9 @@
         <!-- Domain Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             @foreach($services as $index => $service)
-            <a href="{{ route('services.show', $service->slug) }}" 
-               class="group relative flex flex-col p-10 md:p-12 rounded-[40px] md:rounded-[56px] bg-gray-50 border border-gray-200 hover:bg-white hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:-translate-y-2 overflow-hidden min-h-[420px]"
-               data-aos="fade-up" 
-               data-aos-delay="{{ ($index % 2) * 50 }}">
+            <div class="group relative flex flex-col p-10 md:p-12 rounded-[40px] md:rounded-[56px] bg-gray-50 border border-gray-200 hover:bg-white hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:-translate-y-2 overflow-hidden min-h-[320px]"
+                 data-aos="fade-up" 
+                 data-aos-delay="{{ ($index % 2) * 50 }}">
                 
                 <!-- Background Decoration -->
                 <div class="absolute -right-8 -top-8 w-40 h-40 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
@@ -46,24 +45,10 @@
                         {{ $service->title }}
                     </h3>
                     <div class="text-gray-500 font-light leading-relaxed text-lg max-w-md">
-                        {!! Str::limit(strip_tags($service->description), 120) !!}
+                        {!! $service->description !!}
                     </div>
                 </div>
-
-                <!-- Footer / CTA -->
-                <div class="mt-auto pt-10 relative z-10">
-                    <div class="w-full h-px bg-gray-200 group-hover:bg-primary/20 transition-colors duration-500 mb-8"></div>
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-black uppercase tracking-[0.2em] text-primary">
-                            {{ __('EXPLORE SOLUTION') }}
-                        </span>
-                        <div class="w-12 h-12 rounded-full border border-gray-200 bg-white flex items-center justify-center relative overflow-hidden transition-all duration-500 shadow-sm">
-                            <div class="absolute inset-0 bg-gradient-to-br from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                            <span class="material-icons text-gray-400 group-hover:text-white transition-colors text-sm relative z-10">arrow_forward</span>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            </div>
             @endforeach
         </div>
     </div>

@@ -30,15 +30,7 @@ Route::get('sitemap.xml', function () {
         ['loc' => route('contact'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.6'],
     ];
 
-    // Add dynamic content for services
-    $services = \App\Models\Service::where('active', true)->get();
-    foreach ($services as $service) {
-        $pages[] = [
-            'loc' => route('services.show', $service->slug),
-            'lastmod' => $service->updated_at->toIso8601String(),
-            'priority' => '0.7',
-        ];
-    }
+
 
     // Add dynamic content for projects
     $projects = \App\Models\Project::where('is_active', true)->get();
@@ -86,12 +78,7 @@ Route::get('/services', function () {
     return view('services', compact('services'));
 })->name('services');
 
-// Service Details Page (goldenbee style)
-Route::get('/services/{slug}', function ($slug) {
-    $service = \App\Models\Service::where('slug', $slug)->where('active', true)->firstOrFail();
-    $projects = \App\Models\Project::where('service_id', $service->id)->where('is_active', true)->orderBy('order')->get();
-    return view('service-details', compact('service', 'projects'));
-})->name('services.show');
+
 
 // Projects Portfolio Hub
 Route::get('/projects', function () {

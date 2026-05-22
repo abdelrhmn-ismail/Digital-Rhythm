@@ -66,16 +66,6 @@ class ServiceController extends Controller
             'content' => 'nullable|array',
             'content.en' => 'nullable|string',
             'content.ar' => 'nullable|string',
-            'client' => 'nullable|array',
-            'client.en' => 'nullable|string|max:255',
-            'client.ar' => 'nullable|string|max:255',
-            'completed_date' => 'nullable|date',
-            'project_url' => 'nullable|url|max:255',
-            'technologies' => 'nullable|array',
-            'technologies.en' => 'nullable|array',
-            'technologies.ar' => 'nullable|array',
-            'images' => 'nullable|array',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'icon' => 'required|string|max:50',
             'category' => 'nullable|string|max:100',
             'featured' => 'boolean',
@@ -87,25 +77,6 @@ class ServiceController extends Controller
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']['en']);
         }
-
-        // Handle technologies array
-        if (isset($validated['technologies'])) {
-            if (isset($validated['technologies']['en'])) {
-                $validated['technologies']['en'] = array_filter($validated['technologies']['en']);
-            }
-            if (isset($validated['technologies']['ar'])) {
-                $validated['technologies']['ar'] = array_filter($validated['technologies']['ar']);
-            }
-        }
-
-        // Handle images upload
-        $uploadedImages = [];
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $uploadedImages[] = UploadHelper::upload($image, 'services');
-            }
-        }
-        $validated['images'] = $uploadedImages;
 
         $validated['order'] = $validated['order'] ?? 0;
         $validated['featured'] = $request->has('featured');
@@ -143,16 +114,6 @@ class ServiceController extends Controller
             'content' => 'nullable|array',
             'content.en' => 'nullable|string',
             'content.ar' => 'nullable|string',
-            'client' => 'nullable|array',
-            'client.en' => 'nullable|string|max:255',
-            'client.ar' => 'nullable|string|max:255',
-            'completed_date' => 'nullable|date',
-            'project_url' => 'nullable|url|max:255',
-            'technologies' => 'nullable|array',
-            'technologies.en' => 'nullable|array',
-            'technologies.ar' => 'nullable|array',
-            'images' => 'nullable|array',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'icon' => 'required|string|max:50',
             'category' => 'nullable|string|max:100',
             'featured' => 'boolean',
@@ -163,32 +124,6 @@ class ServiceController extends Controller
         // Generate slug if not provided
         if (empty($validated['slug'])) {
             $validated['slug'] = Str::slug($validated['title']['en']);
-        }
-
-        // Handle technologies array
-        if (isset($validated['technologies'])) {
-            if (isset($validated['technologies']['en'])) {
-                $validated['technologies']['en'] = array_filter($validated['technologies']['en']);
-            }
-            if (isset($validated['technologies']['ar'])) {
-                $validated['technologies']['ar'] = array_filter($validated['technologies']['ar']);
-            }
-        }
-
-        // Handle images upload
-        if ($request->hasFile('images')) {
-            // Delete old images if they exist
-            if ($service->images) {
-                foreach ($service->images as $oldImage) {
-                    Storage::disk('public')->delete($oldImage);
-                }
-            }
-
-            $uploadedImages = [];
-            foreach ($request->file('images') as $image) {
-                $uploadedImages[] = UploadHelper::upload($image, 'services');
-            }
-            $validated['images'] = $uploadedImages;
         }
 
         $validated['order'] = $validated['order'] ?? 0;
@@ -207,18 +142,6 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        // Delete images if they exist
-        if ($service->images) {
-            foreach ($service->images as $image) {
-                Storage::disk('public')->delete('services/' . $image);
-            }
-        }
-
-        // Delete thumbnail if exists
-        if ($service->thumbnail) {
-            Storage::disk('public')->delete('services/' . $service->thumbnail);
-        }
-
         $service->delete();
 
         return redirect()

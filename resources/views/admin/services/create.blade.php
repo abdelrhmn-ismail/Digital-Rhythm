@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <form method="POST" action="{{ route('admin.services.store') }}" enctype="multipart/form-data" class="space-y-8">
+    <form method="POST" action="{{ route('admin.services.store') }}" class="space-y-8">
         @csrf
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -48,11 +48,6 @@
                                     <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">{{ __('Service Title') }}</label>
                                     <input type="text" name="title[en]" value="{{ old('title.en') }}" required 
                                         class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-bold text-gray-900 shadow-inner" placeholder="Service name in English">
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">{{ __('Sub Title / Client') }}</label>
-                                    <input type="text" name="client[en]" value="{{ old('client.en') }}"
-                                        class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm font-bold text-gray-700 shadow-inner" placeholder="e.g. For Small Businesses">
                                 </div>
                                 <div>
                                     <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 ml-1">{{ __('Brief Description') }}</label>
@@ -80,11 +75,6 @@
                                         class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none font-bold text-gray-900 shadow-inner text-right font-alexandria" placeholder="عنوان الخدمة بالعربية">
                                 </div>
                                 <div>
-                                    <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 mr-1 font-alexandria">{{ __('عنوان فرعي') }}</label>
-                                    <input type="text" name="client[ar]" value="{{ old('client.ar') }}"
-                                        class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm font-bold text-gray-700 shadow-inner text-right font-alexandria" placeholder="عنوان فرعي بالعربية">
-                                </div>
-                                <div>
                                     <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-2 mr-1 font-alexandria">{{ __('وصف مختصر') }}</label>
                                     <textarea name="description[ar]" required 
                                         class="tinymce w-full px-6 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm min-h-[100px] shadow-inner text-right font-alexandria" placeholder="وصف موجز للخدمة...">{{ old('description.ar') }}</textarea>
@@ -95,39 +85,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Technologies & Stack (Used as Features for Services) -->
-                <div class="bg-white rounded-[40px] p-10 shadow-sm border border-gray-100 overflow-hidden relative">
-                    <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-8 ml-1">
-                        <span class="material-icons text-sm">list_alt</span>
-                        {{ __('Service Features') }}
-                    </h3>
-                    
-                    <div id="technologies-container" class="space-y-4">
-                        <div class="tech-item flex flex-col md:flex-row gap-4 items-center bg-gray-50/50 p-6 rounded-3xl border border-gray-100/50 hover:border-primary/20 transition-all group">
-                            <div class="flex-1 w-full relative">
-                                <input type="text" name="technologies[en][]" placeholder="Feature (English)"
-                                    class="w-full pl-6 pr-4 py-3 bg-transparent border-transparent focus:ring-0 text-sm font-bold text-gray-700 outline-none">
-                                <div class="absolute bottom-1 left-6 right-4 h-[1px] bg-gray-200 group-hover:bg-primary/20 transition-colors"></div>
-                            </div>
-                            <div class="flex-1 w-full relative h-full">
-                                <input type="text" name="technologies[ar][]" placeholder="الميزة بالعربية" dir="rtl"
-                                    class="w-full pr-6 pl-4 py-3 bg-transparent border-transparent focus:ring-0 text-sm font-bold text-gray-700 outline-none font-alexandria text-right">
-                                <div class="absolute bottom-1 left-4 right-6 h-[1px] bg-gray-200 group-hover:bg-primary/20 transition-colors"></div>
-                            </div>
-                            <button type="button" onclick="this.closest('.tech-item').remove()" class="w-10 h-10 rounded-xl bg-white text-gray-300 hover:text-red-500 hover:bg-red-50 transition-all flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100">
-                                <span class="material-icons text-lg">close</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8 flex justify-center">
-                        <button type="button" onclick="addTech()" class="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-gray-100 text-gray-500 text-xs font-black uppercase tracking-widest hover:bg-gray-200 hover:text-gray-700 transition-all active:scale-95">
-                            <span class="material-icons text-sm">add_circle_outline</span>
-                            {{ __('Add New Feature') }}
-                        </button>
                     </div>
                 </div>
             </div>
@@ -146,11 +103,6 @@
                                     <option value="{{ $category }}">{{ $category }}</option>
                                 @endforeach
                             </select>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-black uppercase tracking-widest text-primary/40 mb-2 ml-1 text-alexandria">{{ __('External Link (Optional)') }}</label>
-                            <input type="url" name="project_url" value="{{ old('project_url') }}" placeholder="https://..."
-                                class="w-full px-5 py-3 rounded-2xl bg-white border-transparent focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm font-bold">
                         </div>
                     </div>
 
@@ -183,17 +135,6 @@
                     </div>
                 </div>
 
-                <!-- Gallery Selection -->
-                <div class="bg-white rounded-[40px] p-8 shadow-sm border border-gray-100 space-y-6">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-6 ml-1 text-alexandria">{{ __('Service Gallery') }}</h3>
-                    
-                    <div class="relative py-8 rounded-[24px] bg-gray-50 border-2 border-dashed border-gray-100 flex flex-col items-center justify-center text-center px-4 hover:border-primary/20 transition-all cursor-pointer group">
-                        <span class="material-icons text-3xl text-gray-200 group-hover:text-primary/20 transition-colors mb-2">collections</span>
-                        <span class="text-[10px] font-black text-gray-300 uppercase tracking-widest group-hover:text-gray-400 transition-colors">{{ __('Select Multiple Images') }}</span>
-                        <input type="file" name="images[]" multiple class="absolute inset-0 opacity-0 cursor-pointer">
-                    </div>
-                </div>
-
                 <!-- Final Action -->
                 <div class="pt-4 flex flex-col gap-3">
                     <button type="submit" class="w-full py-4 rounded-[24px] bg-primary text-white text-xs font-black uppercase tracking-[0.3em] hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 active:scale-95">
@@ -209,28 +150,6 @@
 </div>
 
 <script>
-function addTech() {
-    const container = document.getElementById('technologies-container');
-    const newTech = document.createElement('div');
-    newTech.className = 'tech-item flex flex-col md:flex-row gap-4 items-center bg-gray-50/50 p-6 rounded-3xl border border-gray-100/50 hover:border-primary/20 transition-all group';
-    newTech.innerHTML = `
-        <div class="flex-1 w-full relative">
-            <input type="text" name="technologies[en][]" placeholder="Feature (English)"
-                class="w-full pl-6 pr-4 py-3 bg-transparent border-transparent focus:ring-0 text-sm font-bold text-gray-700 outline-none">
-            <div class="absolute bottom-1 left-6 right-4 h-[1px] bg-gray-200 group-hover:bg-primary/20 transition-colors"></div>
-        </div>
-        <div class="flex-1 w-full relative h-full">
-            <input type="text" name="technologies[ar][]" placeholder="الميزة بالعربية" dir="rtl"
-                class="w-full pr-6 pl-4 py-3 bg-transparent border-transparent focus:ring-0 text-sm font-bold text-gray-700 outline-none font-alexandria text-right">
-            <div class="absolute bottom-1 left-4 right-6 h-[1px] bg-gray-200 group-hover:bg-primary/20 transition-colors"></div>
-        </div>
-        <button type="button" onclick="this.closest('.tech-item').remove()" class="w-10 h-10 rounded-xl bg-white text-gray-300 hover:text-red-500 hover:bg-red-50 transition-all flex items-center justify-center shadow-sm">
-            <span class="material-icons text-lg">close</span>
-        </button>
-    `;
-    container.appendChild(newTech);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     tinymce.init({
         selector: '.tinymce',

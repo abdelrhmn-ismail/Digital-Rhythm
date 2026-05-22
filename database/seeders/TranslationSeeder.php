@@ -37,6 +37,8 @@ class TranslationSeeder extends Seeder
                 'ar' => 'دعنا نحول رؤيتك إلى واقع ملموس ونصمم قصة نجاح عالمية جديدة.'
             ],
             'BACK TO MATRIX' => ['en' => 'BACK TO MATRIX', 'ar' => 'العودة للمصفوفة'],
+            'BACK TO SERVICES' => ['en' => 'BACK TO SERVICES', 'ar' => 'العودة للخدمات'],
+            'SERVICE' => ['en' => 'SERVICE', 'ar' => 'الخدمة'],
             'SERVICE DEPTH' => ['en' => 'SERVICE DEPTH', 'ar' => 'عمق الخدمة'],
             'SUCCESS STORIES' => ['en' => 'SUCCESS STORIES', 'ar' => 'قصص النجاح'],
             'SEE OUR' => ['en' => 'SEE OUR', 'ar' => 'شاهد'],
@@ -73,6 +75,10 @@ class TranslationSeeder extends Seeder
                 'ar' => 'توقف عن بناء الحلول العادية. دعنا نتشارك لتصميم حل رقمي نخبه يفرض سلطته، ويأسر المستخدمين، ويسرع التحويلات.'
             ],
             'START YOUR LEGACY' => ['en' => 'START YOUR LEGACY', 'ar' => 'ابدأ إرثك الآن'],
+            'SEE OUR IMPACT' => ['en' => 'SEE OUR IMPACT', 'ar' => 'شاهد أثرنا'],
+            'VIEW ALL WORK' => ['en' => 'VIEW ALL WORK', 'ar' => 'عرض كل الأعمال'],
+            'READY TO' => ['en' => 'READY TO', 'ar' => 'جاهز لـ'],
+            'DOMINATE?' => ['en' => 'DOMINATE?', 'ar' => 'الهيمنة؟'],
             'PORTFOLIO' => ['en' => 'PORTFOLIO', 'ar' => 'معرض الأعمال'],
             'EXPLORE OUR' => ['en' => 'EXPLORE OUR', 'ar' => 'استكشف'],
             'CREATIONS' => ['en' => 'CREATIONS', 'ar' => 'إبداعاتنا'],

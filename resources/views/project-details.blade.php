@@ -4,7 +4,11 @@
 @section('description', strip_tags($project->description))
 
 @section('content')
-<div class="bg-background min-h-screen relative overflow-hidden selection:bg-primary/30">
+<div class="bg-background min-h-screen relative overflow-hidden selection:bg-primary/30"
+     x-data='projectGallery({!! json_encode($project->images_urls ?? []) !!})'
+     @keydown.escape.window="closeLightbox()"
+     @keydown.right.window="if(isOpen) nextImg()"
+     @keydown.left.window="if(isOpen) prevImg()">
     <!-- Glowing background vectors and mesh grids -->
     <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50/50 to-white z-0"></div>
     <div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 blur-[160px] rounded-full pointer-events-none"></div>
@@ -49,7 +53,7 @@
                         <span class="w-12 h-px bg-primary/30"></span>
                         {{ $project->service ? $project->service->title : __('Custom Solution') }}
                     </div>
-                    <h1 class="text-4xl sm:text-6xl md:text-[80px] lg:text-[110px] font-black text-gray-900 tracking-tighter leading-[0.9] uppercase break-words">
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-tight md:leading-[1.15] uppercase break-words">
                         {{ $project->title }}
                     </h1>
                 </div>
@@ -100,25 +104,12 @@
                             </div>
                             
                             @php
-                                // Retrieve technologies dynamically from associated service (forced to English) or define default stack
+                                // Retrieve technologies fallback directly from the associated service type
                                 $techStack = [];
-                                if ($project->service) {
-                                    $techs = $project->service->getTranslation('technologies', 'en');
-                                    if (is_string($techs)) {
-                                        $techs = json_decode($techs, true) ?: [];
-                                    }
-                                    if (is_array($techs)) {
-                                        $techStack = array_slice($techs, 0, 6);
-                                    }
-                                }
-                                
-                                // Beautiful fallbacks if empty
-                                if (empty($techStack)) {
-                                    if ($project->service && str_contains(strtolower($project->service->slug), 'mobile-apps')) {
-                                        $techStack = ['Swift', 'Kotlin', 'Flutter', 'Node.js', 'PostgreSQL', 'APIs'];
-                                    } else {
-                                        $techStack = ['Next.js', 'React.js', 'Tailwind CSS', 'Laravel API', 'PostgreSQL', 'CDN Edge'];
-                                    }
+                                if ($project->service && (str_contains(strtolower($project->service->slug), 'mobile-apps') || str_contains(strtolower($project->service->slug), 'app'))) {
+                                    $techStack = ['Swift', 'Kotlin', 'Flutter', 'Node.js', 'PostgreSQL', 'APIs'];
+                                } else {
+                                    $techStack = ['Next.js', 'React.js', 'Tailwind CSS', 'Laravel API', 'PostgreSQL', 'CDN Edge'];
                                 }
                             @endphp
 
@@ -171,7 +162,8 @@
                 <h3 class="text-2xl font-black text-gray-900 tracking-tight uppercase">{{ __('PROJECT GALLERY') }}</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     @foreach($project->images_urls as $imgIndex => $imageUrl)
-                    <div class="relative w-full rounded-[32px] overflow-hidden border border-gray-200 bg-gray-50 aspect-video group shadow-xl">
+                    <div @click="openLightbox('{{ $imageUrl }}', {{ $imgIndex }})"
+                         class="relative w-full rounded-[32px] overflow-hidden border border-gray-200 bg-gray-50 aspect-video group shadow-xl cursor-pointer">
                         <img alt="Gallery {{ $imgIndex }}" 
                              loading="lazy" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100" 
@@ -252,5 +244,92 @@
 
         </div>
     </div>
+
+    <!-- Premium Fullscreen Lightbox Portal overlay -->
+    <div x-show="isOpen" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         @click.self="closeLightbox()"
+         class="fixed inset-0 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-10 select-none"
+         style="display: none; z-index: 99999;">
+        
+        <!-- Close button top-right -->
+        <button @click="closeLightbox()" 
+                class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95 shadow-lg"
+                style="z-index: 100000;">
+            <span class="material-icons text-2xl">close</span>
+        </button>
+
+        <!-- Previous button left -->
+        <button @click="prevImg()" 
+                class="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95 shadow-lg"
+                style="z-index: 100000;">
+            @if(app()->getLocale() == 'ar')
+                <span class="material-icons text-3xl">chevron_right</span>
+            @else
+                <span class="material-icons text-3xl">chevron_left</span>
+            @endif
+        </button>
+
+        <!-- Next button right -->
+        <button @click="nextImg()" 
+                class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95 shadow-lg"
+                style="z-index: 100000;">
+            @if(app()->getLocale() == 'ar')
+                <span class="material-icons text-3xl">chevron_left</span>
+            @else
+                <span class="material-icons text-3xl">chevron_right</span>
+            @endif
+        </button>
+
+        <!-- Central Image Display Container -->
+        <div class="relative max-w-full max-h-[85vh] flex items-center justify-center" style="z-index: 100000;">
+            <img :src="activeImg" 
+                 class="max-w-full max-h-[80vh] object-contain rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 transition-all duration-300" 
+                 alt="Enlarged Project Showcase" />
+        </div>
+
+        <!-- Index indicator at bottom of viewport screen, away from image content -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 px-5 py-2.5 bg-black/60 backdrop-blur-md rounded-full border border-white/10 text-white/80 font-mono text-xs tracking-[0.25em] z-[100000] flex items-center justify-center shadow-lg">
+            <span x-text="currentIndex + 1" class="font-bold text-secondary"></span>
+            <span class="mx-2 text-white/30">/</span>
+            <span x-text="imagesList.length"></span>
+        </div>
+    </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('projectGallery', (images) => ({
+            isOpen: false,
+            activeImg: '',
+            imagesList: images || [],
+            currentIndex: 0,
+            openLightbox(url, index) {
+                this.activeImg = url;
+                this.currentIndex = index;
+                this.isOpen = true;
+                document.body.style.overflow = 'hidden';
+            },
+            closeLightbox() {
+                this.isOpen = false;
+                document.body.style.overflow = '';
+            },
+            nextImg() {
+                this.currentIndex = (this.currentIndex + 1) % this.imagesList.length;
+                this.activeImg = this.imagesList[this.currentIndex];
+            },
+            prevImg() {
+                this.currentIndex = (this.currentIndex - 1 + this.imagesList.length) % this.imagesList.length;
+                this.activeImg = this.imagesList[this.currentIndex];
+            }
+        }));
+    });
+</script>
+@endpush
