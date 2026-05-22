@@ -26,16 +26,27 @@ Route::get('sitemap.xml', function () {
         ['loc' => route('home'), 'lastmod' => now()->toIso8601String(), 'priority' => '1.0'],
         ['loc' => route('about'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
         ['loc' => route('services'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
+        ['loc' => route('projects'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.8'],
         ['loc' => route('contact'), 'lastmod' => now()->toIso8601String(), 'priority' => '0.6'],
     ];
 
-    // Add dynamic content
+    // Add dynamic content for services
     $services = \App\Models\Service::where('active', true)->get();
     foreach ($services as $service) {
         $pages[] = [
-            'loc' => route('services') . '#service-' . $service->id,
+            'loc' => route('services.show', $service->slug),
             'lastmod' => $service->updated_at->toIso8601String(),
-            'priority' => '0.6',
+            'priority' => '0.7',
+        ];
+    }
+
+    // Add dynamic content for projects
+    $projects = \App\Models\Project::where('is_active', true)->get();
+    foreach ($projects as $project) {
+        $pages[] = [
+            'loc' => route('projects.show', $project),
+            'lastmod' => $project->updated_at->toIso8601String(),
+            'priority' => '0.7',
         ];
     }
 
@@ -69,19 +80,49 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-
-
 // Services Page
 Route::get('/services', function () {
     $services = \App\Models\Service::where('active', true)->orderBy('order')->get();
     return view('services', compact('services'));
 })->name('services');
 
+// Service Details Page (goldenbee style)
+Route::get('/services/{slug}', function ($slug) {
+    $service = \App\Models\Service::where('slug', $slug)->where('active', true)->firstOrFail();
+    $projects = \App\Models\Project::where('service_id', $service->id)->where('is_active', true)->orderBy('order')->get();
+    return view('service-details', compact('service', 'projects'));
+})->name('services.show');
+
+// Projects Portfolio Hub
+Route::get('/projects', function () {
+    $projects = \App\Models\Project::where('is_active', true)->orderBy('order')->get();
+    $services = \App\Models\Service::where('active', true)->orderBy('order')->get();
+    return view('projects', compact('projects', 'services'));
+})->name('projects');
+
+// Project Details Page (Goldenbee style)
+Route::get('/projects/{project}', function (\App\Models\Project $project) {
+    if (!$project->is_active) {
+        abort(404);
+    }
+    
+    // Fetch related projects (excluding current, within same service)
+    $relatedProjects = \App\Models\Project::where('service_id', $project->service_id)
+        ->where('id', '!=', $project->id)
+        ->where('is_active', true)
+        ->orderBy('order')
+        ->limit(3)
+        ->get();
+        
+    $services = \App\Models\Service::where('active', true)->orderBy('order')->get();
+    $siteTitle = \App\Models\Setting::get('site_title', 'Digital Rhythm');
+    
+    return view('project-details', compact('project', 'relatedProjects', 'services', 'siteTitle'));
+})->name('projects.show');
+
 // Contact Page
 Route::get('/contact', ContactPageController::class)->name('contact');
 Route::post('/contact', [PublicContactMessageController::class, 'store'])->name('contact.store');
-
-
 
 // Privacy Policy
 Route::get('/privacy', function () {
@@ -120,6 +161,25 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     
     Route::post('services/reorder', [\App\Http\Controllers\Admin\ServiceController::class, 'reorder'])
         ->name('services.reorder');
+
+    // Projects Management
+    Route::resource('projects', \App\Http\Controllers\Admin\ProjectController::class)->names([
+        'index' => 'projects.index',
+        'create' => 'projects.create',
+        'store' => 'projects.store',
+        'edit' => 'projects.edit',
+        'update' => 'projects.update',
+        'destroy' => 'projects.destroy',
+    ]);
+    
+    Route::post('projects/{project}/toggle-featured', [\App\Http\Controllers\Admin\ProjectController::class, 'toggleFeatured'])
+        ->name('projects.toggle-featured');
+    
+    Route::post('projects/{project}/toggle-active', [\App\Http\Controllers\Admin\ProjectController::class, 'toggleActive'])
+        ->name('projects.toggle-active');
+    
+    Route::post('projects/reorder', [\App\Http\Controllers\Admin\ProjectController::class, 'reorder'])
+        ->name('projects.reorder');
 
 
 

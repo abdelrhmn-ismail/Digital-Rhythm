@@ -97,6 +97,17 @@ class ServiceSeeder extends Seeder
                 'active' => true,
                 'order' => 7,
             ],
+            [
+                'title' => ['en' => 'Mobile App Development', 'ar' => 'تطوير تطبيقات الجوال'],
+                'slug' => 'mobile-apps',
+                'description' => ['en' => 'High-performance native and cross-platform mobile application development.', 'ar' => 'تطوير تطبيقات الجوال الأصلية ومتعددة المنصات عالية الأداء.'],
+                'content' => ['en' => 'Bespoke mobile application solutions tailored to your specific business requirements.', 'ar' => 'حلول تطبيقات الجوال المخصصة المصممة خصيصاً لمتطلبات عملك المحددة.'],
+                'category' => 'Web Design & Development',
+                'icon' => 'phone_android',
+                'featured' => true,
+                'active' => true,
+                'order' => 8,
+            ],
 
             // Category 3: Digital Marketing
             [

@@ -53,7 +53,17 @@
             </div>
         </div>
 
-
+        <!-- Projects -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-gray-600">{{ __('Projects') }}</p>
+                    <p class="text-3xl font-bold text-gray-900 mt-2">{{ $stats['projects']['total'] }}</p>
+                    <p class="text-xs text-gray-500 mt-1">{{ $stats['projects']['active'] }} {{ __('active') }}</p>
+                </div>
+                <span class="material-icons text-5xl text-purple-600">folder_special</span>
+            </div>
+        </div>
     </div>
 
     <!-- Secondary Stats Cards (2 columns) -->
@@ -87,6 +97,16 @@
                     <div>
                         <h3 class="text-sm font-medium text-gray-900">{{ __('Add Service') }}</h3>
                         <p class="text-xs text-gray-500">{{ __('Add new service') }}</p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="{{ route('admin.projects.create') }}" class="block p-4 bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-purple-300 transition-all group">
+                <div class="flex items-center gap-3">
+                    <span class="material-icons text-2xl text-purple-600 group-hover:scale-110 transition-transform">folder_special</span>
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900">{{ __('Add Project') }}</h3>
+                        <p class="text-xs text-gray-500">{{ __('Add new project') }}</p>
                     </div>
                 </div>
             </a>
@@ -175,6 +195,12 @@
                 <span class="material-icons text-4xl text-blue-600 mb-2 group-hover:scale-110 transition-transform">home_repair_service</span>
                 <span class="text-sm font-medium text-gray-900">{{ __('Services') }}</span>
                 <span class="text-xs text-gray-500">{{ $stats['services']['total'] }} {{ __('total') }}</span>
+            </a>
+            
+            <a href="{{ route('admin.projects.index') }}" class="flex flex-col items-center p-4 rounded-lg hover:bg-purple-50 transition-colors group">
+                <span class="material-icons text-4xl text-purple-600 mb-2 group-hover:scale-110 transition-transform">folder_special</span>
+                <span class="text-sm font-medium text-gray-900">{{ __('Projects') }}</span>
+                <span class="text-xs text-gray-500">{{ $stats['projects']['total'] }} {{ __('total') }}</span>
             </a>
         </div>
     </div>

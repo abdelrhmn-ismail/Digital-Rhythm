@@ -24,7 +24,7 @@
         <!-- Domain Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             @foreach($services as $index => $service)
-            <a href="{{ route('contact') }}" 
+            <a href="{{ route('services.show', $service->slug) }}" 
                class="group relative flex flex-col p-10 md:p-12 rounded-[40px] md:rounded-[56px] bg-gray-50 border border-gray-200 hover:bg-white hover:border-primary/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-700 hover:-translate-y-2 overflow-hidden min-h-[420px]"
                data-aos="fade-up" 
                data-aos-delay="{{ ($index % 2) * 50 }}">

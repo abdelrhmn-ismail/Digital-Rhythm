@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             ColorSettingsSeeder::class,
             GeneralSettingsSeeder::class,
             ServiceSeeder::class,
+            ProjectSeeder::class,
+            TranslationSeeder::class,
 
             PageSeeder::class,
         ]);

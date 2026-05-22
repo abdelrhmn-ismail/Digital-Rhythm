@@ -11,13 +11,13 @@ class TranslationServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton('translation.loader', function ($app) {
+        $this->app->extend('translation.loader', function ($loader, $app) {
             return new \App\Translation\DatabaseLoader($app['files'], $app['path.lang']);
         });
     }
 
     /**
-     * Bootstrap services.
+     * Bootstrap any application services.
      */
     public function boot(): void
     {

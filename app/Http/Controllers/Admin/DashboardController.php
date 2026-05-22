@@ -24,7 +24,11 @@ class DashboardController extends Controller
                 'active' => Service::where('active', true)->count(),
                 'featured' => Service::where('featured', true)->count(),
             ],
-
+            'projects' => [
+                'total' => \App\Models\Project::count(),
+                'active' => \App\Models\Project::where('is_active', true)->count(),
+                'featured' => \App\Models\Project::where('is_featured', true)->count(),
+            ],
             'contacts' => [
                 'total' => ContactMessage::count(),
                 'unread' => ContactMessage::where('is_read', false)->count(),
