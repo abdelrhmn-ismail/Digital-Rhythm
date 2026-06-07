@@ -55,7 +55,7 @@
                 <ul class="space-y-4 font-light text-muted">
                     <li><a href="{{ route('about') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('About Us') }}</a></li>
                     <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Our Services') }}</a></li>
-                    <li><a href="{{ route('contact') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Careers') }}</a></li>
+                    <li><a href="{{ route('projects') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Our Projects') }}</a></li>
                     <li><a href="{{ route('contact') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Contact') }}</a></li>
                 </ul>
             </div>

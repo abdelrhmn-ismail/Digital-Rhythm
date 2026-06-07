@@ -161,6 +161,14 @@
             background: var(--color-secondary) !important;
             color: white !important;
         }
+
+        /* WhatsApp Floating Button */
+        .bg-whatsapp {
+            background-color: #25D366 !important;
+        }
+        .bg-whatsapp:hover {
+            background-color: #20ba5a !important;
+        }
     </style>
 </head>
 <body class="bg-background text-foreground" style="{{ app()->getLocale() == 'ar' ? 'font-family: Alexandria, sans-serif;' : '' }}">
@@ -187,6 +195,25 @@
             offset: 50,
         });
     </script>
+    <!-- Floating WhatsApp Button -->
+    @php
+        $whatsappNumber = \App\Helpers\SettingsHelper::get('contact_whatsapp');
+        $whatsappClean = preg_replace('/[^0-9]/', '', $whatsappNumber);
+        $isRtl = app()->getLocale() == 'ar';
+    @endphp
+    @if(!empty($whatsappNumber) && !empty($whatsappClean))
+    <a href="https://wa.me/{{ $whatsappClean }}" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 {{ $isRtl ? 'left-6' : 'right-6' }} z-50 w-14 h-14 bg-whatsapp text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 group"
+       title="{{ __('Chat on WhatsApp') }}">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="absolute {{ $isRtl ? 'left-16 origin-left' : 'right-16 origin-right' }} scale-0 group-hover:scale-100 transition-all bg-gray-900 text-white text-[10px] font-bold px-3 py-2 rounded-lg whitespace-nowrap shadow-md">
+            {{ __('Chat on WhatsApp') }}
+        </span>
+    </a>
+    @endif
+
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
 </body>

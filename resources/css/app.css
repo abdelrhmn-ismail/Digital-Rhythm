@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+@source "../views/**/*.blade.php";
+@source "../../resources/views/**/*.blade.php";
+@source "./resources/views/**/*.blade.php";
+@source "../js/**/*.js";
+@source "./resources/js/**/*.js";
 @import './colors.css';
 @import './components.css';
 @import './utilities.css';
@@ -16,4 +21,12 @@
         -webkit-font-smoothing: antialiased;
         font-family: 'Outfit', sans-serif;
     }
+}
+
+@utility bg-whatsapp {
+  background-color: #25D366 !important;
+}
+
+@utility bg-whatsapp-hover {
+  background-color: #20ba5a !important;
 }

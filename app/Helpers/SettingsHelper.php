@@ -127,6 +127,15 @@ class SettingsHelper
     }
 
     /**
+     * Get contact whatsapp
+     * @return string
+     */
+    public static function contactWhatsapp()
+    {
+        return self::get('contact_whatsapp', '+966559561977');
+    }
+
+    /**
      * Get contact address
      * @return string
      */

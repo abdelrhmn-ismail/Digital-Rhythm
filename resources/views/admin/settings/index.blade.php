@@ -169,7 +169,7 @@
                             {{ __('Communication Points') }}
                         </h3>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div>
                                 <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 ml-1">{{ __('Public Email') }}</label>
                                 <input type="email" name="contact_email" value="{{ $settings['contact_email'] ?? '' }}" 
@@ -180,7 +180,12 @@
                                 <input type="text" name="contact_phone" value="{{ $settings['contact_phone'] ?? '' }}" 
                                     class="w-full px-8 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm font-bold text-gray-800 shadow-inner">
                             </div>
-                            <div class="md:col-span-2">
+                            <div>
+                                <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 ml-1">{{ __('WhatsApp Number') }}</label>
+                                <input type="text" name="contact_whatsapp" value="{{ $settings['contact_whatsapp'] ?? '' }}" 
+                                    class="w-full px-8 py-4 rounded-2xl bg-gray-50 border-transparent focus:bg-white focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none text-sm font-bold text-gray-800 shadow-inner">
+                            </div>
+                            <div class="md:col-span-3">
                                 <label class="block text-[10px] font-black uppercase tracking-widest text-gray-400 mb-3 ml-1">{{ __('Operational HQ Address') }}</label>
                                 <textarea name="contact_address" class="tinymce h-32">{{ $settings['contact_address'] ?? '' }}</textarea>
                             </div>
@@ -233,31 +238,40 @@
                 </div>
                 
                 <!-- "Others" organized inputs (as requested) -->
-                <div class="mt-8 bg-gray-900 rounded-[40px] p-10 shadow-2xl relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                <div class="mt-8 bg-gray-950 rounded-[40px] p-10 shadow-2xl relative overflow-hidden border border-white/5 group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                     <h3 class="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white/40 mb-8 ml-1">
                         <span class="material-icons text-sm">miscellaneous_services</span>
                         {{ __('Runtime Parameters') }}
                     </h3>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
-                        <div class="bg-white/5 p-6 rounded-3xl border border-white/5 space-y-4">
+                        <!-- Maintenance Mode Card -->
+                        <div class="bg-white/5 p-8 rounded-[32px] border border-white/5 space-y-4 hover:border-white/10 hover:bg-white/[0.07] transition-all duration-300">
                             <h4 class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-4">{{ __('Maintenance Mode') }}</h4>
-                            <label class="flex items-center justify-between cursor-pointer group/toggle">
+                            <label class="relative inline-flex items-center justify-between cursor-pointer group/toggle w-full">
                                 <span class="text-xs font-bold text-white/40 group-hover/toggle:text-white/80 transition-colors">{{ __('System Active Status') }}</span>
-                                <div class="relative w-12 h-6 rounded-full bg-white/10 group-hover/toggle:bg-white/20 transition-colors">
+                                <div class="relative">
                                     <input type="checkbox" name="is_online" value="1" {{ ($settings['is_online'] ?? '1') == '1' ? 'checked' : '' }} class="sr-only peer">
-                                    <div class="peer-checked:translate-x-6 peer-checked:bg-primary absolute left-1 top-1 w-4 h-4 rounded-full bg-white/20 transition-all shadow-sm"></div>
+                                    <!-- Toggle Track -->
+                                    <div class="w-12 h-6 bg-white/10 rounded-full peer peer-checked:bg-secondary transition-colors duration-300"></div>
+                                    <!-- Toggle Handle -->
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white/50 rounded-full transition-all duration-300 peer-checked:translate-x-6 peer-checked:bg-white shadow-sm"></div>
                                 </div>
                             </label>
                         </div>
-                        <div class="bg-white/5 p-6 rounded-3xl border border-white/5 space-y-4">
+                        
+                        <!-- Advanced Debug Card -->
+                        <div class="bg-white/5 p-8 rounded-[32px] border border-white/5 space-y-4 hover:border-white/10 hover:bg-white/[0.07] transition-all duration-300">
                             <h4 class="text-[10px] font-black uppercase tracking-widest text-white/60 mb-4">{{ __('Advanced Debug') }}</h4>
-                            <label class="flex items-center justify-between cursor-pointer group/toggle">
+                            <label class="relative inline-flex items-center justify-between cursor-pointer group/toggle w-full">
                                 <span class="text-xs font-bold text-white/40 group-hover/toggle:text-white/80 transition-colors">{{ __('Verbose Error Logging') }}</span>
-                                <div class="relative w-12 h-6 rounded-full bg-white/10 group-hover/toggle:bg-white/20 transition-colors">
+                                <div class="relative">
                                     <input type="checkbox" name="debug_mode" value="1" {{ ($settings['debug_mode'] ?? '0') == '1' ? 'checked' : '' }} class="sr-only peer">
-                                    <div class="peer-checked:translate-x-6 peer-checked:bg-primary absolute left-1 top-1 w-4 h-4 rounded-full bg-white/20 transition-all shadow-sm"></div>
+                                    <!-- Toggle Track -->
+                                    <div class="w-12 h-6 bg-white/10 rounded-full peer peer-checked:bg-secondary transition-colors duration-300"></div>
+                                    <!-- Toggle Handle -->
+                                    <div class="absolute left-1 top-1 w-4 h-4 bg-white/50 rounded-full transition-all duration-300 peer-checked:translate-x-6 peer-checked:bg-white shadow-sm"></div>
                                 </div>
                             </label>
                         </div>

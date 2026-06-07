@@ -25,7 +25,8 @@
     <div class="relative group {{ $aspect }} rounded-[32px] overflow-hidden bg-gray-50 border-2 border-dashed border-gray-100 hover:border-primary/20 transition-all flex flex-col items-center justify-center p-8">
         <!-- Preview Container -->
         <div id="preview-container-{{ $name }}" 
-             class="absolute inset-0 w-full h-full p-8 flex items-center justify-center bg-white z-20 pointer-events-none"
+             class="absolute inset-0 w-full h-full p-8 flex items-center justify-center bg-slate-900 z-20 pointer-events-none"
+             style="background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px); background-size: 16px 16px;"
              x-show="hasImage"
              x-cloak>
             <img id="preview-logo-{{ $name }}" :src="previewUrl" alt="Preview" class="max-w-full max-h-full object-contain">
