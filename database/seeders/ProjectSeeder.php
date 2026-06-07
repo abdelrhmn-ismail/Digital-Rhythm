@@ -59,6 +59,33 @@ class ProjectSeeder extends Seeder
                 'is_active' => true,
                 'order' => 1,
             ],
+            // B. Car Wash App
+            [
+                'service_id' => $mobileAppService?->id,
+                'slug' => 'car-wash-app',
+                'title' => [
+                    'en' => 'Car Wash App',
+                    'ar' => 'تطبيق غسيل السيارات'
+                ],
+                'description' => [
+                    'en' => 'A state-of-the-art on-demand car wash mobile application featuring easy scheduling, live tracking, and secure cashless payments for premium vehicle care.',
+                    'ar' => 'تطبيق جوال متطور لغسيل السيارات عند الطلب، يتميز بجدولة سهلة وتتبع مباشر ومدفوعات غير نقدية آمنة للعناية المتميزة بالسيارات.'
+                ],
+                'client' => [
+                    'en' => 'Shine Express',
+                    'ar' => 'شاين إكسبريس'
+                ],
+                'image_path' => 'projects/car-wash/1.png',
+                'images' => [
+                    'projects/car-wash/1.png',
+                    'projects/car-wash/2.png'
+                ],
+                'project_url' => 'https://shine-express.com',
+                'completed_date' => Carbon::parse('2026-05-15'),
+                'is_featured' => true,
+                'is_active' => true,
+                'order' => 2,
+            ],
         ];
 
         foreach ($projects as $projectData) {

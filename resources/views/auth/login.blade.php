@@ -33,38 +33,40 @@
             --color-text: {{ $colorText }};
         }
         body {
-            background-color: #f8fafc;
-            background-image: radial-gradient(circle at 100% 0%, var(--color-primary) 0%, transparent 15%),
-                              radial-gradient(circle at 0% 100%, var(--color-secondary) 0%, transparent 15%);
-            color: var(--color-text);
+            background-color: #030712;
+            background-image: radial-gradient(circle at 100% 0%, var(--color-primary) 0%, transparent 40%),
+                              radial-gradient(circle at 0% 100%, var(--color-secondary) 0%, transparent 40%);
+            color: #f3f4f6;
             font-family: 'Outfit', 'Alexandria', sans-serif;
             min-height: 100vh;
         }
         .login-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 1.5rem;
         }
         .btn-theme {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
             color: #fff;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 14px 0 rgba(0, 135, 206, 0.35);
         }
         .btn-theme:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(1, 25, 74, 0.3);
-            filter: brightness(1.1);
+            box-shadow: 0 10px 20px rgba(0, 135, 206, 0.5);
+            filter: brightness(1.15);
         }
         .text-theme {
-            color: var(--color-primary);
+            color: var(--color-secondary);
         }
         input:focus {
-            border-color: var(--color-primary) !important;
-            ring-color: var(--color-primary) !important;
+            border-color: var(--color-secondary) !important;
+            box-shadow: 0 0 0 2px rgba(0, 135, 206, 0.25) !important;
         }
         @if(app()->getLocale() == 'ar')
         body { font-family: 'Alexandria', sans-serif !important; }
@@ -73,7 +75,7 @@
 </head>
 <body class="min-h-screen flex items-center justify-center">
     <div class="w-full max-w-md p-4">
-        <div class="login-card rounded-xl shadow-2xl p-8">
+        <div class="login-card p-8">
             <div class="text-center mb-8">
                 @if($siteLogo)
                     <img src="{{ $siteLogo }}" alt="{{ $siteTitle }}" class="h-16 mx-auto mb-4">
