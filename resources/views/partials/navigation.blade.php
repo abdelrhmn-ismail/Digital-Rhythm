@@ -106,7 +106,7 @@
             <a href="{{ route('services') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'services' ? 'text-primary' : 'text-foreground/60' }}">{{ __('Services') }}</a>
             <a href="{{ route('projects') ?? '#' }}" class="text-[14px] font-black uppercase tracking-[0.2em] {{ $currentRoute == 'projects' ? 'text-primary' : 'text-foreground/60' }}">{{ __('Projects') }}</a>
 
-            <a href="{{ route('contact') ?? '#' }}" class="w-full text-center py-4 bg-primary text-white font-black rounded-full mt-4">{{ __('GET A QUOTE') }}</a>
+            <a href="{{ route('contact') ?? '#' }}" class="w-full text-center py-4 bg-primary text-white font-black rounded-full mt-4 uppercase tracking-[0.2em] text-[14px]">{{ __('Contact') }}</a>
         </div>
     </div>
 </header>

@@ -18,7 +18,7 @@ class GeneralSettingsSeeder extends Seeder
             ['key' => 'site_logo', 'value' => 'images/logo.png'],
             ['key' => 'site_favicon', 'value' => 'images/favicon.png'],
             ['key' => 'contact_email', 'value' => 'info@digital-rhythm.sa'],
-            ['key' => 'contact_phone', 'value' => '+966558781218'],
+            ['key' => 'contact_phone', 'value' => '+966559561977'],
             ['key' => 'contact_whatsapp', 'value' => '+966559561977'],
             ['key' => 'tinymce_api_key', 'value' => '1odorra76r1mkqn8kb9riicnjjrrrq7let8rtaowsmi1mmrm'],
             ['key' => 'contact_address', 'value' => 'Riyadh, Saudi Arabia'],

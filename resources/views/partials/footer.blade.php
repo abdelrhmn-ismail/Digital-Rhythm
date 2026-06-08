@@ -53,9 +53,9 @@
             <div class="col-span-1 md:col-span-4 lg:col-span-2">
                 <h3 class="text-sm font-bold text-foreground mb-8 tracking-[0.2em] uppercase">{{ __('AGENCY') }}</h3>
                 <ul class="space-y-4 font-light text-muted">
-                    <li><a href="{{ route('about') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('About Us') }}</a></li>
-                    <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Our Services') }}</a></li>
-                    <li><a href="{{ route('projects') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Our Projects') }}</a></li>
+                    <li><a href="{{ route('about') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('About') }}</a></li>
+                    <li><a href="{{ route('services') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Services') }}</a></li>
+                    <li><a href="{{ route('projects') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Projects') }}</a></li>
                     <li><a href="{{ route('contact') ?? '#' }}" class="hover:text-primary transition-colors">{{ __('Contact') }}</a></li>
                 </ul>
             </div>
